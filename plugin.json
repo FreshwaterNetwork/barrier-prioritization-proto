@@ -1,0 +1,15 @@
+{
+    "css": [
+		"//cdn.sencha.io/ext-4.1.1-gpl/resources/css/ext-all.css",
+        "//code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.css",
+		"plugins/BarrierPrioritization/css/prism.css",
+		"plugins/BarrierPrioritization/css/chosen.css",
+		"plugins/BarrierPrioritization/css/main.css",
+		"plugins/BarrierPrioritization/css/theme.tablesorter.css"
+    ],
+    "use": {
+        "underscore": { "attach": "_" },
+        "tv4": { "attach": "tv4" },
+        "extjs": { "attach": "Ext" }
+    }
+}

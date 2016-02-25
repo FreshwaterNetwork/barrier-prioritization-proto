@@ -1,0 +1,381 @@
+{
+    "url": "http://50.18.215.52/arcgis/rest/services/easterndiv/PenobscotBarriers/MapServer",
+	"gpURL":"http://50.18.215.52/arcgis/rest/services/easterndiv/Penobscot_Prioritize27/GPServer/Prioritize",
+	"visibleLayers": [0,1],
+
+	"metricNames":{
+		"batFuncUS" : "US functional network length",
+		"batCountDS" : "​Count of DS barriers",
+		"batAbs" : "​Absolute Gain",
+		"DSNatBar" : "​Count of natural barriers downstream",
+		"usNatBar" : "One or more of next US barriers is natural",
+		"batLenUS" : "​Upstream total network length",
+		"NESZCL_Int" : "Stream size class",
+		"MilesBT_MHVH_USonly" : "​# miles of brook trout habitat in US network",
+		"MilesBT_MHVH" : "# miles of brook trout habitat in US + DS networks",
+		"BT_1_4_MHVH" : "Medium / High / Very High brook trout habitat US or DS",
+		"BT_1_4_HVH" : "​High / Very High quality brook trout habitat US or DS",
+		"BT_1_4_VH" : "Very High quality brook trout habitat US or DS",
+		"EBTJV_Patch" : "​EBTJV Wild Brook Trout Patch",
+		"HeritagePondBarrier" : "​Heritage Fish Pond Barrier",
+		"usSmeltPriority" : "​Smelt spawning rank in US Network",
+		"SeaRunBT": "Sea Run Brook Trout Barrier",
+		"alewifeAcres" : "​Upstream acres of alewife ponds",
+		"AquiferOrCoarseSed" : "​Aquifer OR coarse sediments in adjacent networks",
+		"CalcModCalc" : "​Calcareous / moderately calcareous geology in adjacent networks",
+		"HUC10_CritSalmHab" : "​Barrier in Salmon Critical Habitat",
+		"DMRSalmonPriority" : "​DMR Salmon Priority (HUC12)",
+		"US_SalmHabUnits" : "​Summed salmon habitat units  in US network",
+		"US_SalmParrProd" : "​Summed salmon parr productivity in US network",
+		"InvasiveBarrier" : "Invasive species barrier",
+		"InvasiveBarrierConfirmed" : "Invasive species barrier - Confirmed",
+		"InvasiveBarrierConfNumSpp" : "# of Invasive species blocked - Confirmed"
+	},
+
+	"metricOrder":{
+		"batFuncUS" : "D",
+		"batCountDS" : "A",
+		"batAbs" : "D",
+		"DSNatBar" : "A",
+		"usNatBar" : "A",
+		"batLenUS" : "D",
+		"NESZCL_Int" : "A",
+		"MilesBT_MHVH_USonly" : "D",
+		"MilesBT_MHVH" : "D",
+		"BT_1_4_MHVH" : "D",
+		"BT_1_4_HVH" : "D",
+		"BT_1_4_VH" : "D",
+		"EBTJV_Patch" : "D",
+		"HeritagePondBarrier" : "D",
+		"usSmeltPriority" : "D",
+		"SeaRunBT" : "D",
+		"alewifeAcres" : "D",
+		"AquiferOrCoarseSed" : "D",
+		"CalcModCalc" : "D",
+		"HUC10_CritSalmHab" : "D",
+		"DMRSalmonPriority" : "A",
+		"US_SalmHabUnits" : "D",
+		"US_SalmParrProd" : "D",
+		"InvasiveBarrier" : "A",
+		"InvasiveBarrierConfirmed" : "A",
+		"InvasiveBarrierConfNumSpp" : "A"
+	},
+
+	"diadromous":{
+		"batFuncUS" : 15,
+		"batCountDS" : 10,
+		"batAbs" : 0,
+		"DSNatBar" : 0,
+		"usNatBar" : 0,
+		"batLenUS" : 0,
+		"NESZCL_Int" : 0,
+		"MilesBT_MHVH_USonly" : 0,
+		"MilesBT_MHVH" : 0,
+		"BT_1_4_MHVH" : 0,
+		"BT_1_4_HVH" : 0,
+		"BT_1_4_VH" : 0,
+		"EBTJV_Patch" : 0,
+		"HeritagePondBarrier" : 0,
+		"usSmeltPriority" : 5,
+		"SeaRunBT" : 5,
+		"alewifeAcres" : 10,
+		"AquiferOrCoarseSed" : 0,
+		"CalcModCalc" : 0,
+		"HUC10_CritSalmHab" : 10,
+		"DMRSalmonPriority" : 15,
+		"US_SalmHabUnits" : 20,
+		"US_SalmParrProd" : 0,
+		"InvasiveBarrier" : 0,
+		"InvasiveBarrierConfirmed" : 10,
+		"InvasiveBarrierConfNumSpp" : 0
+	},
+	
+	"resident":{
+		"batFuncUS" : 0,
+		"batCountDS" : 0,
+		"batAbs" : 20,
+		"DSNatBar" : 0,
+		"usNatBar" : 0,
+		"batLenUS" : 0,
+		"NESZCL_Int" : 0,
+		"MilesBT_MHVH_USonly" : 0,
+		"MilesBT_MHVH" : 15,
+		"BT_1_4_MHVH" : 0,
+		"BT_1_4_HVH" : 0,
+		"BT_1_4_VH" : 20,
+		"EBTJV_Patch" : 0,
+		"HeritagePondBarrier" : 15,
+		"usSmeltPriority" : 0,
+		"SeaRunBT" : 0,
+		"alewifeAcres" : 0,
+		"AquiferOrCoarseSed" : 10,
+		"CalcModCalc" : 10,
+		"HUC10_CritSalmHab" : 0,
+		"DMRSalmonPriority" : 0,
+		"US_SalmHabUnits" : 0,
+		"US_SalmParrProd" : 0,
+		"InvasiveBarrier" : 0,
+		"InvasiveBarrierConfirmed" : 10,
+		"InvasiveBarrierConfNumSpp" : 0
+	},
+	
+	"Tier1Sym" : {
+		"color": [255,0,0, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		  }
+	},
+	"Tier2Sym" : {
+		"color": [255,68,0, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier3Sym" : {
+		"color": [255,106,0, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier4Sym" : {
+		"color": [255,140,0, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier5Sym" : {
+		"color": [255,174,0, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier6Sym" : {
+		"color": [255,208,0, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier7Sym" : {
+		"color": [255,242,0, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier8Sym" : {
+		"color": [241,255,51, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier9Sym" : {
+		"color": [222,255,89, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier10Sym" : {
+		"color": [196,255,125, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier11Sym" : {
+		"color": [167,255,161, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier12Sym" : {
+		"color": [130,255,197, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier13Sym" : {
+		"color": [82,255,229, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier14Sym" : {
+		"color": [23,243,255, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier15Sym" : {
+		"color": [48,203,255, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier16Sym" : {
+		"color": [59,163,255, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier17Sym" : {
+		"color": [59,127,255, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier18Sym" : {
+		"color": [54,94,255, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier19Sym" : {
+		"color": [38,56,255, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	},
+	"Tier20Sym" : {
+		"color": [8,8,255, 100],
+		"size": 10,
+		"type": "esriSMS",
+		"style": "esriSMSCircle",
+		"outline": {
+			"color": [0,0,0,255],
+			"width": 1,
+			"type": "esriSLS",
+			"style": "esriSLSSolid"
+		 }
+
+	}
+}

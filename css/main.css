@@ -1,0 +1,453 @@
+/* Class that hides framework legend */
+.hideLegend{
+	display:none !important;
+}
+/* Dropshadows */
+.bottomRight{
+	-webkit-box-shadow:2px 2px 3px 0px rgba(102,102,102,0.7); -moz-box-shadow:2px 2px 3px 0px rgba(102,102,102,0.7); box-shadow:2px 2px 3px 0px rgba(102,102,102,0.7);
+}
+.bottomRight1{
+	-webkit-box-shadow:1px 1px 2px 0px rgba(102,102,102,0.7); -moz-box-shadow:1px 1px 2px 0px rgba(102,102,102,0.7); box-shadow:1px 1px 2px 0px rgba(102,102,102,0.7);
+}
+
+*:focus{
+	outline: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+/*#########################################*/
+/* Tablesorter table elements */
+
+table.tablesorter {
+	background-color:none; text-align: left; border-collapse: collapse; 
+	/*overflow: -moz-scrollbars-vertical;  overflow-y: scroll !important; overflow-x: scroll !important;*/
+	overflow-y: auto;    
+    overflow-x: auto;    
+	max-height: 440px !important; border-bottom: 1px solid #215973; 
+	margin-top:0px; margin-bottom:0px; 
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: none; padding: 4px; padding-right: 18px;
+}
+table.tablesorter tbody tr td, table.tablesorter tr td, table.tablesorter thead tr th{
+	font-family: 'Archivo Narrow', 'Arial Narrow', Arial, Helvetica, sans-serif !important; 
+	font-size:10pt !important;
+}  
+
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif); background-repeat: no-repeat; background-position: center right; 
+	cursor: pointer; background-color: none;
+	overflow-y: auto;    Trigger vertical scroll
+    overflow-x: auto;
+}
+
+
+table.tablesorter tbody td {
+	color: #3D3D3D; padding: 4px; vertical-align: top; background-color: none; border-top: 1px solid #215973; 
+	border-left: 1px solid #215973; border-right: 1px solid #215973;
+}
+
+table.tablesorter tbody tr.odd td {
+	background-color:none;
+}
+
+
+
+table.tablesorter tbody > tr:nth-of-type(1) {
+    margin-top: 27px;
+}
+
+
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif); background-color: none;
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif); background-color: none;
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+	background-color: none;
+}
+
+
+.trclick{
+	cursor:pointer;
+}
+.trclick:hover{
+	color:blue;
+}
+
+table.tablesorter tr:hover{
+	background-color:#e3eff5;
+}
+
+table.tablesorter th{
+	border-top: 1px solid #215973; 
+	border-left: 1px solid #215973; border-right: 1px solid #215973;
+}
+
+table.tablesorter th {
+	height:20px; border: 1px solid #215973 !important; background-color:white;
+} 
+
+
+table.tablesorter .filtered {
+  display: none;
+}
+
+/*#########################################*/
+
+.weightInput{
+	width:40px !important;
+	height: 25px !important;
+	float: left;
+	margin-left:10px !important;
+	margin-right:10px !important;
+	margin-top: 5px !important;
+	
+} 
+
+.weighted{
+	background-color: #6CC2C7 !important;	
+	font-weight:800 !important;
+}
+
+.applyZeroWeight{
+	margin-top: 3px;
+}
+
+.sizer.content{
+	display: inline;
+	float: none;
+	
+}
+
+.sizer{
+	width: 300px !important;
+	max-height: 400px !important;
+}
+.contentPane{
+	width: 300px !important;
+	max-height: 400px !important;
+}
+
+.gpStatusReport{
+	color:#808080;
+
+}
+
+.startButtonHolder{
+		text-align:center;
+}
+
+
+/* Nothing selected popup */
+.selectNone{
+	position:absolute; top: 122px; width: 270px; left: 8px; z-index:50; background-color:#fff; padding:10px; border: 1px solid #215973; display:none; color: #a14612;
+}
+
+/* Hidden Print Table Styles */
+.pt {
+	display:none; 		
+}	
+
+/*----- Tabs -----*/
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+.tabs dd a, .tabs li a {
+
+    height: 20px !important;
+    line-height: 20px !important;
+    padding: 0px 4px !important;
+	border:1px solid #4c4c4c;
+	
+}
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links{
+		margin-bottom: 0px ;
+	}
+	.tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+ 
+    .tab-links li {
+        margin:0px 5px;
+        float:left;
+        list-style:none;
+    }
+	
+
+        .tab-links a {
+            padding:9px 15px;
+            display:inline-block;
+            border-radius:3px 3px 0px 0px;
+            background:#666666;
+            font-weight:600;
+            color:#e6e6e6 !important;
+            transition:all linear 0.15s;
+			
+        }
+ 
+        .tab-links a:hover {
+            background:#cccccc;
+            text-decoration:none;
+        }
+ 
+    li.active a, li.active a:hover {
+        background:#e6e6e6 !important;
+        color:#1a1a1a !important;	
+		border:1px solid #000000 !important;	
+    }
+	
+	li.active{
+		border-top:0px !important;
+		margin-top:0px !important;
+
+	}
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        padding:5px;
+        border-radius:3px;
+        box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+        background:#fff;
+		height: 100%;
+		border:1px solid #000000;
+		display: table;
+    }
+ 
+        .tab {
+            display:none;
+        }
+ 
+        .tab.active {
+            display:inline-block;
+        }
+
+
+.formInputs{
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right:0px;
+	margin-top:0px;
+}
+
+.submitButtonRunning{
+	color: #999999;
+}
+
+.currWeight{
+	font-size: 15pt;
+	font-weight: bold;
+}
+
+.metricLabel{
+	right: 40px !important;
+	float: left;
+	margin-bottom: 8px !important;
+}
+
+.gpResultTableDivContainer{
+	margin-top: 17px;
+}
+
+/*
+.gpResultTable{
+	 table-layout:fixed; 
+}
+*/
+
+
+.plugin-container-outer{
+	min-height: 515px;
+	min-width: 365px;
+	
+}
+.rightSide{
+	margin-left:20px;
+	height:350px;
+	margin-bottom:10px;
+	display:block;
+	position:absolute
+}
+
+.highlightGPResultRow{
+	background-color: yellow !important;
+}
+
+
+.toggleLayerDiv{
+	display: inline-block;
+	/*float: left !important;*/
+	/*padding-right: 80px;*/
+	position: absolute;
+	padding-left:10%;
+	z-index: 2;
+}
+
+.stateRadioForm{
+	position: absolute;
+	padding-left: 40%;
+	z-index: 1;
+}
+.toggleResultsDiv{
+	display: inline;
+	padding-left: 70%;
+	position: absolute;
+	
+}
+
+.topRadioDiv{
+	position:absolute;
+	/*padding-left:20%;*/
+	background-color: white;
+	top: 30px;
+	width:96% ;
+	height: 20px;
+	display: none;
+}
+
+
+/* Headers */
+.clickTitle{
+	position:absolute; padding-left:10px; padding-right: 10px; background-color:white; z-index:15;
+}
+.sectionHeader{
+	font-weight:normal; font-family: 'Archivo Narrow', 'Arial Narrow', Arial, Helvetica, sans-serif !important; font-size:11pt !important; color:#21658c;
+
+}
+.sectionHeader1{
+	font-family: 'Archivo Narrow', 'Arial Narrow', Arial, Helvetica, sans-serif !important; font-size:11pt !important; color:#21658c; cursor: default;
+}
+/* Nothing selected popup */
+.selectNone{
+	position:absolute; top: 40px; width: 272px; left: 6px; z-index:50; background-color:#fff; padding:10px; border: 1px solid #215973; display:none; color: #a14612;
+}
+/* Chosen select menu elements */
+.selectDivs{
+	margin-bottom:5px;
+}
+.selectInline{
+	margin-left:135px;
+}
+.selectFloat{
+	float:left;
+}
+.chosen-container-single .chosen-single{
+	padding: 0 0 0 4px;
+}
+.chosen-container-single .chosen-default, .chosen-container-multi .chosen-choices li.search-field input[type="text"]{
+	color:#444;
+}
+.chosen-container-multi .chosen-choices li.search-field input[type="text"], .chosen-container, .search-choice, .active-result, .result-selected{
+	font-family: 'Archivo Narrow', 'Arial Narrow', Arial, Helvetica, sans-serif !important;
+	font-size:10pt !important;
+}
+.chosen-container-single .chosen-single span{
+	margin-right:20px;
+}
+.chosen-container-single .chosen-single-with-deselect span{
+	margin-right:20px;
+}
+abbr.search-choice-close {
+  cursor: pointer;
+}
+/* Species Details elements */
+.spDetails{
+	border: 1px solid #215973; 
+	padding:8px;
+	margin-top:5px;
+	display:none;
+}
+.spDetailsKey{
+	display:none; position:absolute; left:20px; top:174px; border: 1px solid #215973; padding:10px; width:260px; height:321px; background-color:#ffffff;
+}
+.sdkClose{
+	position:absolute; top:5px; right:7px; font-weight:bold; font-size:12pt; cursor:pointer;
+}
+.sdkOpen{
+	cursor:pointer;
+}
+.splabel{
+	display: inline-block; width:155px; text-align:right; margin-bottom:5px; font-family: 'Archivo Narrow', 'Arial Narrow', Arial, Helvetica, sans-serif !important; font-size:10pt !important;
+}
+.spd{
+	margin-left:3px; display: inline-block; font-family: 'Archivo Narrow', 'Arial Narrow', Arial, Helvetica, sans-serif !important; font-size:10pt !important; font-weight:bold;
+}
+.spGroups{
+	vertical-align:top;
+}
+/* Species range map checkbox */
+.rMapCb{
+	cursor:pointer;
+}
+.showRangeMaps{
+	margin-left:0px; margin-top:5px;
+}
+label.showRangeMaps input[type=checkbox]{
+	position: relative; vertical-align: middle; bottom: 1px; margin-right:3px;
+}
+/* Bottom Bar Elements */
+.bottomDiv{
+	position:absolute; bottom:0px; left:0px; width:100%; border-top-style:groove !important; height:30px !important; 
+	background-color:#F3F3F3 !important; padding-top:3px !important; display:none;
+}
+.sliderDiv{
+	width:412px; text-align:center; display:none;
+}
+.printReport{
+	margin-left:5px; display:inline-block;
+}
+.dlCSV{
+	float:right; margin-right:20px;
+}
+.bottomLinks:hover{
+	background-color:#eee; border:1px solid #bbb; cursor:pointer;
+}
+.bottomLinks:active{
+	background-color:#f3f3f3; border:1px solid #bbb; cursor:pointer;
+}
+.bottomLinks{
+	width:70px; height:20px; padding-top:2px; border:1px solid #ddd; background-color:#eee; text-align:center; font-size:10pt; color:#21658c; font-weight:bold;
+}
+.leftSliderLabel{
+	display:inline-block; margin-right:9px; font-size:10pt;
+}	
+
+.slider{
+	width:100px; display:inline-block;
+}
+.ui-slider-horizontal { 
+	height: 5px; 
+}
+.ui-slider-horizontal .ui-slider-handle { 
+	height:15px; width:15px; margin-top:-1px; 
+}
+.rightSliderLabel{
+	display:inline-block; margin-left:5px; font-size:10pt;
+}
+/* Popup Legend Elements */
+.myLegendHeader{
+	background-color:#424542; color:#fff; height:28px; font-size:1em; font-weight:bold; padding:8px 0px 0px 10px; cursor:move;
+}
+.myLegendCloser{
+	float:right !important; width:26px; height:26px; border-left:1px solid #666; text-align:center; font-weight:bold; padding:6px !important; right:-8px; color:#cecfce;
+}
+.myLegendCloser:hover{
+	background-color:#000; color:#cecfce;
+}
+.myLegendCloser:active{
+	background-color:#545754; border-right:1px solid #666; border-left:none;
+}	
+.myLegendDiv{
+	z-index:8; position:absolute; right:105px; min-width:150px; height:300px; bottom:50px; background-color:#FFF; border-style:solid; border-width:4px; 
+	border-color:#444; border-radius:5px;box-shadow: 3px 3px 5px 0px rgba(102,102,102,0.7); 
+}
+.mySpeciesLegend{
+	float:right; display:block; text-align:right; margin-left:-10px; padding:10px !important;
+}
