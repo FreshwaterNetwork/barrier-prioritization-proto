@@ -9,9 +9,9 @@ define([
 	"esri/tasks/Geoprocessor", "esri/tasks/QueryTask", "esri/tasks/query", "esri/graphic", "esri/InfoTemplate", "dojo/_base/Color", 	
 	"dijit/layout/ContentPane", "dijit/form/HorizontalSlider","dijit/registry", "dojo/_base/array", "dojo/dom", "dojo/dom-class", "dojo/dom-style", 
 	"dojo/dom-construct", "dojo/dom-geometry", "dojo/_base/lang", "dojo/on", "dojo/parser", 
-	"plugins/BarrierPrioritization/js/ConstrainedMoveable", "dojo/text!./config.json", "jquery",
+	"plugins/barrier-prioritization/js/ConstrainedMoveable", "dojo/text!./config.json", "jquery",
 	"dojo/text!./html/legend.html", "dojo/text!./html/content.html", "dijit/TooltipDialog", 
-	"dijit/popup", "plugins/BarrierPrioritization/js/jquery-ui-1.11.0/jquery-ui", 
+	"dijit/popup", "plugins/barrier-prioritization/js/jquery-ui-1.11.0/jquery-ui", 
     "dojox/grid/DataGrid", "dojo/data/ItemFileReadStore"
 ],
 function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, 
@@ -25,8 +25,8 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 			initialize: function (frameworkParameters) {
 				declare.safeMixin(this, frameworkParameters);
 				domClass.add(this.container, "claro");
-				this.con = dom.byId('plugins/BarrierPrioritization-0');
-				this.con1 = dom.byId('plugins/BarrierPrioritization-1');
+				this.con = dom.byId('plugins/barrier-prioritization-0');
+				this.con1 = dom.byId('plugins/barrier-prioritization-1');
 				if (this.con1 != undefined){
 					domStyle.set(this.con1, "width", "365px");
 					domStyle.set(this.con1, "height", "250px");
@@ -103,8 +103,8 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 						this.dynamicLayer.setVisibility(true);	
 					}
 					if (this.small == "yes"){
-						this.con = dom.byId('plugins/BarrierPrioritization-0');
-						this.con1 = dom.byId('plugins/BarrierPrioritization-1');
+						this.con = dom.byId('plugins/barrier-prioritization-0');
+						this.con1 = dom.byId('plugins/barrier-prioritization-1');
 						if (this.con1 != undefined){
 							domStyle.set(this.con1, "width", "365px");
 							domStyle.set(this.con1, "height", "260px");
@@ -251,7 +251,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 
 				
 				// Enable jquery plugin 'chosen'
-				require(["jquery", "plugins/BarrierPrioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+				require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
 					var config = { '.chosen-select'           : {allow_single_deselect:true, width:"500px", disable_search:true},
 						'.chosen-select-multiple'     : {width:"263px"} };
 					for (var selector in config) { $(selector).chosen(config[selector]); }
@@ -448,7 +448,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 						this.tableHTML = "<table  id='" + this.appDiv.id + "gpResultTable' class='tablesorter'><thead> <tr></tr></thead><tbody ></tbody></table>";
 						$("#" + this.appDiv.id + "gpResultTable").html(this.tableHTML);
 						if (this.gpIterator >1){											
-    						require(["jquery", "plugins/BarrierPrioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
+    						require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
     						 $("#" + this.appDiv.id + "gpResultTable").trigger("destroy");
     						}));
 						}
@@ -634,7 +634,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 					$("#" + this.appDiv.id + "gpResultTable > tbody:last-child").append(cStr2);
 					
 					//Set up tablesorter           
-					require(["jquery", "plugins/BarrierPrioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
+					require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
         						$("#" + this.appDiv.id + "gpResultTable").tablesorter({
                                 widthFixed : true,
                                 headerTemplate : '{content} {icon}', // Add icon for various themes
@@ -808,7 +808,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 					alert("Print Report is coming soon. Brace yourself, it's going to be awesome!");
 				}));
 				$('#' + this.appDiv.id + 'dlCSV').on('click',lang.hitch(this,function(e) { 
-				    require(["jquery", "plugins/BarrierPrioritization/js/jquery.tabletoCSV"],lang.hitch(this,function($) {
+				    require(["jquery", "plugins/barrier-prioritization/js/jquery.tabletoCSV"],lang.hitch(this,function($) {
                              $("#" + this.appDiv.id + "gpResultTable").tableToCSV();
                     }));
 				}));
@@ -847,13 +847,13 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 				}));
 				
 				// Update table
-				require(["jquery", "plugins/BarrierPrioritization/js/jquery.tablesorter"],lang.hitch(this,function($) {
+				require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter"],lang.hitch(this,function($) {
 					$('#' + this.appDiv.id + 'gpResultTable').trigger("update");					
 				}));
 				
 				console.log($('#' + this.appDiv.id + 'myTable').height());
 				$('#' + this.appDiv.id + 'clickTitle').html('Species in Selected Hexagon');
-				$('#' + this.appDiv.id + 'spDetailsHeader').html('<img src="plugins/BarrierPrioritization/images/leftArrow.png" width="20" alt="left arrow">  Click Rows for Species Details');
+				$('#' + this.appDiv.id + 'spDetailsHeader').html('<img src="plugins/barrier-prioritization/images/leftArrow.png" width="20" alt="left arrow">  Click Rows for Species Details');
 				//Resize main container - check which side first
 				if (this.mapSide == "map-1_container"){
 					this.useCon = this.con1;

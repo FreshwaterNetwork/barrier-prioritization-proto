@@ -2,10 +2,10 @@
     "css": [
 		"//cdn.sencha.io/ext-4.1.1-gpl/resources/css/ext-all.css",
         "//code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.css",
-		"plugins/BarrierPrioritization/css/prism.css",
-		"plugins/BarrierPrioritization/css/chosen.css",
-		"plugins/BarrierPrioritization/css/main.css",
-		"plugins/BarrierPrioritization/css/theme.tablesorter.css"
+		"plugins/barrier-prioritization/css/prism.css",
+		"plugins/barrier-prioritization/css/chosen.css",
+		"plugins/barrier-prioritization/css/main.css",
+		"plugins/barrier-prioritization/css/theme.tablesorter.css"
     ],
     "use": {
         "underscore": { "attach": "_" },
