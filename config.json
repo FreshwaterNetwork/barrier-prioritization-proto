@@ -1,6 +1,6 @@
 {
     "url": "http://50.18.215.52/arcgis/rest/services/easterndiv/PenobscotBarriers/MapServer",
-	"gpURL":"http://50.18.215.52/arcgis/rest/services/easterndiv/Penobscot_Prioritize27/GPServer/Prioritize",
+	"gpURL":"http://50.18.215.52/arcgis/rest/services/easterndiv/Penobscot_Prioritize/GPServer/Prioritize",
 	"visibleLayers": [0,1],
 
 	"metricNames":{
@@ -31,6 +31,9 @@
 		"InvasiveBarrierConfirmed" : "Invasive species barrier - Confirmed",
 		"InvasiveBarrierConfNumSpp" : "# of Invasive species blocked - Confirmed"
 	},
+
+	"idBlacklist" : ["OBJECTID_1", "Shape", "SiteID"],
+
 
 	"metricOrder":{
 		"batFuncUS" : "D",
@@ -121,7 +124,7 @@
 	
 	"Tier1Sym" : {
 		"color": [255,0,0, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -133,7 +136,7 @@
 	},
 	"Tier2Sym" : {
 		"color": [255,68,0, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -146,7 +149,7 @@
 	},
 	"Tier3Sym" : {
 		"color": [255,106,0, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -159,7 +162,7 @@
 	},
 	"Tier4Sym" : {
 		"color": [255,140,0, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -172,7 +175,7 @@
 	},
 	"Tier5Sym" : {
 		"color": [255,174,0, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -185,7 +188,7 @@
 	},
 	"Tier6Sym" : {
 		"color": [255,208,0, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -198,7 +201,7 @@
 	},
 	"Tier7Sym" : {
 		"color": [255,242,0, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -211,7 +214,7 @@
 	},
 	"Tier8Sym" : {
 		"color": [241,255,51, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -224,7 +227,7 @@
 	},
 	"Tier9Sym" : {
 		"color": [222,255,89, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -237,7 +240,7 @@
 	},
 	"Tier10Sym" : {
 		"color": [196,255,125, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -250,7 +253,7 @@
 	},
 	"Tier11Sym" : {
 		"color": [167,255,161, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -263,7 +266,7 @@
 	},
 	"Tier12Sym" : {
 		"color": [130,255,197, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -276,7 +279,7 @@
 	},
 	"Tier13Sym" : {
 		"color": [82,255,229, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -289,7 +292,7 @@
 	},
 	"Tier14Sym" : {
 		"color": [23,243,255, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -302,7 +305,7 @@
 	},
 	"Tier15Sym" : {
 		"color": [48,203,255, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -315,7 +318,7 @@
 	},
 	"Tier16Sym" : {
 		"color": [59,163,255, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -328,7 +331,7 @@
 	},
 	"Tier17Sym" : {
 		"color": [59,127,255, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -341,7 +344,7 @@
 	},
 	"Tier18Sym" : {
 		"color": [54,94,255, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -354,7 +357,7 @@
 	},
 	"Tier19Sym" : {
 		"color": [38,56,255, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
@@ -367,7 +370,7 @@
 	},
 	"Tier20Sym" : {
 		"color": [8,8,255, 100],
-		"size": 10,
+		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {

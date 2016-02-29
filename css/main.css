@@ -124,11 +124,11 @@ table.tablesorter .filtered {
 }
 
 .sizer{
-	width: 300px !important;
+	width: 400px !important;
 	max-height: 400px !important;
 }
 .contentPane{
-	width: 300px !important;
+	width: 400px !important;
 	max-height: 400px !important;
 }
 
