@@ -63,6 +63,11 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 				if (this.map != undefined){
 					this.map.graphics.clear();
 				}
+				
+				if (this.gpResLayer != undefined){
+				    this.gpResLayer.setVisibility(false);
+				}
+				
 				if ("#" + this.appDiv.id + "gpResultTable"){
 					$("#" + this.appDiv.id + "gpResultTable").empty();
 					$('input:radio[name="stateRadio"]').filter('[value="inputs"]').prop('checked', true);
@@ -70,7 +75,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 				$("#" + this.appDiv.id + "gpResultTableDivContainer").hide();
 				$('#' + this.appDiv.id + 'toggleResultsDiv').hide();
 				$("#" + this.appDiv.id + "topRadioDiv").hide();
-                this.map.removeLayer(this.gpResLayer);
+                
                 this.mapSide = this.appDiv.id.replace("dijit_layout_ContentPane_", "");			
 				//$('#legend-container-' + this.mapSide).removeClass("hideLegend");
 				
@@ -85,8 +90,8 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
                 $('#'+ this.appDiv.id +"currWeight").css('color', 'red');
                 $('#' + this.appDiv.id + 'dlCSV').css('display', 'none');
 			},
-			// Called after hibernate at app startup. Calls the render function which builds the plugins elements and functions.   
 			
+			// Called after hibernate at app startup. Calls the render function which builds the plugins elements and functions.  
 			activate: function () {
 			    console.log(this.con1);
 				// Hide framework default legend
@@ -340,11 +345,11 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
                         var ischecked = $('#' + this.appDiv.id + 'toggleResults').is(':checked');
                         if (ischecked) {
                             this.map.graphics.show(); 
-                            this.gpResLayer.show();
+                            this.gpResLayer.setVisibility(true);
                         }
                         if (!ischecked){
                             this.map.graphics.hide();
-                            this.gpResLayer.hide();
+                            this.gpResLayer.setVisibility(false);
                         }                        
                 })); 
 				
