@@ -283,7 +283,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
                 //Identify functionality...     
                 this.identifyRes = new IdentifyTask(this.config.url);
                 this.identifyParams = new IdentifyParameters();
-                this.identifyParams.tolerance = 3;
+                this.identifyParams.tolerance = 6;
                 this.identifyParams.returnGeometry = true;
                 this.identifyParams.layerIds = [0];
                 this.identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_ALL;
@@ -486,6 +486,9 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 						//clear old map graphics and results table
 						this.map.graphics.clear();
 						this.tableHTML = "";
+						if (this.gpResLayer != undefined){
+                            this.gpResLayer.setVisibility(false);
+                        }
 						// $("#" + this.appDiv.id + "gpResultTable > tbody").html(''); 
 						// $("#" + this.appDiv.id + "gpResultTable > thead").html('<tr></tr>');
 						this.tableHTML = "<table  id='" + this.appDiv.id + "gpResultTable' class='tablesorter'><thead> <tr></tr></thead><tbody ></tbody></table>";
@@ -770,12 +773,12 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 					//deal with separate hover popups and click popups
 					dojo.connect(this.map.graphics, "onClick", lang.hitch(this, function(evt) { 
 					   this.keepInfoWindow = "yes";
-
 					  }));   
 					
 					dojo.connect(this.map.graphics, "onMouseOver", lang.hitch(this, function(evt) {	
+					    if (this.map.infoWindow.isShowing == false){this.keepInfoWindow = "no";}
 					    this.graphicMouseovers  +=1;
-					    if (this.keepInfoWindow == "no"|| this.graphicMouseovers >5){			    
+					    if (this.keepInfoWindow == "no"){   // || this.graphicMouseovers >5){
     						this.g = evt.graphic;
     						this.map.infoWindow.setContent(this.g.getContent());
     						this.map.infoWindow.setTitle(this.g.getTitle());
@@ -785,16 +788,15 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 					}));
 					
 					dojo.connect(this.map.graphics, "onMouseOut", lang.hitch(this, function(evt) {        
-					   if (this.keepInfoWindow == "no" || this.graphicMouseovers >5){		       
+					   
+					   if (this.keepInfoWindow == "no"){    //|| this.graphicMouseovers >5){ 	       
 					       this.map.infoWindow.hide();
 					       this.graphicMouseovers =0;
 					   }
 
 					}));
 					
-					
 
-					
 					
 					//result graphic zoom to table row  
 					dojo.connect(this.map.graphics, "onClick", lang.hitch(this, function(evt) {
