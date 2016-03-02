@@ -522,12 +522,18 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 						// $("#" + this.appDiv.id + "gpResultTable > tbody").html(''); 
 						// $("#" + this.appDiv.id + "gpResultTable > thead").html('<tr></tr>');
 						this.tableHTML = "<table  id='" + this.appDiv.id + "gpResultTable' class='tablesorter'><thead> <tr></tr></thead><tbody ></tbody></table>";
-						$("#" + this.appDiv.id + "gpResultTable").html(this.tableHTML);
 						if (this.gpIterator >1){											
     						require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
     						 $("#" + this.appDiv.id + "gpResultTable").trigger("destroy");
     						}));
 						}
+						if ("#" + this.appDiv.id + "gpSumStatsTable"){
+						    require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
+                                $("#" + this.appDiv.id + "gpSumStatsTable").trigger("destroy");
+                            }));
+                            
+                        }
+                        $("#" + this.appDiv.id + "gpSumStatsTable").html(this.tableHTML);
                         $("#" + this.appDiv.id + "gpResultTable").html(this.tableHTML);						
 						console.log($("#" + this.appDiv.id + "gpResultTable"));
 						
@@ -923,8 +929,12 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
                         });   
                         console.log("tablesort initialized");
                         $('#' + this.appDiv.id + 'gpSumStatsTable').trigger("update");
-
+                        var sorting = [[0]];                         
+                        setTimeout(lang.hitch(this,function () {
+                            $("#" + this.appDiv.id + "gpSumStatsTable").trigger("sorton", [sorting]);
+                        }, 100));
                     }));
+                    
                 }
 								
 				//calculate current metric weights
