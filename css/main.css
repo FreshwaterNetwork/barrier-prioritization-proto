@@ -134,6 +134,7 @@ table.tablesorter .filtered {
 
 .gpStatusReport{
 	color:#808080;
+	margin-right: 20px;
 
 }
 
@@ -256,6 +257,10 @@ table.tablesorter .filtered {
 	margin-top: 17px;
 }
 
+.gpSumStatsTableDivContainer{
+	margin-top: 17px;
+}
+
 /*
 .gpResultTable{
 	 table-layout:fixed; 
@@ -286,25 +291,27 @@ table.tablesorter .filtered {
 	/*float: left !important;*/
 	/*padding-right: 80px;*/
 	position: absolute;
-	padding-left:10%;
 	z-index: 2;
 }
 
 .stateRadioForm{
 	position: absolute;
-	padding-left: 40%;
+	padding-left: 110px;
 	z-index: 1;
 }
 .toggleResultsDiv{
 	display: inline;
-	padding-left: 70%;
+	padding-left: 80%;
 	position: absolute;
 	
 }
 
+.gpSumStatsTableDiv{
+	table-layout:fixed;
+}
+
 .topRadioDiv{
 	position:absolute;
-	/*padding-left:20%;*/
 	background-color: white;
 	top: 30px;
 	width:96% ;

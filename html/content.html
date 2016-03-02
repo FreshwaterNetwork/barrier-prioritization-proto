@@ -60,6 +60,9 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		<label style='display:inline-block;'>
 			<input type='radio' name='stateRadio'  value='results' />Results
 		</label>
+		<label style='display:inline-block;'>
+            <input type='radio' name='stateRadio'  value='stats' />Stats
+        </label>
 	</form>
 
 	<div id='toggleResultsDiv' class='toggleResultsDiv'>
@@ -150,10 +153,10 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 	<div><input id='barriers2Remove' type='text' value='' class='formInputs' style='display: none; width:170px' placeholder='e.g. &#39;SiteID&#39;, &#39;SiteID2&#39;' title='Enter a list of up to 10 barrier SiteIDs (in single quotes separated by commas) to "remove" from the landscape and run the analysis as if they did not exist.'/>​</div>
 	
 	<!-- Sum stats DIV hidden until app build out to accept result -->
-	<div style='display: none'><input type='checkbox'  id='runSumStats' class='formInputs' title='Check this box to optionally run summary statistics by state or watershed'>Calcualte Summary Statistics?</div>
+	<div><input type='checkbox'  id='runSumStats' class='formInputs' title='Check this box to optionally run summary statistics by state or watershed'>Calcualte Summary Statistics?</div>
 	
-	<div><input id='summarizeBy' type='text' value='' class='formInputs' style='display: none; width:170px' placeholder='Summarize By e.g. HUC10' title='Enter the unit to summarize by (e.g. state, watershed)'/>​</div>
-	<div><input id='summaryStatField' type='text' value='' class='formInputs' style='display: none; width:170px' placeholder='Value to Summarize e.g. Tier' title='Enter the value to summarize (e.g. Tier)'/>​</div>
+	<div><input id='summarizeBy' type='text' value='' class='formInputs' style='display: none; width:170px' placeholder='Summarize By e.g. HUC10' title='Enter the unit to summarize by.  This must be an attribute field from the barrier dataset.  Possible values include (with no quotes): HUC8, HUC10, HUC12'/>​</div>
+	<div><input id='summaryStatField' type='text' value='' class='formInputs' style='display: none; width:170px' placeholder='Value to Summarize e.g. Tier' title='Enter the value to summarize.  Possible values include (with no quotes): Tier, FinalRank'/>​</div>
 	<button type='button' id='submitButton' class='submitButton' title='Click to begin an analysis when weights are applied'>Submit</button>
 	<br><br>
 	<div id='gpStatusReportHead' style='display: none;'>Analysis status:</div>
@@ -176,10 +179,10 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 	<div id='dlCSV' class='dlCSV bottomLinks' href='#' style='display: none;'>
 		Download
 	</div>
+
 </div>	
 <!--Key to species details div. Absolutely positioned so it overlaps the species rsesults table when turned on-->
 <div id='gpResultTableDivContainer' class='gpResultTableDivContainer' style='display:none'>
-
     <div id='gpResultTableDiv' class='gpResultTableDiv'>
     	<table  id='gpResultTable' class='tablesorter' > 
     		<thead> 
@@ -189,5 +192,17 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
     		
     		</tbody>
     	</table>
+    </div>
+</div>
+<div id='gpSumStatsTableDivContainer' class='gpSumStatsTableDivContainer' style='display:none'>
+    <div id='gpSumStatsTableDiv' class='gpSumStatsTableDiv'>
+        <table  id='gpSumStatsTable' class='tablesorter' > 
+            <thead> 
+                <tr></tr>
+            </thead>
+            <tbody >
+            
+            </tbody>
+        </table>
     </div>
 </div>

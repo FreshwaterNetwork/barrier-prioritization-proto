@@ -11,10 +11,19 @@
 	width: 95%;
 	height: 80%; 
 	top:40px;
-
 }
 
+.gpSumStatsContainer {
+	position: absolute;
+	padding: 0;
 
+	overflow-y: auto;
+	overflow-x: auto;
+	border: 1px solid #215973;
+	width: 95%;
+	height: 80%; 
+	top:40px;
+}
 /* overall */
 .tablesorter-blue {
 	font-family: 'Archivo Narrow', 'Arial Narrow', Arial, Helvetica, sans-serif !important;
