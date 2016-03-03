@@ -522,6 +522,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 						// $("#" + this.appDiv.id + "gpResultTable > tbody").html(''); 
 						// $("#" + this.appDiv.id + "gpResultTable > thead").html('<tr></tr>');
 						this.tableHTML = "<table  id='" + this.appDiv.id + "gpResultTable' class='tablesorter'><thead> <tr></tr></thead><tbody ></tbody></table>";
+						this.sumStatsTableHTML = "<table  id='" + this.appDiv.id + "gpSumStatsTable' class='tablesorter'><thead> <tr></tr></thead><tbody ></tbody></table>";
 						if (this.gpIterator >1){											
     						require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
     						 $("#" + this.appDiv.id + "gpResultTable").trigger("destroy");
@@ -533,7 +534,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
                             }));
                             
                         }
-                        $("#" + this.appDiv.id + "gpSumStatsTable").html(this.tableHTML);
+                        $("#" + this.appDiv.id + "gpSumStatsTable").html(this.sumStatsTableHTML);
                         $("#" + this.appDiv.id + "gpResultTable").html(this.tableHTML);						
 						console.log($("#" + this.appDiv.id + "gpResultTable"));
 						
@@ -725,7 +726,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 					$("#" + this.appDiv.id + "gpResultTable > tbody:last-child").append(cStr2);
 					
 					//Set up tablesorter           
-					require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
+					require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
         						$("#" + this.appDiv.id + "gpResultTable").tablesorter({
                                 widthFixed : true,
                                 headerTemplate : '{content} {icon}', // Add icon for various themes
@@ -894,28 +895,28 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
                     $("#" + this.appDiv.id + "gpSumStatsTable tr:first").append("<th>Mean " + this.sumStatField + "</th>");
                     $("#" + this.appDiv.id + "gpSumStatsTable tr:first").append("<th>Min " + this.sumStatField + "</th>");
                     $("#" + this.appDiv.id + "gpSumStatsTable tr:first").append("<th>" + this.sumStatField + " Standard Deviation </th>");
-                    var c = [];
-                    var cStr = "";
-                    var cStr2 = "";
+                    var d = [];
+                    var dStr = "";
+                    var dStr2 = "";
                     this.sumStatsFeatures = result.value.features;      
                     for (var f=0, fl=this.sumStatsFeatures.length; f<fl; f++) {
                         this.feature = this.sumStatsFeatures[f];
                         var row = this.feature.attributes;
-                        c.push("<tr>");
-                        c.push("<td>" + row.CASEFIELD + "</td>");
-                        c.push("<td>" + row.COUNT + "</td>");
-                        c.push("<td>" + row.MAX + "</td>");
-                        c.push("<td>" + row.MEAN + "</td>");
-                        c.push("<td>" + row.MIN + "</td>");
-                        c.push("<td>" + row.STD + "</td>");
-                        c.push("</tr>");
+                        d.push("<tr>");
+                        d.push("<td>" + row.CASEFIELD + "</td>");
+                        d.push("<td>" + row.COUNT + "</td>");
+                        d.push("<td>" + row.MAX + "</td>");
+                        d.push("<td>" + row.MEAN + "</td>");
+                        d.push("<td>" + row.MIN + "</td>");
+                        d.push("<td>" + row.STD + "</td>");
+                        d.push("</tr>");
                     }
-                    cStr = c.toString();
-                    cStr2 = cStr.replace(/,/g, "");
-                    $("#" + this.appDiv.id + "gpSumStatsTable > tbody:last-child").append(cStr2); 
+                    dStr = d.toString();
+                    dStr2 = dStr.replace(/,/g, "");
+                    $("#" + this.appDiv.id + "gpSumStatsTable > tbody:last-child").append(dStr2); 
                     
                     //Set up tablesorter           
-                    require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
+                    require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
                                 $("#" + this.appDiv.id + "gpSumStatsTable").tablesorter({
                                 widthFixed : true,
                                 headerTemplate : '{content} {icon}', // Add icon for various themes
