@@ -261,11 +261,6 @@ table.tablesorter .filtered {
 	margin-top: 17px;
 }
 
-/*
-.gpResultTable{
-	 table-layout:fixed; 
-}
-*/
 
 
 .plugin-container-outer{
@@ -364,31 +359,7 @@ table.tablesorter .filtered {
 abbr.search-choice-close {
   cursor: pointer;
 }
-/* Species Details elements */
-.spDetails{
-	border: 1px solid #215973; 
-	padding:8px;
-	margin-top:5px;
-	display:none;
-}
-.spDetailsKey{
-	display:none; position:absolute; left:20px; top:174px; border: 1px solid #215973; padding:10px; width:260px; height:321px; background-color:#ffffff;
-}
-.sdkClose{
-	position:absolute; top:5px; right:7px; font-weight:bold; font-size:12pt; cursor:pointer;
-}
-.sdkOpen{
-	cursor:pointer;
-}
-.splabel{
-	display: inline-block; width:155px; text-align:right; margin-bottom:5px; font-family: 'Archivo Narrow', 'Arial Narrow', Arial, Helvetica, sans-serif !important; font-size:10pt !important;
-}
-.spd{
-	margin-left:3px; display: inline-block; font-family: 'Archivo Narrow', 'Arial Narrow', Arial, Helvetica, sans-serif !important; font-size:10pt !important; font-weight:bold;
-}
-.spGroups{
-	vertical-align:top;
-}
+
 /* Species range map checkbox */
 .rMapCb{
 	cursor:pointer;

@@ -52,59 +52,61 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 					$('#' + this.appDiv.id + 'leftSide, #' + this.appDiv.id + 'rightSide').css('display', 'none');
 					$('#' + this.appDiv.id + 'bottomDiv').hide();
 					$('#' + this.appDiv.id + 'clickTitle').show();
-				}
-				if (this.dynamicLayer != undefined)  {
-					this.dynamicLayer.setVisibility(false);
-					this.map.graphics.clear();
-				}
-				if (this.fc != undefined){
-					this.fc.clear();
-				}
-				if (this.map != undefined){
-					this.map.graphics.clear();
-				}
 				
-				if (this.gpResLayer != undefined){
-				    this.gpResLayer.setVisibility(false);
-				}
-				
-				if ("#" + this.appDiv.id + "gpResultTable"){
-					$("#" + this.appDiv.id + "gpResultTable").empty();
-					$('input:radio[name="stateRadio"]').filter('[value="inputs"]').prop('checked', true);
-				}
-				if ("#" + this.appDiv.id + "gpSumStatsTable"){
-                    $("#" + this.appDiv.id + "gpSumStatsTable").empty();
-                }
-				
-				$("#" + this.appDiv.id + "gpResultTableDivContainer").hide();
-				$("#" + this.appDiv.id + "gpSumStatsTableDivContainer").hide();
-				$('#' + this.appDiv.id + 'toggleResultsDiv').hide();
-				$("#" + this.appDiv.id + "topRadioDiv").hide();
-                
-                this.mapSide = this.appDiv.id.replace("dijit_layout_ContentPane_", "");			
-				//$('#legend-container-' + this.mapSide).removeClass("hideLegend");
-				
-				//clear GP status and reset metirc weights
-				$("#" + this.appDiv.id +"gpStatusReport").html("");
-				$("#" + this.appDiv.id +"gpStatusReportHead").css('display', 'none');
-			    $("input[id^=" + this.appDiv.id + "weightIn]").each(lang.hitch(this, function(i, v){
-                    v.value = 0;   
-                    $('#' + v.id).removeClass('weighted');         
-                }));
-                $('#'+ this.appDiv.id + 'currWeight').html('0');
-                $('#'+ this.appDiv.id + 'currWeight').css('color', 'red');
-                $('#' + this.appDiv.id + 'dlCSV').css('display', 'none');
-                $('#' + this.appDiv.id + 'filterBarriers').attr('checked', false);
-                $('#' + this.appDiv.id + 'runSumStats').attr('checked', false);
-                $('#' + this.appDiv.id + 'removeBarriers').attr('checked', false);
-                $("#" + this.appDiv.id + 'summarizeBy').val("");
-                $("#" + this.appDiv.id + 'summaryStatField').val("");
-                $("#" + this.appDiv.id + 'barriers2Remove').val("");
-                $("#" + this.appDiv.id + 'userFilter').val("");
-                $("#" + this.appDiv.id + 'summarizeBy').hide("");
-                $("#" + this.appDiv.id + 'summaryStatField').hide("");
-                $("#" + this.appDiv.id + 'barriers2Remove').hide("");
-                $("#" + this.appDiv.id + 'userFilter').hide("");
+    				if (this.dynamicLayer != undefined)  {
+    					this.dynamicLayer.setVisibility(false);
+    					this.map.graphics.clear();
+    				}
+    				if (this.fc != undefined){
+    					this.fc.clear();
+    				}
+    				if (this.map != undefined){
+    					this.map.graphics.clear();
+    				}
+    				
+    				if (this.gpResLayer != undefined){
+    				    this.gpResLayer.setVisibility(false);
+    				}
+    				
+    				if ("#" + this.appDiv.id + "gpResultTable" != undefined){
+    					$("#" + this.appDiv.id + "gpResultTable").empty();
+    					$('input:radio[name="stateRadio"]').filter('[value="inputs"]').prop('checked', true);
+    				}
+    				if ("#" + this.appDiv.id + "gpSumStatsTable" != undefined){
+                        $("#" + this.appDiv.id + "gpSumStatsTable").empty();
+                    }
+    				
+    				$("#" + this.appDiv.id + "gpResultTableDivContainer").hide();
+    				$("#" + this.appDiv.id + "gpSumStatsTableDivContainer").hide();
+    				$('#' + this.appDiv.id + 'toggleResultsDiv').hide();
+    				$("#" + this.appDiv.id + "topRadioDiv").hide();
+                    
+                    this.mapSide = this.appDiv.id.replace("dijit_layout_ContentPane_", "");			
+    				//$('#legend-container-' + this.mapSide).removeClass("hideLegend");
+    				
+    				//clear GP status and reset metirc weights
+    				$("#" + this.appDiv.id +"gpStatusReport").html("");
+    				$("#" + this.appDiv.id +"gpStatusReportHead").css('display', 'none');
+    			    $("input[id^=" + this.appDiv.id + "weightIn]").each(lang.hitch(this, function(i, v){
+                        v.value = 0;   
+                        $('#' + v.id).removeClass('weighted');         
+                    }));
+                    $('#'+ this.appDiv.id + 'currWeight').html('0');
+                    $('#'+ this.appDiv.id + 'currWeight').css('color', 'red');
+                    $('#' + this.appDiv.id + 'dlCSV').css('display', 'none');
+                    $('#' + this.appDiv.id + 'filterBarriers').attr('checked', false);
+                    $('#' + this.appDiv.id + 'runSumStats').attr('checked', false);
+                    $('#' + this.appDiv.id + 'removeBarriers').attr('checked', false);
+                    $("#" + this.appDiv.id + 'summarizeBy').val("");
+                    $("#" + this.appDiv.id + 'summaryStatField').val("");
+                    $("#" + this.appDiv.id + 'barriers2Remove').val("");
+                    $("#" + this.appDiv.id + 'userFilter').val("");
+                    $("#" + this.appDiv.id + 'summarizeBy').hide("");
+                    $("#" + this.appDiv.id + 'summaryStatField').hide("");
+                    $("#" + this.appDiv.id + 'barriers2Remove').hide("");
+                    $("#" + this.appDiv.id + 'userFilter').hide("");
+                    this.activateIdentify = false;
+			    }
 			},
 			
 			// Called after hibernate at app startup. Calls the render function which builds the plugins elements and functions.  
@@ -521,15 +523,15 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
                         }
 						// $("#" + this.appDiv.id + "gpResultTable > tbody").html(''); 
 						// $("#" + this.appDiv.id + "gpResultTable > thead").html('<tr></tr>');
-						this.tableHTML = "<table  id='" + this.appDiv.id + "gpResultTable' class='tablesorter'><thead> <tr></tr></thead><tbody ></tbody></table>";
-						this.sumStatsTableHTML = "<table  id='" + this.appDiv.id + "gpSumStatsTable' class='tablesorter'><thead> <tr></tr></thead><tbody ></tbody></table>";
+						this.tableHTML = "<thead> <tr></tr></thead><tbody ></tbody>";
+						this.sumStatsTableHTML = "<thead> <tr></tr></thead><tbody ></tbody>";
 						if (this.gpIterator >1){											
-    						require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
+    						require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
     						 $("#" + this.appDiv.id + "gpResultTable").trigger("destroy");
     						}));
 						}
 						if ("#" + this.appDiv.id + "gpSumStatsTable"){
-						    require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined"],lang.hitch(this,function($) {
+						    require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
                                 $("#" + this.appDiv.id + "gpSumStatsTable").trigger("destroy");
                             }));
                             
