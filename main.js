@@ -428,13 +428,15 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 			 
 					e.preventDefault();
 				});
-				
+			
 				//set up listener for change to metric weight inputs
 				$("input[id^=" +  this.appDiv.id + 'weightIn]').on('input', lang.hitch(this, function(e){					
 					e.currentTarget.value = parseInt(e.currentTarget.value);
+					if (isNaN(parseFloat(e.currentTarget.value)) == true){e.currentTarget.value = 0;}
 					this.gpVals = {};
 					this.weights = $("input[id^=" + this.appDiv.id + "weightIn]").each(lang.hitch(this, function(i, v){
 						if (isNaN(parseFloat(v.value)) == true){v.id = 0;} 
+						if (v.value ==""){v.id = 0;}
 						else{this.gpVals[v.id] = v.value;}      
 						this.gpVals[v.id] = v.value;
 						if (parseFloat(v.value) > 0){$('#' + v.id).addClass('weighted');}
