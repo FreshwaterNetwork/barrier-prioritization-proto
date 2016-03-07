@@ -242,6 +242,11 @@ table.tablesorter .filtered {
 
 .submitButtonRunning{
 	color: #999999;
+	margin-top: 5px;
+}
+
+.submitButton{
+	margin-top: 5px;
 }
 
 .currWeight{

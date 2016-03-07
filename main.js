@@ -80,7 +80,12 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
     				$("#" + this.appDiv.id + "gpSumStatsTableDivContainer").hide();
     				$('#' + this.appDiv.id + 'toggleResultsDiv').hide();
     				$("#" + this.appDiv.id + "topRadioDiv").hide();
-                    
+                    $("#" + this.appDiv.id + "summarizeBy_chosen").hide();
+                    $("#" + this.appDiv.id + "summaryStatField_chosen").hide();               
+                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+                        $(".chosen-select").val('').trigger("chosen:updated");
+                    })); 
+         
                     this.mapSide = this.appDiv.id.replace("dijit_layout_ContentPane_", "");			
     				//$('#legend-container-' + this.mapSide).removeClass("hideLegend");
     				
@@ -275,6 +280,18 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 					this.dynamicLayer.setVisibleLayers(this.config.visibleLayers);   
 				}
 
+                // Enable jquery plugin 'chosen'
+                require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+                    var config = { '.chosen-select' : {
+                        allow_single_deselect:true, 
+                        width:"170px", 
+                        disable_search:true}
+                    };
+                    for (var selector in config) { $(selector).chosen(config[selector]); }
+                    $("#" + this.appDiv.id + "summarizeBy_chosen").hide();
+                    $("#" + this.appDiv.id + "summaryStatField_chosen").hide(); 
+                }));    
+
 				
 				//GP Analysis iterator
 				this.gpIterator = 1;
@@ -397,12 +414,12 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 
 						var ischecked = $('#' + this.appDiv.id +"runSumStats").is(':checked');
 						if (ischecked) {
-							$("#" + this.appDiv.id + "summarizeBy").show();
-							$("#" + this.appDiv.id + "summaryStatField").show();
+							$("#" + this.appDiv.id + "summarizeBy_chosen").show();
+							$("#" + this.appDiv.id + "summaryStatField_chosen").show();
 						}
 						if (!ischecked){
-							$("#" + this.appDiv.id + "summarizeBy").hide();
-							$("#" + this.appDiv.id + "summaryStatField").hide();
+							$("#" + this.appDiv.id + "summarizeBy_chosen").hide();
+							$("#" + this.appDiv.id + "summaryStatField_chosen").hide();
 						}	
 				}));	
 				
@@ -710,7 +727,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 						//this.attributeArray.push({items:this.feature.attributes})
 
 						var row = this.feature.attributes;
-						c.push("<tr>");
+						c.push("<tr title='Click on a table row to zoom to that barrier'>");
 						c.push("<td>" + row.SiteID + "</td>");
 						c.push("<td>" + row.Tier + "</td>");
 						c.push("<td>" + row.FinalRank + "</td>");
@@ -967,118 +984,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 				
 				this.rendered = true;				
 			
-			},
+			},	
 			
-
-			// Build tabele rows based on map click or itemsFiltered objects
-			updateTable: function (items){
-				console.log("Update Table!");
-				// Show/hide message that no results were found 
-				if (items.length == 0){
-					$('#' + this.appDiv.id + 'selectNone').slideDown('fast');
-				}else{
-					$('#' + this.appDiv.id + 'selectNone').slideUp('fast');
-				}
-				// Clear table rows
-				$('#' + this.appDiv.id + 'myTable tbody tr').remove();
-				// Sort items by Display_Name
-				function compare(a,b) {
-					if (a.Display_Name < b.Display_Name){
-						return -1;
-					}
-					if (a.Display_Name > b.Display_Name){
-						return 1;
-					}	
-					return 0;
-				}
-				items = items.sort(compare);
-				// Add rows
-				$.each(items, lang.hitch(this,function(i,v){
-					var newRow ="<tr class='tr' id='" + this.appDiv.id + "row-" + i + "'><td>" + v.Display_Name + "</td><td>" + v.TAXON + "</td></tr>" ;
-					$('#' + this.appDiv.id + 'myTable tbody').append(newRow);
-				}));
-				
-				// Update table
-				require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter"],lang.hitch(this,function($) {
-					$('#' + this.appDiv.id + 'gpResultTable').trigger("update");					
-				}));
-				
-				console.log($('#' + this.appDiv.id + 'myTable').height());
-				$('#' + this.appDiv.id + 'clickTitle').html('Species in Selected Hexagon');
-				$('#' + this.appDiv.id + 'spDetailsHeader').html('<img src="plugins/barrier-prioritization/images/leftArrow.png" width="20" alt="left arrow">  Click Rows for Species Details');
-				//Resize main container - check which side first
-				if (this.mapSide == "map-1_container"){
-					this.useCon = this.con1;
-					console.log("right side map");
-				}else{
-					this.useCon = this.con;
-					console.log("left side map");
-				}
-				if ($(this.useCon).width() < 300){
-					$( this.useCon ).animate({
-						width: "580",
-						height: "573px"
-					}, 500 , lang.hitch(this,function() {
-						$('#' + this.appDiv.id + 'myTable, #' + this.appDiv.id + 'leftSide').css('display', 'block');
-						$('#' + this.appDiv.id + 'myTable, #' + this.appDiv.id + 'rightSide').css('display', 'inline-block');
-						$('#' + this.appDiv.id + 'bottomDiv').show();
-						this.resize();	
-					}));
-					
-				}	
-				if (this.config.stateSet == "yes"){
-					$("#" + this.appDiv.id + "myTable tr:contains('"+ this.config.speciesRow +"')").css("background-color", "#abcfe1");		
-					// check if species details was visible for setState
-					if (this.config.detailsVis == "inline-block"){
-						console.log(this.config.speciesRow);
-						$.each(this.items, lang.hitch(this,function(i,v){
-							if (v.Display_Name == this.config.speciesRow){
-								this.atRow = this.items[i];
-								return false;
-							}	
-						}));
-						this.updateSpeciesDetails();
-					}	
-					// Update dropdown menu selections from previous session
-					$("#" + this.appDiv.id + "ch-TAXON").val(this.config.filter[1].value).trigger("chosen:updated");
-					$("#" + this.appDiv.id + "ch-MAX_habavail_up60").val(this.config.filter[2].value).trigger("chosen:updated");
-					$("#" + this.appDiv.id + "ch-fut_rpatch_ratio_cls").val(this.config.filter[3].value).trigger("chosen:updated");
-					$("#" + this.appDiv.id + "ch-Cons_spp").val(this.config.filter[4].value).trigger("chosen:updated");
-					if (this.config.filter[0].value.length > 0){
-						$("#" + this.appDiv.id + "ch-Associations").val(this.config.filter[0].value).trigger("chosen:updated");
-					}
-					this.config.stateSet = "no";
-				}
-			}, 
-			
-			
-			// Build legend from JSON request
-			buildLegend: function(){
-				// Refresh Legend div content and height and width
-				var hmw = { height: '235px', minWidth: '150px' };
-				$('#' + this.appDiv.id + 'myLegendDiv').css(hmw);
-				$('#' + this.appDiv.id + 'mySpeciesLegend').html('');
-				$.getJSON( this.config.url +  "/legend?f=pjson&callback=?", lang.hitch(this,function( json ) {
-					var speciesArray = [];
-					//get legend pics
-					$.each(json.layers, lang.hitch(this,function(i, v){
-						if (v.layerName == this.sppcode){
-							speciesArray.push(v);
-						}	
-					}));
-					console.log(json);
-					// Set Title
-					$('#' + this.appDiv.id + 'mySpeciesLegend').append("<div style='display:inline;text-decoration:underline;font-weight:bold;margin-top:5px;'>" + this.speciesName + "</div><br>");
-					// build legend items
-					$.each(speciesArray[0].legend, lang.hitch(this,function(i, v){
-						$('#' + this.appDiv.id + 'mySpeciesLegend').append("<p style='display:inline;'>" + v.label + "</p><img style='margin-bottom:-5px; margin-left:5px;' src='data:image/png;base64," + v.imageData + "' alt='Legend color'><br>");	
-					})) ;
-					// Set legend div height and width
-					var h = $('#' + this.appDiv.id + 'mySpeciesLegend').height() + 60;
-					var w = $('#' + this.appDiv.id + 'mySpeciesLegend').width() + 30;
-					var hw = { height: h + 'px', width: w + 'px' };
-					$('#' + this.appDiv.id + 'myLegendDiv').css(hw);
-				})); 	
-			}	
 		});
 	});						   		   
