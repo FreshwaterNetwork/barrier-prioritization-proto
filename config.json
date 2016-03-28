@@ -1,6 +1,6 @@
 {
     "url": "http://50.18.215.52/arcgis/rest/services/easterndiv/PenobscotBarriers/MapServer",
-	"gpURL":"http://50.18.215.52/arcgis/rest/services/easterndiv/Penobscot_Prioritize1/GPServer/Prioritize",
+	"gpURL":"http://50.18.215.52/arcgis/rest/services/easterndiv/Penobscot_Prioritize8/GPServer/Prioritize",
 	"visibleLayers": [0,1],
 
 	"metricNames":{
