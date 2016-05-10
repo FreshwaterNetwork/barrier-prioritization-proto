@@ -143,6 +143,7 @@ table.tablesorter .filtered {
 }
 
 
+
 /* Nothing selected popup */
 .selectNone{
 	position:absolute; top: 122px; width: 270px; left: 8px; z-index:50; background-color:#fff; padding:10px; border: 1px solid #215973; display:none; color: #a14612;
@@ -319,6 +320,7 @@ table.tablesorter .filtered {
 	width:96% ;
 	height: 20px;
 	display: none;
+	z-index: 100;
 }
 
 

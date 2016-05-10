@@ -9,7 +9,7 @@ define([
 	"esri/tasks/Geoprocessor", "esri/tasks/IdentifyTask", "esri/tasks/IdentifyParameters", "esri/graphic", "esri/InfoTemplate", "dojo/_base/Color", 	
 	"dijit/layout/ContentPane", "dijit/form/HorizontalSlider","dijit/registry", "dojo/_base/array", "dojo/dom", "dojo/dom-class", "dojo/dom-style", 
 	"dojo/dom-construct", "dojo/dom-geometry", "dojo/_base/lang", "dojo/on", "dojo/parser", 
-	"plugins/barrier-prioritization/js/ConstrainedMoveable", "dojo/text!./config.json", "jquery",
+	"plugins/barrier-prioritization/js/ConstrainedMoveable", "dojo/text!./config.json", "dojo/text!./filters.json","jquery",
 	"dojo/text!./html/legend.html", "dojo/text!./html/content.html", "dijit/TooltipDialog", 
 	"dijit/popup", "plugins/barrier-prioritization/js/jquery-ui-1.11.0/jquery-ui", 
     "dojox/grid/DataGrid", "dojo/data/ItemFileReadStore"
@@ -17,7 +17,7 @@ define([
 function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, 
 			SpatialReference, Geoprocessor,  IdentifyTask, IdentifyParameters, Graphic, InfoTemplate, Color, ContentPane, HorizontalSlider, 
 			registry, arrayUtils, dom, domClass, domStyle, domConstruct, domGeom, lang, on, parser,
-			ConstrainedMoveable, config, $, legendContent, content, TooltipDialog, popup, ui,  DataGrid,  
+			ConstrainedMoveable, config, filters, $, legendContent, content, TooltipDialog, popup, ui,  DataGrid,  
 			ItemFileReadStore) {
 		return declare(PluginBase, {
 			toolbarName: "Aquatic Barrier Prioritization", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: true,
@@ -36,6 +36,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 					domStyle.set(this.con, "height", "250px");
 				}	
 				this.config = dojo.eval("[" + config + "]")[0];	
+				this.filters = dojo.eval("[" + filters + "]")[0]; 
 				this.items = [];
 				this.itemsFiltered = [];
 				this.atRow = [];
@@ -81,9 +82,21 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
     				$('#' + this.appDiv.id + 'toggleResultsDiv').hide();
     				$("#" + this.appDiv.id + "topRadioDiv").hide();
                     $("#" + this.appDiv.id + "summarizeBy_chosen").hide();
-                    $("#" + this.appDiv.id + "summaryStatField_chosen").hide();               
+                    $("#" + this.appDiv.id + "summaryStatField_chosen").hide();   
+                    $("#" + this.appDiv.id + "filterBuildField_chosen").hide();   
+                    $("#" + this.appDiv.id + "filterBuildOperator_chosen").hide();
+                    $("#" + this.appDiv.id + "filterBuildValue_chosen").hide();      
+                    $('#' + this.appDiv.id + 'dlCSV').css('display', 'none');   
+                    $("#" + this.appDiv.id + 'summarizeBy').hide();
+                    $("#" + this.appDiv.id + 'summaryStatField').hide();
+                    $("#" + this.appDiv.id + 'filterBuildField').hide();
+                    $("#" + this.appDiv.id + 'filterBuildOperator').hide();
+                    $("#" + this.appDiv.id + 'filterBuildValue').hide();
+                    $("#" + this.appDiv.id + 'barriers2Remove').hide();
+                    $("#" + this.appDiv.id + 'userFilter').hide();
                     require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
                         $(".chosen-select").val('').trigger("chosen:updated");
+                       
                     })); 
          
                     this.mapSide = this.appDiv.id.replace("dijit_layout_ContentPane_", "");			
@@ -96,20 +109,27 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
                         v.value = 0;   
                         $('#' + v.id).removeClass('weighted');         
                     }));
-                    $('#'+ this.appDiv.id + 'currWeight').html('0');
-                    $('#'+ this.appDiv.id + 'currWeight').css('color', 'red');
-                    $('#' + this.appDiv.id + 'dlCSV').css('display', 'none');
-                    $('#' + this.appDiv.id + 'filterBarriers').attr('checked', false);
-                    $('#' + this.appDiv.id + 'runSumStats').attr('checked', false);
-                    $('#' + this.appDiv.id + 'removeBarriers').attr('checked', false);
-                    $("#" + this.appDiv.id + 'summarizeBy').val("");
-                    $("#" + this.appDiv.id + 'summaryStatField').val("");
-                    $("#" + this.appDiv.id + 'barriers2Remove').val("");
-                    $("#" + this.appDiv.id + 'userFilter').val("");
-                    $("#" + this.appDiv.id + 'summarizeBy').hide("");
-                    $("#" + this.appDiv.id + 'summaryStatField').hide("");
-                    $("#" + this.appDiv.id + 'barriers2Remove').hide("");
-                    $("#" + this.appDiv.id + 'userFilter').hide("");
+                    
+                    if ($('#'+ this.appDiv.id +"removeBarriers").is(":checked")){$('#'+ this.appDiv.id +"removeBarriers").trigger('click');}
+                    if ($('#'+ this.appDiv.id +"runSumStats").is(":checked")){$('#'+ this.appDiv.id +"runSumStats").trigger('click');}
+                    if ($('#'+ this.appDiv.id +"filterBarriers").is(":checked")){$('#'+ this.appDiv.id +"filterBarriers").trigger('click');}
+                    
+                    $('#'+ this.appDiv.id +"currWeight").html('0');
+                    $('#'+ this.appDiv.id +"currWeight").css('color', 'red');
+                    $('#'+ this.appDiv.id +"barriers2Remove").val('');
+                    $('#'+ this.appDiv.id +"summarizeBy").val('option: first');
+                    $('#'+ this.appDiv.id +"summaryStatField").val('option: first');               
+                    $('#'+ this.appDiv.id +"userFilter").val('');                    
+                    $('#'+ this.appDiv.id +"filterBuildField").val('option: first');
+                    $('#'+ this.appDiv.id +"filterBuildOperator").val('option: first');
+                    $('#'+ this.appDiv.id +"filterBuildValue").val('option: first');
+                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+                        $(".chosen-select").val('').trigger("chosen:updated");
+                        $(".chosen-select1").val('').trigger("chosen:updated");
+                        $(".chosen-select2").val('').trigger("chosen:updated");
+                        $(".chosen-select3").val('').trigger("chosen:updated");  
+                    }));    
+                    
                     this.activateIdentify = false;
 			    }
 			},
@@ -287,9 +307,32 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
                         width:"170px", 
                         disable_search:true}
                     };
+                    var config1 = { '.chosen-select1' : {
+                        allow_single_deselect:true, 
+                        width:"160px", 
+                        disable_search:true}
+                    };
+                    var config2 = { '.chosen-select2' : {
+                        allow_single_deselect:false, 
+                        width:"110px", 
+                        disable_search:false,
+                        multiple:true}
+                    };
+                    var config3 = { '.chosen-select3' : {
+                        allow_single_deselect:true, 
+                        width:"70px", 
+                        disable_search:true}
+                    };
                     for (var selector in config) { $(selector).chosen(config[selector]); }
+                    for (var selector in config1) { $(selector).chosen(config1[selector]); }
+                    for (var selector in config2) { $(selector).chosen(config2[selector]); }
+                    for (var selector in config3) { $(selector).chosen(config3[selector]); }
                     $("#" + this.appDiv.id + "summarizeBy_chosen").hide();
                     $("#" + this.appDiv.id + "summaryStatField_chosen").hide(); 
+                    $("#" + this.appDiv.id + "filterBuildField_chosen").hide();
+                    $("#" + this.appDiv.id + "filterBuildOperator_chosen").hide();
+                    $("#" + this.appDiv.id + "filterBuildValue_chosen").hide();
+           
                 }));    
 
 				
@@ -407,9 +450,15 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 						var ischecked = $('#' + this.appDiv.id +"filterBarriers").is(':checked');
 						if (ischecked) {$("#" + this.appDiv.id + "userFilter").show();}
 						if (!ischecked){$("#" + this.appDiv.id + "userFilter").hide();}
+						if (ischecked) {$("#" + this.appDiv.id + "filterBuildField_chosen").show();}
+                        if (!ischecked){$("#" + this.appDiv.id + "filterBuildField_chosen").hide();}
+                        if (ischecked) {$("#" + this.appDiv.id + "filterBuildOperator_chosen").show();}
+                        if (!ischecked){$("#" + this.appDiv.id + "filterBuildOperator_chosen").hide();}
+                        if (ischecked) {$("#" + this.appDiv.id + "filterBuildValue_chosen").show();}
+                        if (!ischecked){$("#" + this.appDiv.id + "filterBuildValue_chosen").hide();}                                                
 				}));				
 				
-				//hide remove barriers if not checked	
+				//hide remove summary stats if not checked	
 				$('#' + this.appDiv.id + 'runSumStats').on('change', lang.hitch(this, function(evt){    
 
 						var ischecked = $('#' + this.appDiv.id +"runSumStats").is(':checked');
@@ -423,10 +472,12 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 						}	
 				}));	
 				
-				//hide summary stats inputs if not checked	
+				//hide remove barriers inputs if not checked	
 				$('#' + this.appDiv.id + 'removeBarriers').on('change', lang.hitch(this, function(evt){    
 						var ischecked = $('#' + this.appDiv.id +"removeBarriers").is(':checked');
-						if (ischecked) {$("#" + this.appDiv.id + "barriers2Remove").show();}
+						if (ischecked) {
+						      $("#" + this.appDiv.id + "barriers2Remove").show();
+						    }
 						if (!ischecked){$("#" + this.appDiv.id + "barriers2Remove").hide();}	
 				}));
 				
@@ -471,6 +522,66 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 					} 
 				}));
 
+                //FILTER BUILDER listener to fill in filter as drop downs are used
+                this.filterField = "";
+                this.filterOperator ="";
+                this.filterValue = "";       
+                this.filterFieldList = "";
+                for (var i=0; i< this.filters.metricNamesTable.length; i++){
+                    this.filterFieldList += "<option value='" + this.filters.metricNamesTable[i].metricGISName + "'>" + this.filters.metricNamesTable[i].metricPrettyName + "</option>";
+                }
+                $("#" + this.appDiv.id + "filterBuildField").html(this.filterFieldList);
+                
+                var updateMetricValues = (lang.hitch(this,function (metric){    
+                    //console.log(this.filters.metricValuesTable[metric]);
+                    this.metricValsList = "";
+                    for (var i=0; i < this.filters.metricValuesTable[metric].length; i++){
+                        this.metricValsList += "<option value='" + this.filters.metricValuesTable[metric][i].metricValue + "'>" + this.filters.metricValuesTable[metric][i].metricValue + "</option>";
+                    }
+                    console.log(this.metricValsList);
+                    $("#" + this.appDiv.id + "filterBuildValue").html(this.metricValsList);
+                    
+
+                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+                        $(".chosen-select2").val('').trigger("chosen:updated");
+                        this.filterValue = $("#" + this.appDiv.id + "filterBuildValue").val();
+                        
+                        //set operator to = as a default
+                        if (this.filterOperator == ""){
+                            //$("#" + this.appDiv.id + "filterBuildOperator").val("=");
+                            $('#'+ this.appDiv.id +"filterBuildOperator").val($('#'+ this.appDiv.id +"filterBuildOperator option:eq(1)").val());
+                            $(".chosen-select3").trigger("chosen:updated");
+                            this.filterOperator = $("#" + this.appDiv.id + "filterBuildOperator").val();
+                        }
+                        $("#" + this.appDiv.id + "userFilter").val('"' + this.filterField + '" ' + this.filterOperator + " (" + this.filterValue + ")");
+                    })); 
+                    
+                }));
+                
+                $("#" + this.appDiv.id + "filterBuildField").on('change',lang.hitch(this,function(e){
+                    this.selectedMetric = $("#" + this.appDiv.id + "filterBuildField option:selected").text();
+                    updateMetricValues(this.selectedMetric);
+                }));
+                
+                
+                $("#" + this.appDiv.id + "filterBuildField").on('change',lang.hitch(this,function(e){
+                    console.log("filter change");
+                    this.filterField = $("#" + this.appDiv.id + "filterBuildField").val();
+                    $("#" + this.appDiv.id + "userFilter").val('"' + this.filterField + '" ' + this.filterOperator + " (" + this.filterValue + ")");
+                }));
+                $("#" + this.appDiv.id + "filterBuildOperator").on('change',lang.hitch(this,function(e){
+                    console.log("filter change");
+                    this.filterOperator = $("#" + this.appDiv.id + "filterBuildOperator").val();
+                    $("#" + this.appDiv.id + "userFilter").val('"' + this.filterField + '" ' + this.filterOperator + " (" + this.filterValue + ")");
+                }));
+                $("#" + this.appDiv.id + "filterBuildValue").on('change',lang.hitch(this,function(e){
+                    console.log("filter change");
+                    this.filterValue = $("#" + this.appDiv.id + "filterBuildValue").val();
+                    $("#" + this.appDiv.id + "userFilter").val('"' + this.filterField + '" ' + this.filterOperator + " (" + this.filterValue + ")");
+                }));                               
+
+
+
 				//apply consensus weights
 				$('#' + this.appDiv.id +"applyDefaultDiadromous").on('click',lang.hitch(this,function(e){	
 					for (var key in this.config.diadromous) {
@@ -509,7 +620,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 					}
 				}));
 				
-				//clear all metric weights
+				//clear all metric weights, filters, barriers to remove, uncheck all options
 				$('#' + this.appDiv.id +"applyZeroWeight").on('click',lang.hitch(this,function(e){ 
     			    $("input[id^=" + this.appDiv.id + "weightIn]").each(lang.hitch(this, function(i, v){
                         v.value = 0;
@@ -517,7 +628,32 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
                     }));
                     $('#'+ this.appDiv.id +"currWeight").html('0');
                     $('#'+ this.appDiv.id +"currWeight").css('color', 'red');
+
+                    $('#'+ this.appDiv.id +"barriers2Remove").val('');
+                    $('#'+ this.appDiv.id +"summarizeBy").val('option: first');
+                    $('#'+ this.appDiv.id +"summaryStatField").val('option: first');
+
+                    $('#'+ this.appDiv.id +"userFilter").val('');
+                    
+                    if ($('#'+ this.appDiv.id +"removeBarriers").is(":checked")){$('#'+ this.appDiv.id +"removeBarriers").trigger('click');}
+                    if ($('#'+ this.appDiv.id +"runSumStats").is(":checked")){$('#'+ this.appDiv.id +"runSumStats").trigger('click');}
+                    if ($('#'+ this.appDiv.id +"filterBarriers").is(":checked")){
+                        console.log("checked");
+                        $('#'+ this.appDiv.id +"filterBarriers").trigger('click');
+                        }
+                    
+                    $('#'+ this.appDiv.id +"filterBuildField").val('option: first');
+                    $('#'+ this.appDiv.id +"filterBuildOperator").val('option: first');
+                    $('#'+ this.appDiv.id +"filterBuildValue").val('option: first');
+                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+                        $(".chosen-select").val('').trigger("chosen:updated");
+                        $(".chosen-select1").val('').trigger("chosen:updated");
+                        $(".chosen-select2").val('').trigger("chosen:updated");
+                        $(".chosen-select3").val('').trigger("chosen:updated");  
+                    }));                 
                 }));
+				
+				
 				
 				
 				//prepare and pass the GP request object to gpURL
@@ -586,6 +722,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 						this.weightIterator = 1;
 
 						$("#" + this.appDiv.id + "gpResultTable tr:first").append("<th class='SiteID'>SiteID</th>");
+						$("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>Name</th>");
 						$("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>Tier</th>");
 						$("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>FinalRank</th>");
 						$.each(this.gpVals, lang.hitch(this, function(metric, weight){
@@ -604,13 +741,25 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 								$("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>" + prettyM +"</th>");
 							}
 						}));
-
+                        $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>Town</th>");
+                        $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>County</th>");
+                        $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>Stream</th>");
+                        $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>Barrier Class</th>");
+                        $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>HUC8 Name</th>");
+                        $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>HUC10 Name</th>");
+                        $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>HUC12 Name</th>");
+                        
+                        
+                        
+                        
 						console.log(this.requestObject);
 						this.statusCallbackIterator = 0;
 						
-						this.gp.submitJob(this.requestObject, lang.hitch(this,completeCallback), lang.hitch(this,statusCallback), function(error){
-							alert(error);
-						});
+						this.gp.submitJob(this.requestObject, lang.hitch(this,completeCallback), lang.hitch(this,statusCallback), lang.hitch(this, function(error){
+							    alert(error);
+							    $('#' + this.appDiv.id +"submitButton").removeClass('submitButtonRunning');
+                                $('#' + this.appDiv.id +"submitButton").prop('disabled', false);
+						}));
 						
 						//disable Submit button so a second analyiss can't be run until the first is finished
 						$('#' + this.appDiv.id +"submitButton").addClass('submitButtonRunning');
@@ -729,6 +878,7 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 						var row = this.feature.attributes;
 						c.push("<tr title='Click on a table row to zoom to that barrier'>");
 						c.push("<td>" + row.SiteID + "</td>");
+						c.push("<td>" + row.Name + "</td>");
 						c.push("<td>" + row.Tier + "</td>");
 						c.push("<td>" + row.FinalRank + "</td>");
 						for (var iterator=1, wi= this.weightIterator; iterator<wi; iterator++){
@@ -739,6 +889,13 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 								}
 							}
 						}
+						c.push("<td>" + row.Town + "</td>");
+						c.push("<td>" + row.County + "</td>");
+						c.push("<td>" + row.Stream + "</td>");
+						c.push("<td>" + row.BarrierCla + "</td>");
+						c.push("<td>" + row.HUC8_Name + "</td>");
+						c.push("<td>" + row.HUC10_Name + "</td>");
+						c.push("<td>" + row.HUC12_Name + "</td>");
 						c.push("</tr>");
                      
 					}
@@ -855,7 +1012,6 @@ function ( declare, PluginBase, FeatureLayer, SimpleLineSymbol, SimpleFillSymbol
 
 					}));
 					
-
 					
 					//result graphic zoom to table row  
 					dojo.connect(this.map.graphics, "onClick", lang.hitch(this, function(evt) {
