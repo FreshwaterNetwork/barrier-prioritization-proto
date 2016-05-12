@@ -1,7 +1,7 @@
 {
-    "url": "https://cumulus-arcgis-server-612380557.us-west-1.elb.amazonaws.com/arcgis/rest/services/easterndiv/PenobscotBarriers/MapServer",
-	"removeSelectionURL" : "https://cumulus-arcgis-server-612380557.us-west-1.elb.amazonaws.com/arcgis/rest/services/easterndiv/PenobscotBarriers/MapServer/0",
-	"gpURL":"https://cumulus-arcgis-server-612380557.us-west-1.elb.amazonaws.com/arcgis/rest/services/easterndiv/Penobscot_Prioritize/GPServer/Prioritize",
+    "url": "http://cumulus-web-adapter-1827610810.us-west-1.elb.amazonaws.com/arcgis/rest/services/easterndiv/PenobscotBarriers/MapServer",
+	"removeSelectionURL" : "http://cumulus-web-adapter-1827610810.us-west-1.elb.amazonaws.com/arcgis/rest/services/easterndiv/PenobscotBarriers/MapServer/0",
+	"gpURL":"http://cumulus-web-adapter-1827610810.us-west-1.elb.amazonaws.com/arcgis/rest/services/easterndiv/Penobscot_Prioritize/GPServer/Prioritize",
 	"visibleLayers": [0],
 
 	"metricNames":{
