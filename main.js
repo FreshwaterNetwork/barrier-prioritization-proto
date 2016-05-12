@@ -221,6 +221,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
             render: function() {                
                 //set up window popup for metric defintiions        
                 window.windowPopup = function(mylink, windowname, size){
+                    console.log("window popup")
                 if (! window.focus)return true;
                     var href;
                 if (typeof(mylink) == 'string')
