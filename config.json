@@ -1,5 +1,6 @@
 {
     "url": "https://cumulus-arcgis-server-612380557.us-west-1.elb.amazonaws.com/arcgis/rest/services/easterndiv/PenobscotBarriers/MapServer",
+	"removeSelectionURL" : "https://cumulus-arcgis-server-612380557.us-west-1.elb.amazonaws.com/arcgis/rest/services/easterndiv/PenobscotBarriers/MapServer/0",
 	"gpURL":"https://cumulus-arcgis-server-612380557.us-west-1.elb.amazonaws.com/arcgis/rest/services/easterndiv/Penobscot_Prioritize/GPServer/Prioritize",
 	"visibleLayers": [0],
 
@@ -123,24 +124,24 @@
 	},
 	
 	"Tier1Sym" : {
-		"color": [255,0,0, 100],
+		"color": [255,0,0, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
 		  }
 	},
 	"Tier2Sym" : {
-		"color": [255,68,0, 100],
+		"color": [255,68,0, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -148,12 +149,12 @@
 
 	},
 	"Tier3Sym" : {
-		"color": [255,106,0, 100],
+		"color": [255,106,0, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -161,12 +162,12 @@
 
 	},
 	"Tier4Sym" : {
-		"color": [255,140,0, 100],
+		"color": [255,140,0, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -174,12 +175,12 @@
 
 	},
 	"Tier5Sym" : {
-		"color": [255,174,0, 100],
+		"color": [255,174,0, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -187,12 +188,12 @@
 
 	},
 	"Tier6Sym" : {
-		"color": [255,208,0, 100],
+		"color": [255,208,0, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -200,12 +201,12 @@
 
 	},
 	"Tier7Sym" : {
-		"color": [255,242,0, 100],
+		"color": [255,242,0, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -213,12 +214,12 @@
 
 	},
 	"Tier8Sym" : {
-		"color": [241,255,51, 100],
+		"color": [241,255,51, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -226,12 +227,12 @@
 
 	},
 	"Tier9Sym" : {
-		"color": [222,255,89, 100],
+		"color": [222,255,89, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -239,12 +240,12 @@
 
 	},
 	"Tier10Sym" : {
-		"color": [196,255,125, 100],
+		"color": [196,255,125, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -252,12 +253,12 @@
 
 	},
 	"Tier11Sym" : {
-		"color": [167,255,161, 100],
+		"color": [167,255,161, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -265,12 +266,12 @@
 
 	},
 	"Tier12Sym" : {
-		"color": [130,255,197, 100],
+		"color": [130,255,197, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -278,12 +279,12 @@
 
 	},
 	"Tier13Sym" : {
-		"color": [82,255,229, 100],
+		"color": [82,255,229, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -291,12 +292,12 @@
 
 	},
 	"Tier14Sym" : {
-		"color": [23,243,255, 100],
+		"color": [23,243,255, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -304,12 +305,12 @@
 
 	},
 	"Tier15Sym" : {
-		"color": [48,203,255, 100],
+		"color": [48,203,255, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -317,12 +318,12 @@
 
 	},
 	"Tier16Sym" : {
-		"color": [59,163,255, 100],
+		"color": [59,163,255, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -330,12 +331,12 @@
 
 	},
 	"Tier17Sym" : {
-		"color": [59,127,255, 100],
+		"color": [59,127,255, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -343,12 +344,12 @@
 
 	},
 	"Tier18Sym" : {
-		"color": [54,94,255, 100],
+		"color": [54,94,255, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -356,12 +357,12 @@
 
 	},
 	"Tier19Sym" : {
-		"color": [38,56,255, 100],
+		"color": [38,56,255, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
@@ -369,12 +370,12 @@
 
 	},
 	"Tier20Sym" : {
-		"color": [8,8,255, 100],
+		"color": [8,8,255, 0],
 		"size": 8,
 		"type": "esriSMS",
 		"style": "esriSMSCircle",
 		"outline": {
-			"color": [0,0,0,255],
+			"color": [0,0,0,0],
 			"width": 1,
 			"type": "esriSLS",
 			"style": "esriSLSSolid"
