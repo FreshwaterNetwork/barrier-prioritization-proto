@@ -956,12 +956,15 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                         console.log("tablesort initialized");
                         $('#' + this.appDiv.id + 'gpResultTable').trigger("update");
                         
-                        var sorting = [[2,0]]; 
+                        var sorting = [[3,0]]; 
                         
                         setTimeout(lang.hitch(this,function () {
                             $("#" + this.appDiv.id + "gpResultTable").trigger("sorton", [sorting]);
                         }, 100));   
-                    
+                        
+                        if(this.removeIDs != ""){
+                            alert("The metrics values in this table are based on the removal of barriers: " + this.removeIDs);
+                        }
                     
                     
                     }));
