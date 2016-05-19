@@ -1177,26 +1177,27 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                              $("#" + this.appDiv.id + "gpResultTable").tableToCSV();
                     }));
                 }));
+                //download input parameters
                 $('#' + this.appDiv.id + 'dlInputs').on('click',lang.hitch(this,function(e) { 
                      this.requestObjectPretty = {};
                      for (var key in this.requestObject){
                          value = this.requestObject[key];
                          if (this.config.metricNames.hasOwnProperty(value)){
-                            console.log(this.requestObject[key]);
+                            //Use the pretty metric name
                             this.requestObjectPretty[key] = this.config.metricNames[value];
-                         }
-                         
-                         else{
+                         } 
+                         //don't include sort order & log transform in the downloaded inputs
+                         else if (key.indexOf("Order") == -1 && key.indexOf("Log") == -1){
                              this.requestObjectPretty[key] = this.requestObject[key];
                          }
                      }
+                     
                      this.requestObjectArray = [];
                      this.requestObjectArray.push(this.requestObjectPretty);
+                     //add tabs to beautify the JSON
                      this.requestObjectJSON = JSON.stringify(this.requestObjectArray, null, "\t");
                      this.requestObjectJSON = this.requestObjectJSON.replace(/[\u200B-\u200D\uFEFF]/g, "");
-
-                     this.JSONToCSVConvertor(this.requestObjectJSON, "PenobscotBarrierPrioritization_Inputs", true);
-                    
+                     this.JSONToCSVConvertor(this.requestObjectJSON, "Prioritization_X_Inputs", true);
                 }));
                 
                 this.rendered = true;               
