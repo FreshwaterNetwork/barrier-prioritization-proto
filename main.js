@@ -97,6 +97,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                     $("#" + this.appDiv.id + "filterBuildOperator_chosen").hide();
                     $("#" + this.appDiv.id + "filterBuildValue_chosen").hide();      
                     $('#' + this.appDiv.id + 'dlCSV').css('display', 'none');   
+                    $('#' + this.appDiv.id + 'dlInputs').css('display', 'none'); 
                     $("#" + this.appDiv.id + 'summarizeBy').hide();
                     $("#" + this.appDiv.id + 'summaryStatField').hide();
                     $("#" + this.appDiv.id + 'filterBuildField').hide();
@@ -265,6 +266,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                         $('#' + this.appDiv.id + 'toggleResultsDiv').show();
                         $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').hide();    
                         $('#' + this.appDiv.id + 'dlCSV').show();
+                        $('#' + this.appDiv.id + 'dlInputs').show();
                     }
                     if (selectedVal==="inputs"){
                         $('#' + this.appDiv.id + 'leftSide').show();
@@ -273,14 +275,16 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                         $('#' + this.appDiv.id + 'gpResultTableDivContainer').hide();
                         $('#' + this.appDiv.id + 'toggleResultsDiv').hide();    
                         $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').hide(); 
-                        $('#' + this.appDiv.id + 'dlCSV').hide();           
+                        $('#' + this.appDiv.id + 'dlCSV').hide(); 
+                        $('#' + this.appDiv.id + 'dlInputs').hide();      
                     }
                     if (selectedVal==="stats"){
                         $('#' + this.appDiv.id + 'leftSide').hide();
                         $('#' + this.appDiv.id + 'rightSide').hide();
                         $('#' + this.appDiv.id + 'gpResultTableDivContainer').hide();
                         $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').show(); 
-                        $('#' + this.appDiv.id + 'dlCSV').hide();                               
+                        $('#' + this.appDiv.id + 'dlCSV').hide();   
+                        $('#' + this.appDiv.id + 'dlInputs').hide();                               
                     }
                     
                 }));                
@@ -753,7 +757,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                         $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th class='SiteID'>SiteID</th>");
                         $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>Name</th>");
                         $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>Tier</th>");
-                        $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>FinalRank</th>");
+                        $("#" + this.appDiv.id + "gpResultTable tr:first").append("<th>Sequential Rank</th>");
                         $.each(this.gpVals, lang.hitch(this, function(metric, weight){
                             if (weight >0){
                                 var mNum = "Metric_" + this.weightIterator;
@@ -1015,6 +1019,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                     $('#' + this.appDiv.id + 'gpResultTableDivContainer').show();
                     $('input:radio[name="stateRadio"]').filter('[value="results"]').prop('checked', true);
                     $('#' + this.appDiv.id + 'dlCSV').css('display', 'block');
+                    $('#' + this.appDiv.id + 'dlInputs').css('display', 'block');
                     
                     //result graphic tooltip -- all of the "keepInfoWindow logic is to 
                     //deal with separate hover popups and click popups
@@ -1172,6 +1177,27 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                              $("#" + this.appDiv.id + "gpResultTable").tableToCSV();
                     }));
                 }));
+                $('#' + this.appDiv.id + 'dlInputs').on('click',lang.hitch(this,function(e) { 
+                     this.requestObjectPretty = {};
+                     for (var key in this.requestObject){
+                         value = this.requestObject[key];
+                         if (this.config.metricNames.hasOwnProperty(value)){
+                            console.log(this.requestObject[key]);
+                            this.requestObjectPretty[key] = this.config.metricNames[value];
+                         }
+                         
+                         else{
+                             this.requestObjectPretty[key] = this.requestObject[key];
+                         }
+                     }
+                     this.requestObjectArray = [];
+                     this.requestObjectArray.push(this.requestObjectPretty);
+                     this.requestObjectJSON = JSON.stringify(this.requestObjectArray, null, "\t");
+                     this.requestObjectJSON = this.requestObjectJSON.replace(/[\u200B-\u200D\uFEFF]/g, "");
+
+                     this.JSONToCSVConvertor(this.requestObjectJSON, "PenobscotBarrierPrioritization_Inputs", true);
+                    
+                }));
                 
                 this.rendered = true;               
             
@@ -1231,6 +1257,45 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
               
               this.map.addLayer(this.removeFeatureLayer);
               this.map.addLayer(this.selectedBarriers);
-            }
+            },
+            
+            JSONToCSVConvertor: function(JSONData, ReportTitle, ShowLabel) {
+                //taken from http://jsfiddle.net/hybrid13i/JXrwM/
+                //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+                var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+                
+                var CSV = '';    
+                //Set Report title in first row or line
+                
+                CSV += ReportTitle + '\r\n' + JSONData;
+
+                
+                //Generate a file name
+                var fileName = "";
+                //this will remove the blank-spaces from the title and replace it with an underscore
+                fileName += ReportTitle.replace(/ /g,"_");   
+                
+                //Initialize file format you want csv or xls
+                var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+                
+                // Now the little tricky part.
+                // you can use either>> window.open(uri);
+                // but this will not work in some browsers
+                // or you will not get the correct file extension    
+                
+                //this trick will generate a temp <a /> tag
+                var link = document.createElement("a");    
+                link.href = uri;
+                
+                //set the visibility hidden so it will not effect on your web-layout
+                link.style = "visibility:hidden";
+                link.download = fileName + ".csv";
+                
+                //this part will append the anchor tag and remove it after automatic click
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }           
+            
         });
     });                                

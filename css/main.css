@@ -396,6 +396,7 @@ label.showRangeMaps input[type=checkbox]{
 
 .help{
 	float:left; margin-left:20px;
+	width: 70px !important;
 }
 
 .bottomLinks:hover{
@@ -405,7 +406,7 @@ label.showRangeMaps input[type=checkbox]{
 	background-color:#f3f3f3; border:1px solid #bbb; cursor:pointer;
 }
 .bottomLinks{
-	width:70px; height:20px; padding-top:2px; border:1px solid #ddd; background-color:#eee; text-align:center; font-size:10pt; color:#21658c; font-weight:bold;
+	width:120px; height:20px; padding-top:2px; border:1px solid #ddd; background-color:#eee; text-align:center; font-size:10pt; color:#21658c; font-weight:bold;
 }
 .leftSliderLabel{
 	display:inline-block; margin-right:9px; font-size:10pt;
