@@ -43,7 +43,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                 this.gp = new esri.tasks.Geoprocessor(this.config.gpURL);
                 this.gp.setUpdateDelay(200); //status check in milliseconds;
                 parser.parse(); 
-                app = {};
                 
             },
             // Called after initialize at plugin startup (why all the tests for undefined). Also called after deactivate when user closes app by clicking X. 
@@ -548,19 +547,18 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                 this.filterField = "";
                 this.filterOperator ="";
                 this.filterValue = "";       
-                //this.filterFieldList = "";
+                this.filterFieldList = "";
                 for (var i=0; i< this.filters.metricNamesTable.length; i++){
-                    app.filterFieldList += "<option value='" + this.filters.metricNamesTable[i].metricGISName + "'>" + this.filters.metricNamesTable[i].metricPrettyName + "</option>";
-                }
-                $("#" + this.appDiv.id + "filterBuildField").html(app.filterFieldList);
+                    this.filterFieldList += "<option value='" + this.filters.metricNamesTable[i].metricGISName + "'>" + this.filters.metricNamesTable[i].metricPrettyName + "</option>";
+				}
+				console.log(this.filterFieldList + " for " + this.appDiv.id)
+                $("#" + this.appDiv.id + "filterBuildField").html(this.filterFieldList);
                 
-                var updateMetricValues = (lang.hitch(this,function (metric){    
-                    //console.log(this.filters.metricValuesTable[metric]);
+                this.updateMetricValues = (lang.hitch(this,function (metric){    
                     this.metricValsList = "";
                     for (var i=0; i < this.filters.metricValuesTable[metric].length; i++){
                         this.metricValsList += "<option value='" + this.filters.metricValuesTable[metric][i].metricValue + "'>" + this.filters.metricValuesTable[metric][i].metricValue + "</option>";
                     }
-                    console.log(this.metricValsList);
                     $("#" + this.appDiv.id + "filterBuildValue").html(this.metricValsList);
                     
 
@@ -580,17 +578,23 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                     
                 }));
                 
-                $("#" + this.appDiv.id + "filterBuildField").on('change',lang.hitch(this,function(e){
-                    this.selectedMetric = $("#" + this.appDiv.id + "filterBuildField option:selected").text();
-                    updateMetricValues(this.selectedMetric);
-                }));
+                // $("#" + this.appDiv.id + "filterBuildField").on('change',lang.hitch(this,function(e){
+                    // this.selectedMetric = $("#" + this.appDiv.id + "filterBuildField option:selected").text();
+                    // this.updateMetricValues(this.selectedMetric);
+                // }));
                 
                 
                 $("#" + this.appDiv.id + "filterBuildField").on('change',lang.hitch(this,function(e){
                     console.log("filter change");
-                    this.filterField = $("#" + this.appDiv.id + "filterBuildField").val();
+                    this.selectedMetric = $("#" + this.appDiv.id + "filterBuildField option:selected").text();
+                    this.updateMetricValues(this.selectedMetric);
+					this.filterField = $("#" + this.appDiv.id + "filterBuildField").val();
                     $("#" + this.appDiv.id + "userFilter").val('"' + this.filterField + '" ' + this.filterOperator + " (" + this.filterValue + ")");
                 }));
+				require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+					$(".chosen-select1").val('').trigger("chosen:updated");
+				}));
+				
                 $("#" + this.appDiv.id + "filterBuildOperator").on('change',lang.hitch(this,function(e){
                     console.log("filter change");
                     this.filterOperator = $("#" + this.appDiv.id + "filterBuildOperator").val();
