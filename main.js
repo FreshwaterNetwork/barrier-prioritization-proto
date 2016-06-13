@@ -43,6 +43,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                 this.gp = new esri.tasks.Geoprocessor(this.config.gpURL);
                 this.gp.setUpdateDelay(200); //status check in milliseconds;
                 parser.parse(); 
+                app = {};
                 
             },
             // Called after initialize at plugin startup (why all the tests for undefined). Also called after deactivate when user closes app by clicking X. 
@@ -547,11 +548,11 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, SimpleLineSymbol, S
                 this.filterField = "";
                 this.filterOperator ="";
                 this.filterValue = "";       
-                this.filterFieldList = "";
+                //this.filterFieldList = "";
                 for (var i=0; i< this.filters.metricNamesTable.length; i++){
-                    this.filterFieldList += "<option value='" + this.filters.metricNamesTable[i].metricGISName + "'>" + this.filters.metricNamesTable[i].metricPrettyName + "</option>";
+                    app.filterFieldList += "<option value='" + this.filters.metricNamesTable[i].metricGISName + "'>" + this.filters.metricNamesTable[i].metricPrettyName + "</option>";
                 }
-                $("#" + this.appDiv.id + "filterBuildField").html(this.filterFieldList);
+                $("#" + this.appDiv.id + "filterBuildField").html(app.filterFieldList);
                 
                 var updateMetricValues = (lang.hitch(this,function (metric){    
                     //console.log(this.filters.metricValuesTable[metric]);
