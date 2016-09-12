@@ -1235,7 +1235,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                             }));
                            // console.log(this.idContent);
                             this.identJSON = {
-                                title: "Unique ID: ${UNIQUE_ID}",
+                                title: "Unique ID: ${" + this.uniqueID+ "}",
                                 content: this.idContent
                             };
                             this.popupInfoTemplate = new esri.InfoTemplate(this.identJSON);
