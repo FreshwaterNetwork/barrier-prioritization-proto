@@ -138,11 +138,25 @@ table.tablesorter .filtered {
 
 }
 
-.startButtonHolder{
+.centerButtonHolder{
 		text-align:center;
 }
 
+.centerAllButtonHolder{
+	bottom: 75px; 
+	right:25px;
+	display: inline;
+	float: right;
+	position: relative;
+}
 
+.centerAllButtonHolder2{
+	bottom: 25px; 
+	left:55px;
+	display: inline;
+	float: right;
+	position: relative;
+}
 
 /* Nothing selected popup */
 .selectNone{
@@ -244,10 +258,12 @@ table.tablesorter .filtered {
 .submitButtonRunning{
 	color: #999999;
 	margin-top: 5px;
+	margin: 0 auto;
 }
 
 .submitButton{
 	margin-top: 5px;
+	margin: 0 auto;
 }
 
 .currWeight{
@@ -265,6 +281,18 @@ table.tablesorter .filtered {
 	margin-top: 17px;
 }
 
+.gpResultMapServiceDivContainer{
+	margin-top: 17px;
+	border: 1px !important;
+	border-style: solid;
+	border-color:#215973;
+	height: 80%;
+	width: 95%;
+	top: 40px;
+	position: absolute;
+}
+
+
 .gpSumStatsTableDivContainer{
 	margin-top: 17px;
 }
@@ -273,8 +301,7 @@ table.tablesorter .filtered {
 
 .plugin-container-outer{
 	min-height: 515px;
-	min-width: 365px;
-	
+	min-width: 480px;	
 }
 .rightSide{
 	margin-left:20px;
@@ -323,6 +350,23 @@ table.tablesorter .filtered {
 	z-index: 100;
 }
 
+.passabilityDiv{
+	display: none;
+	margin-bottom: 10px !important;
+}
+
+.resultMapServContentDiv{
+	border: 1px solid;
+	border-radius: 2px;
+	border-color: #cccccc;
+	padding: 5px;
+	margin: 5px;
+}
+
+.resultsFilter{
+	margin: 5px 0 0 0  !important;
+	width: 72% !important;
+}
 
 /* Headers */
 .clickTitle{
