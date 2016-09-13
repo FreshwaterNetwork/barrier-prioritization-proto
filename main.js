@@ -11,16 +11,16 @@ define([
     "dojo/dom-construct", "dojo/dom-geometry", "dojo/_base/lang", "dojo/on", "dojo/parser", 
     "plugins/barrier-prioritization/js/ConstrainedMoveable", "dojo/text!./config.json", "dojo/text!./filters.json", "dojo/text!./obj.json", "jquery",
     "dojo/text!./html/legend.html", "dojo/text!./html/content.html", "dijit/TooltipDialog", 
-    "dijit/popup", "plugins/barrier-prioritization/js/jquery-ui-1.11.0/jquery-ui", 
-    "dojox/grid/DataGrid", "dojo/data/ItemFileReadStore"
+    "dijit/popup",     "dojox/grid/DataGrid", "dojo/data/ItemFileReadStore", "plugins/barrier-prioritization/js/jquery-ui-1.12.0/jquery-ui.js"
+
 ],
 function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, 
             SpatialReference, Geoprocessor,  IdentifyTask, IdentifyParameters, Graphic, InfoTemplate, SimpleRenderer, Color, ContentPane, HorizontalSlider, 
             registry, arrayUtils, dom, domClass, domStyle, domConstruct, domGeom, lang, on, parser,
-            ConstrainedMoveable, config, filters, obj, $, legendContent, content, TooltipDialog, popup, ui,  DataGrid,  
-            ItemFileReadStore) {
+            ConstrainedMoveable, config, filters, obj, $, legendContent, content, TooltipDialog, popup,   DataGrid,  
+            ItemFileReadStore, ui) {
         return declare(PluginBase, {
-            toolbarName: "Aquatic Barrier Prioritization", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: true,
+            toolbarName: "Aquatic Barrier Prioritization", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
             // First function called when the user clicks the pluging icon. Defines the default JSON and plugin size
             initialize: function (frameworkParameters) {
                 declare.safeMixin(this, frameworkParameters);
@@ -75,6 +75,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     $("#" + this.appDiv.id + "gpSumStatsTableDivContainer").hide();
                     $('#' + this.appDiv.id + 'toggleResultsDiv').hide();
                     $("#" + this.appDiv.id + "topRadioDiv").hide();
+                    $('#' + this.appDiv.id + 'bottomDiv').hide();
+                    $('#' + this.appDiv.id + 'allTabContent').hide();
                     $('#' + this.appDiv.id + 'dlCSV').css('display', 'none');   
                     $('#' + this.appDiv.id + 'dlInputs').css('display', 'none'); 
                     lang.hitch(this, this.hideSummStatsInputs());
@@ -199,7 +201,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 this.workingRemoveBarriers = [];
                 this.workingRemoveBarriersString = "";
                 this.barriers2RemoveCount = 0;
-                
+
                 
                 // Info icon src
                 this.info = "data:image/png;base64,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";   
@@ -227,7 +229,117 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 	$('#' + this.appDiv.id + 'passabilityDiv').show();
                 }
                 
+                //show input divs if "run a custom analysis tab is selected             
+                $('#' + this.appDiv.id + 'tabB' ).on('click',lang.hitch(this,function(){
+	                    console.log("tab clicked");
+	                    $("#" + this.appDiv.id + "allTabContent").show();
+						                 
+	                    	selectedVal= $('input[name=stateRadio]:checked', '#' + this.appDiv.id + 'stateRadioForm').val();
+	                    
+		                    if (selectedVal==="results"){
+		                        lang.hitch(this, this.gotoResultsState());
+		                    }
+		                    if (selectedVal==="mapServiceResults"){
+		                        lang.hitch(this, this.gotoMapServResultsState());
+		                    }
+		                    if (selectedVal==="inputs"){
+		                        lang.hitch(this, this.gotoInputsState());      
+		                    }
+		                    if (selectedVal==="stats"){
+		                        lang.hitch(this, this.gotoStatsState());                           
+		                    }
+		                    
+	                	})); 
+
+	                    
+                //apply Tier slider filter to Consensus results                
+                $('#' + this.appDiv.id + 'consensusResultFilterSliderTier').slider({
+                	min: 1,	
+                	max: 20, 
+                	values: [1, 20],
+                	range: true,
+				}).each(lang.hitch(this, function(){
+				  // Get the options for this slider
+				  this.consensusResultFilterSliderTierOpt = $('#' + this.appDiv.id + 'consensusResultFilterSliderTier').data().uiSlider.options;  
+				  // Get the number of possible values
+				  this.consensusResultFilterSliderTierVals = this.consensusResultFilterSliderTierOpt.max - this.consensusResultFilterSliderTierOpt.min;		  
+				  // Space out values
+				  for (var i = 0; i <= this.consensusResultFilterSliderTierVals; i++) {	    
+				    var el = $('<label>'+(this.consensusResultFilterSliderTierOpt.max-i)+'</label>').css('left',(i/this.consensusResultFilterSliderTierVals*100)+'%');		  
+				    $('#' + this.appDiv.id + 'consensusResultFilterSliderTier').append(el);	
+				    $('<span class="ui-slider-tick-mark"></span>').css('left', (i/this.consensusResultFilterSliderTierVals*100)+'%').appendTo($('#' + this.appDiv.id + 'consensusResultFilterSliderTier')); 			    
+				  }
+				})); 
+				$('#' + this.appDiv.id + 'consensusResultFilterSliderTier').on("slidechange", lang.hitch(this,function( e, ui ) {
+					lang.hitch(this, this.filterConsensusMapServiceSlider());
+				}));	               
+            
+            
+            	if (this.config.includeSeverityFilter == true){
+	                //apply Severity slider filter to Consensus results                
+	                $('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').slider({
+	                	min: 1,	
+	                	max: 5, 
+	                	values: [1, 5],
+	                	range: true,
+					}).each(lang.hitch(this, function(){
+					  this.consensusResultFilterSliderSeverityOpt = $('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').data().uiSlider.options;  
+					  this.consensusResultFilterSliderSeverityVals = this.consensusResultFilterSliderSeverityOpt.max - this.consensusResultFilterSliderSeverityOpt.min;		  
+					  this.severityDict = {5:"Severe", 4:"Significant", 3:"Moderate", 2:"Minor", 1:"Insignificant"};
+					  for (var i = 0; i <= this.consensusResultFilterSliderSeverityVals; i++) {	    
+					    var el = $('<label>'+this.severityDict[(i+1)]+'</label>').css('left',(i/this.consensusResultFilterSliderSeverityVals*100)+'%');		  
+					    $('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').append(el);	
+					    $('<span class="ui-slider-tick-mark"></span>').css('left', (i/this.consensusResultFilterSliderSeverityVals*100)+'%').appendTo($('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity')); 			    
+					  }
+					})); 
+					$('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').on("slidechange", lang.hitch(this,function( e, ui ) {
+						lang.hitch(this, this.filterConsensusMapServiceSlider());
+					}));	  
+            
+            
+	                //apply Severity slider filter to GP results                
+	                $('#' + this.appDiv.id + 'gpResultFilterSliderSeverity').slider({
+	                	min: 1,	
+	                	max: 5, 
+	                	values: [1, 5],
+	                	range: true,
+					}).each(lang.hitch(this, function(){
+					  this.gpResultFilterSliderSeverityOpt = $('#' + this.appDiv.id + 'gpResultFilterSliderSeverity').data().uiSlider.options;  
+					  this.gpResultFilterSliderSeverityVals = this.gpResultFilterSliderSeverityOpt.max - this.gpResultFilterSliderSeverityOpt.min;		  
+					  this.severityDict = {5:"Severe", 4:"Significant", 3:"Moderate", 2:"Minor", 1:"Insignificant"};
+					  for (var i = 0; i <= this.gpResultFilterSliderSeverityVals; i++) {	    
+					    var el = $('<label>'+this.severityDict[(i+1)]+'</label>').css('left',(i/this.gpResultFilterSliderSeverityVals*100)+'%');		  
+					    $('#' + this.appDiv.id + 'gpResultFilterSliderSeverity').append(el);	
+					    $('<span class="ui-slider-tick-mark"></span>').css('left', (i/this.gpResultFilterSliderSeverityVals*100)+'%').appendTo($('#' + this.appDiv.id + 'gpResultFilterSliderSeverity')); 			    
+					  }
+					})); 
+					$('#' + this.appDiv.id + 'gpResultFilterSliderSeverity').on("slidechange", lang.hitch(this,function( e, ui ) {
+						lang.hitch(this, this.filterResultMapServiceSlider());
+					}));	
+
+            
+            	}
                 
+                //apply Tier slider filter to GP results                
+                $('#' + this.appDiv.id + 'gpResultFilterSliderTier').slider({
+                	min: 1,	
+                	max: 20, 
+                	values: [1, 20],
+                	range: true,
+				}).each(lang.hitch(this, function(){
+				  this.gpResultFilterSliderTierOpt = $('#' + this.appDiv.id + 'gpResultFilterSliderTier').data().uiSlider.options;  
+				  this.gpResultFilterSliderTierVals = this.gpResultFilterSliderTierOpt.max - this.gpResultFilterSliderTierOpt.min;		  
+				  for (var i = 0; i <= this.gpResultFilterSliderTierVals; i++) {	    
+				    var el = $('<label>'+(this.gpResultFilterSliderTierOpt.max-i)+'</label>').css('left',(i/this.gpResultFilterSliderTierVals*100)+'%');		  
+				    $('#' + this.appDiv.id + 'gpResultFilterSliderTier').append(el);	
+				    $('<span class="ui-slider-tick-mark"></span>').css('left', (i/this.gpResultFilterSliderTierVals*100)+'%').appendTo($('#' + this.appDiv.id + 'gpResultFilterSliderTier')); 			    
+				  }
+				})); 
+				$('#' + this.appDiv.id + 'gpResultFilterSliderTier').on("slidechange", lang.hitch(this,function( e, ui ) {
+					lang.hitch(this, this.filterResultMapServiceSlider());
+				}));
+
+
                 //set listeners to change state between inputs and result table
                 $('#' + this.appDiv.id + 'stateRadioForm').on('change',lang.hitch(this, function(){                    
                     selectedVal= $('input[name=stateRadio]:checked', '#' + this.appDiv.id + 'stateRadioForm').val();
@@ -351,7 +463,19 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 //Get started button and open tool UI
                 $('#' + this.appDiv.id +"start").on('click',lang.hitch(this,function(evt){              
                     this.mapSide = evt.currentTarget.id;
+                    $("#" + this.appDiv.id + "allTabContent").show();
                     lang.hitch(this, this.openInputs(this.mapSide));
+                     if (this.config.includeExploreConsensus == false){
+	                     $("#" + this.appDiv.id + "contentTabLinkExploreConsensus").addClass("");
+	                     $("#" + this.appDiv.id + "contentTabLinkExploreConsensus").hide();
+	                     $("#" + this.appDiv.id + "exploreConsensusDiv").hide();
+	                     $("#" + this.appDiv.id + "contentTabLinkCustomAnalysis").addClass("active");
+	                     $('#'+ this.appDiv.id +"tabB").trigger('click');
+                     }
+                     if (this.config.includeSeverityFilter == false){
+                     	$("#" + this.appDiv.id + "gpResultFilterSliderSeverityDiv".hide());
+                     	
+                     }
                 }));
 
                 
@@ -362,17 +486,25 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                         if (ischecked) {
                             this.dynamicLayer.setVisibleLayers(this.config.visibleLayers);
                             this.activateIdentify = true;                   
-                            lang.hitch(this, this.refreshIdentify(this.config.url));            
+                            lang.hitch(this, this.refreshIdentify(this.config.url)); 
+                            lang.hitch(this, this.filterConsensusMapServiceSlider);  
+                            lang.hitch(this, this.filterResultMapServiceSlider);       
                         }
                         if (!ischecked && !resIsChecked){
                         	this.dynamicLayer.setVisibleLayers([-1]);
                             this.activateIdentify = false;
                             lang.hitch(this, this.refreshIdentify(this.config.url));
+                            lang.hitch(this, this.filterConsensusMapServiceSlider);  
+                            lang.hitch(this, this.filterResultMapServiceSlider);     
+                            this.dynamicLayer.setVisibleLayers([-1]);
                         }                 
                         if (!ischecked && resIsChecked){
-                        	this.dynamicLayer.setVisibleLayers([-1]);
+                        	
                             this.activateIdentify = true;
                             lang.hitch(this, this.refreshIdentify(this.resMapServ));
+                            lang.hitch(this, this.filterConsensusMapServiceSlider);  
+                            lang.hitch(this, this.filterResultMapServiceSlider); 
+                            this.dynamicLayer.setVisibleLayers([-1]);    
                         }        
                 }));                
                 
@@ -840,15 +972,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     	lang.hitch(this,this.filterMapService($("#" + this.appDiv.id + "resultsFilter").val()));                  
                     }));
                     
-                    //apply slider filter to GP results
-                    $('#' + this.appDiv.id +'gpResultsFilterSlider').on('slide', lang.hitch(this,function(e){
-                    	console.log('yo');
-                    	// this.gpResultsFilterSliderVal = $('#' + this.appDiv.id +'gpResultsFilterSlider').value;
-                    	// console.log("input: " + e);
-                    	// console.log(this.gpResultsFilterSliderVal);
-                    }));
-                    
-
                     
                     //clear filter from GP results
                     $('#' + this.appDiv.id +'clearResultFilterButton').on('click',lang.hitch(this,function(e){
@@ -1204,7 +1327,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
             
            },  
            
-           refreshIdentify: function(layerURL) {
+           refreshIdentify: function(layerURL, layerDef) {           		
            		if (this.activateIdentify == true){   
 	                //Identify functionality...     
 	                this.identifyRes = new IdentifyTask(layerURL);
@@ -1212,6 +1335,12 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 	                this.identifyParams.tolerance = 6;
 	                this.identifyParams.returnGeometry = true;
 	                this.identifyParams.layerIds = this.config.visibleLayers;
+	                this.identifyParams.layerDefinitions=[];
+	                if (layerDef != undefined){
+	                	this.identifyParams.layerDefinitions[0] = layerDef;
+	                	console.log("layer def= " + this.identifyParams.layerDefinitions);
+	                }
+	                else{this.identifyParams.layerDefinitions = [];}
 	                this.identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_ALL;
 	                this.identifyParams.width = this.map.width;
 	                this.identifyParams.height = this.map.height;
@@ -1274,6 +1403,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     }
             },            
             
+
             openInputs: function(mapSide){
             	                  
                     //Resize main container - check which side first
@@ -1291,17 +1421,13 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                             width: "580",
                             height: "573px"
                         }, 500 , lang.hitch(this,function() {
-                            $('#' + this.appDiv.id + 'leftSide, #' + this.appDiv.id + 'rightSide').css('display', 'inline-block');
-                            $("#" + this.appDiv.id + "rightSide").show();
-                            $('#' + this.appDiv.id + 'bottomDiv').show();
-                            $('#' + this.appDiv.id + 'topRadioDiv').show();
                             this.resize();  
                             this.activateIdentify = true;
                             lang.hitch(this, this.refreshIdentify(this.config.url));
                         }));
-                        $('#' + this.appDiv.id + 'toggleResultsDiv').hide();
-                        $('#' + this.appDiv.id + "clickTitle").hide();
 
+                        $('#' + this.appDiv.id + "clickTitle").hide();
+						lang.hitch(this, this.gotoInputsState()); 
                     }
             },
             
@@ -1343,6 +1469,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id + 'gpResultMapServiceDivContainer').hide(); 
                 $('#' + this.appDiv.id + 'dlCSV').hide(); 
                 $('#' + this.appDiv.id + 'dlInputs').hide();
+                $('#' + this.appDiv.id + 'bottomDiv').show();
+                $('#' + this.appDiv.id + 'topRadioDiv').show();
  
             },         
 
@@ -1355,6 +1483,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id + 'gpResultMapServiceDivContainer').hide();  
                 $('#' + this.appDiv.id + 'dlCSV').show();
                 $('#' + this.appDiv.id + 'dlInputs').show();
+                $('#' + this.appDiv.id + 'bottomDiv').show();
+                $('#' + this.appDiv.id + 'topRadioDiv').show();
 
             },  
             
@@ -1370,6 +1500,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $("#" + this.appDiv.id + "filterResultsField_chosen").show();                      
                 $("#" + this.appDiv.id + "filterResultsOperator_chosen").show();                 
                 $("#" + this.appDiv.id + "filterResultsValue_chosen").show();
+                $('#' + this.appDiv.id + 'bottomDiv').show();
+                $('#' + this.appDiv.id + 'topRadioDiv').show();
 
             },
             
@@ -1381,6 +1513,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id + 'gpResultMapServiceDivContainer').hide(); 
                 $('#' + this.appDiv.id + 'dlCSV').hide();   
                 $('#' + this.appDiv.id + 'dlInputs').hide(); 
+                $('#' + this.appDiv.id + 'bottomDiv').show();
+                $('#' + this.appDiv.id + 'topRadioDiv').show();
 
             },  
             
@@ -1396,27 +1530,92 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 return sumWeights;
             },
 
-			filterMapServiceSlider: function(service, val){
-				var slider = document.getElementById('transp');
-				slider.oninput = function(){
-				    var val = (this.value)/100;
-				    for (var i = 0; i < app.mapLayers.length; i++){
-				     	app.mapLayers[i].setOpacity(val);
-				    };
-				    legendDijit.refresh();
-				};
+			filterResultMapServiceSlider: function(){
+				this.gpTierMaxVal = 21-$('#' + this.appDiv.id + 'gpResultFilterSliderTier').slider("values", 0);
+				this.gpTierMinVal = 21-$('#' + this.appDiv.id + 'gpResultFilterSliderTier').slider("values", 1);
+				this.gpSeverityMinVal = $('#' + this.appDiv.id + 'gpResultFilterSliderSeverity').slider("values", 0);
+				this.gpSeverityMaxVal = $('#' + this.appDiv.id + 'gpResultFilterSliderSeverity').slider("values", 1);
+				console.log("tierMax=" +this.gpTierMaxVal);
+				console.log("tierMin=" +this.gpTierMinVal);
+				this.gpSeverityRange = [];
+				var i=1;
+				while (i<=this.gpSeverityMaxVal){
+					if (i>=this.gpSeverityMinVal){
+						this.gpSeverityRange.push("'" + this.severityDict[i] + " Barrier" + "'");
+					}
+					i++;
+				}
+				console.log(this.gpSeverityRange);
+				this.gpSeverityRangeStr = this.gpSeverityRange.toString();
+				this.gpFilterQuery = this.config.resultTier + " >= " + this.gpTierMinVal + " AND " + this.config.resultTier + " <= " + this.gpTierMaxVal + " AND " + this.config.severityField + " IN (" + this.gpSeverityRangeStr + ")";
+
+				
+				if (this.filteredResMapServ != undefined){
+					this.map.removeLayer(this.filteredResMapServ);
+				}
 	
-				slider.onchange = function(){
-				   var val = (this.value)/100;
-				   for (var i = 0; i < app.mapLayers.length; i++){
-				   		app.mapLayers[i].setOpacity(val);
-				   };
-				   legendDijit.refresh();
-				};
+				this.resultFilterParameters = new ImageParameters();
+				this.resLayerDefs = [];
+				this.resLayerDefs[0] = this.gpFilterQuery;
+				this.resultFilterParameters.layerDefinitions = this.resLayerDefs;
+				this.resultFilterParameters.layerIds = [0];
+				this.resultFilterParameters.transparent = true;
+				this.filteredResMapServ = new esri.layers.ArcGISDynamicMapServiceLayer(this.resMapServ, 
+					{"imageParameters" : this.resultFilterParameters});
+				this.filteredResMapServ.setVisibleLayers = [0];
+				this.map.removeLayer(this.gpResLayer);
+				setTimeout(lang.hitch(this, function(){
+				    this.map.addLayer(this.filteredResMapServ);
+				    console.log("added filtered layer");
+				},500));		
+				lang.hitch(this, this.refreshIdentify(this.resMapServ, this.gpFilterQuery));	
+			},
+			
+			
+			filterConsensusMapServiceSlider: function(){
+				this.consensusTierMaxVal = 21-$('#' + this.appDiv.id + 'consensusResultFilterSliderTier').slider("values", 0);
+				this.consensusTierMinVal = 21-$('#' + this.appDiv.id + 'consensusResultFilterSliderTier').slider("values", 1);
+				this.consensusSeverityMinVal = $('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').slider("values", 0);
+				this.consensusSeverityMaxVal = $('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').slider("values", 1);
+				console.log("tierMax=" +this.consensusTierMaxVal);
+				console.log("tierMin=" +this.consensusTierMinVal);
+				this.consensusSeverityRange = [];
+				var i=1;
+				while (i<=this.consensusSeverityMaxVal){
+					if (i>=this.consensusSeverityMinVal){
+						this.consensusSeverityRange.push("'" + this.severityDict[i] + " Barrier" + "'");
+					}
+					i++;
+				}
+				console.log(this.consensusSeverityRange);
+				this.consensusSeverityRangeStr = this.consensusSeverityRange.toString();
+				this.consensusFilterQuery = this.config.resultTier + " >= " + this.consensusTierMinVal + " AND " + this.config.resultTier + " <= " + this.consensusTierMaxVal + " AND " + this.config.severityField + " IN (" + this.consensusSeverityRangeStr + ")";
+				this.map.removeLayer(this.dynamicLayer);
+
+				this.consensusFilterParameters = new ImageParameters();
+				this.layerDefs = [];
+				this.layerDefs[0] = this.consensusFilterQuery;
+				this.consensusFilterParameters.layerDefinitions = this.layerDefs;
+				this.consensusFilterParameters.layerIds = [0];
+				this.consensusFilterParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+				this.consensusFilterParameters.transparent = true;
+				this.dynamicLayer = new esri.layers.ArcGISDynamicMapServiceLayer(this.config.url, 
+					{"imageParameters" : this.consensusFilterParameters});
+
+				setTimeout(lang.hitch(this, function(){
+				    this.map.addLayer(this.dynamicLayer);
+				    lang.hitch(this, this.refreshIdentify(this.config.url, this.consensusFilterQuery));	
+				},500));		
+
+				
+				var ischecked = $('#' + this.appDiv.id + 'toggleLayer').is(':checked');
+				if (!ischecked){
+					$('#'+ this.appDiv.id +"toggleLayer").trigger('click');
+				}
+				
 			},
 			
 			filterMapService: function(filter){
-				console.log(filter);
 				if (this.filteredResMapServ != undefined){
 					this.map.removeLayer(this.filteredResMapServ);
 				}
@@ -1433,9 +1632,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				this.map.removeLayer(this.gpResLayer);
 				setTimeout(lang.hitch(this, function(){
 				    this.map.addLayer(this.filteredResMapServ);
-				    console.log("added filtered layer");
 				},500));		
-				lang.hitch(this, this.refreshIdentify(this.filteredResMapServ));				
+				lang.hitch(this, this.refreshIdentify(this.resMapServ, filter));				
 			},
 
 			clearFilterMapService: function(){
