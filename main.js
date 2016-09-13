@@ -11,7 +11,7 @@ define([
     "dojo/dom-construct", "dojo/dom-geometry", "dojo/_base/lang", "dojo/on", "dojo/parser", 
     "plugins/barrier-prioritization/js/ConstrainedMoveable", "dojo/text!./config.json", "dojo/text!./filters.json", "dojo/text!./obj.json", "jquery",
     "dojo/text!./html/legend.html", "dojo/text!./html/content.html", "dijit/TooltipDialog", 
-    "dijit/popup",     "dojox/grid/DataGrid", "dojo/data/ItemFileReadStore", "plugins/barrier-prioritization/js/jquery-ui-1.12.0/jquery-ui.js"
+    "dijit/popup",     "dojox/grid/DataGrid", "dojo/data/ItemFileReadStore", "plugins/barrier-prioritization/js/jquery-ui-1.11.0/jquery-ui.js"
 
 ],
 function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, 
