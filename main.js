@@ -434,7 +434,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     	this.dynamicLayer = this.filterMapService(this.consensusCustomFilter, this.dynamicLayer, this.config.url); 
 						console.log("back from function");
 						console.log(this.dynamicLayer);
-    					this.dynamicLayer.setVisibleLayers = [0];
+    					this.dynamicLayer.setVisibleLayers(this.config.visibleLayers);
 					
 						setTimeout(lang.hitch(this, function(){
 						    this.map.addLayer(this.dynamicLayer);
@@ -626,13 +626,14 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                         if (ischecked) {
                             this.map.graphics.show(); 
                             this.gpResLayer.setVisibility(true);
-                            //this.identifyRes = new IdentifyTask(this.resMapServ);
+
                             this.activateIdentify = true;
                             lang.hitch(this, this.refreshIdentify(this.resMapServ));
                         }
                         if (!ischecked){
                             this.map.graphics.hide();
                             this.gpResLayer.setVisibility(false);
+
                             this.identifyRes = new IdentifyTask(this.config.url);
                         }                        
                 })); 
@@ -1087,9 +1088,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     	$( "#" + this.appDiv.id + "gpResultFilterSliderSeverity" ).slider( "values", 1, 20 );
                     	this.gpCustomFilter = $("#" + this.appDiv.id + "resultsFilter").val();
 
-         				if (this.filteredResMapServ != undefined){
-							this.map.removeLayer(this.filteredResMapServ);
-						}
 						this.map.removeLayer(this.gpResLayer);
                     	this.gpResLayer= this.filterMapService(this.gpCustomFilter, this.gpResLayer, this.resMapServ); 
 						console.log("back from function");
@@ -1103,7 +1101,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 
                     	             
                     }));
-                    
                     
                     //clear filter from GP results
                     $('#' + this.appDiv.id +'clearResultFilterButton').on('click',lang.hitch(this,function(e){
@@ -1609,7 +1606,9 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
             gotoResultsState: function(){
                 $('#' + this.appDiv.id + 'leftSide').hide();
                 $('#' + this.appDiv.id + 'rightSide').hide();
-                $('#' + this.appDiv.id + 'gpResultTableDivContainer').show();
+                if (this.gpIterator >1 ){
+               		$('#' + this.appDiv.id + 'gpResultTableDivContainer').show();
+                }
                 $('#' + this.appDiv.id + 'toggleResultsDiv').show();
                 $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').hide();  
                 $('#' + this.appDiv.id + 'gpResultMapServiceDivContainer').hide();  
@@ -1623,7 +1622,9 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
             gotoMapServResultsState: function(){
             	$('#' + this.appDiv.id + 'leftSide').hide();
                 $('#' + this.appDiv.id + 'rightSide').hide();
-                $('#' + this.appDiv.id + 'gpResultMapServiceDivContainer').show();
+                if (this.gpIterator >1 ){
+                	$('#' + this.appDiv.id + 'gpResultMapServiceDivContainer').show();
+                }
                 $('#' + this.appDiv.id + 'toggleResultsDiv').show();
                 $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').hide();    
                 $('#' + this.appDiv.id + 'dlCSV').show();
@@ -1680,10 +1681,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				this.gpSeverityRangeStr = this.gpSeverityRange.toString();
 				this.gpFilterQuery = this.config.resultTier + " >= " + this.gpTierMinVal + " AND " + this.config.resultTier + " <= " + this.gpTierMaxVal + " AND " + this.config.severityField + " IN (" + this.gpSeverityRangeStr + ")";
 
-				
-				if (this.filteredResMapServ != undefined){
-					this.map.removeLayer(this.filteredResMapServ);
-				}
 	
 				this.resultFilterParameters = new ImageParameters();
 				this.resLayerDefs = [];
@@ -1691,12 +1688,12 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				this.resultFilterParameters.layerDefinitions = this.resLayerDefs;
 				this.resultFilterParameters.layerIds = [0];
 				this.resultFilterParameters.transparent = true;
-				this.filteredResMapServ = new esri.layers.ArcGISDynamicMapServiceLayer(this.resMapServ, 
+				this.gpResLayer = new esri.layers.ArcGISDynamicMapServiceLayer(this.resMapServ, 
 					{"imageParameters" : this.resultFilterParameters});
-				this.filteredResMapServ.setVisibleLayers = [0];
+				this.gpResLayer.setVisibleLayers = [0];
 				
 				setTimeout(lang.hitch(this, function(){
-				    this.map.addLayer(this.filteredResMapServ);
+				    this.map.addLayer(this.gpResLayer);
 				    console.log("added filtered layer");
 				},500));		
 				lang.hitch(this, this.refreshIdentify(this.resMapServ, this.gpFilterQuery));	
@@ -1762,16 +1759,13 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				filterParameters.transparent = true;
 				var filteredMapServLayer = new esri.layers.ArcGISDynamicMapServiceLayer(mapServURL, 
 					{"imageParameters" : filterParameters});
-				console.log(filteredMapServLayer);	
+		
 				return Object(filteredMapServLayer);
-				
-			
+
 			},
 
 			clearFilterMapService: function(){
-				if (this.filteredResMapServ != undefined){
-					this.map.removeLayer(this.filteredResMapServ);
-				}
+
 				this.map.removeLayer(this.gpResLayer);
 				this.gpResLayer = new esri.layers.ArcGISDynamicMapServiceLayer(this.resMapServ);
 				setTimeout(lang.hitch(this, function(){
@@ -1792,9 +1786,10 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 			
 			clearConsensusFilterMapService: function(){
 				this.map.removeLayer(this.dynamicLayer);
+				this.dynamicLayer = new esri.layers.ArcGISDynamicMapServiceLayer(this.config.url);
+				this.dynamicLayer.setVisibleLayers(this.config.visibleLayers);
 				setTimeout(lang.hitch(this, function(){
 				    this.map.addLayer(this.dynamicLayer);
-				    console.log("added filtered layer");
 				},500));
 				
 				$('#'+ this.appDiv.id +"resultsConsensusFilter").val(''); 

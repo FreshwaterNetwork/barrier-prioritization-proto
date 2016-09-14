@@ -178,7 +178,7 @@ table.tablesorter .filtered {
     height: 20px !important;
     line-height: 20px !important;
     padding: 0px 4px !important;
-	border:1px solid #4c4c4c;
+	/*border:1px solid #4c4c4c;*/
 	
 }
     /*----- Tab Links -----*/
@@ -339,7 +339,7 @@ table.tablesorter .filtered {
 
 .stateRadioForm{
 	position: absolute;
-	padding-left: 110px;
+	padding-left: 260px;
 	z-index: 1;
 }
 .toggleResultsDiv{
@@ -355,6 +355,8 @@ table.tablesorter .filtered {
 
 .topRadioDiv{
 	background-color: white;
+	border-bottom: 1px solid;
+	border-bottom-color:#BBBBBB;
 	top: 65px;
 	width:92% ;
 	height: 20px;
@@ -367,7 +369,7 @@ table.tablesorter .filtered {
 	margin-top: 10px !important;
 }
 
-.resultMapServContentDiv{
+.filterMapServContentDiv{
 	border: 1px solid;
 	border-radius: 2px;
 	border-color: #cccccc;
@@ -423,6 +425,11 @@ table.tablesorter .filtered {
 }
 abbr.search-choice-close {
   cursor: pointer;
+}
+
+/*added because the close boxes mysteriuosly started showing up with the lower half that's meant to stay hidden*/
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close{
+	height: 12px !important;
 }
 
 /* Species range map checkbox */
