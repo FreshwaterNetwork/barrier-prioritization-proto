@@ -61,7 +61,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 	</ul>
 	<div class='tab-contentAll' id='tab-contentAll'>
 		<div id='exploreConsensusDiv'>
-			<div class='resultMapServContentDiv'>
+			<div class='filterMapServContentDiv'>
 				<div style='display: inline'>
 					<h5 style='margin-top:3px; margin-bottom:3px;'>Filter Consensus Results by Tier</h5>
 	           		<div class='sliderDiv'>
@@ -69,7 +69,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 					</div>
 				</div>
 			</div>
-			<div class='resultMapServContentDiv' id='consensusResultFilterSliderSeverityDiv'>
+			<div class='filterMapServContentDiv' id='consensusResultFilterSliderSeverityDiv'>
 				<div style='display: inline'>
 					<h5 style='margin-top:3px; margin-bottom:3px;'>Filter Consensus Results by Severity</h5>
 	           		<div class='sliderDiv'>
@@ -77,6 +77,37 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 					</div>
 				</div>
 			</div>
+			<h4>-OR-</h4>
+			<div class='filterMapServContentDiv'>
+				<div style="display: inline">
+					<h5 style="margin-top:3px; margin-bottom:3px;">Build a custom filter for the results</h5>
+			        <select id='filterConsensusResultsField' class='chosen-select5' style=' width:150px;' data-placeholder='Filter By...' title='Filter the results...'>
+			            <option value=''></option>
+			        </select>
+			        <select id='filterConsensusResultsOperator' class='chosen-select6' style='width:50px' data-placeholder='Operator' title='Enter an operator to define the relationship between the attribute and value.  Be sure to use IN or NOT IN if multiple values are used.'>
+			            <option value=''></option>
+			            <option value='='>=</option>
+			            <option value='>'>></option>
+			            <option value='<'><</option>
+			            <option value='>='>>=</option>
+			            <option value='<='><=</option>
+			            <option value='IN'>IN</option>
+			            <option value='NOT IN'>NOT IN</option>
+			        </select>
+			        <select id='filterConsensusResultsValue' class='chosen-select7'  data-placeholder='Filter value...' title='Select a value to filter by. Must use the "IN" operator if selecting multiple values' multiple='multiple'>
+			            <option value=''></option>
+			        </select>
+				    <input class='resultsFilter' id='resultsConsensusFilter' type='text' placeholder='e.g. "Tier" = 1' value=''  title='Enter an ArcGIS-compliant definition query to filter the results of the analysis.'/>​
+				</div>
+				<div  class='centerAllButtonHolder'>
+					<button type='button' id='applyResultConsensusFilterButton'  title='Click to filter the results of the analysis'>Apply Filter</button>
+					
+				</div>
+				<div class='centerAllButtonHolder2'>
+					<button type='button' id='clearResultConsensusFilterButton' title='Click to clear the filter'>Clear Filter</button>
+				</div>
+			</div>		
+		
 		</div>
 		<div id='customAnalysisDiv' style='display:none'>
 			<div id='topRadioDiv' class='topRadioDiv'>
@@ -177,7 +208,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 			
 						<div id='weightIn-Tab3Div' class='tab'>
 							<div><p class='metricLabel'><input id='weightIn-QDSANAD'  size='2' maxlength='3' class='weightInput' type='text' title='Enter a value between 0-100 to indicate the relative importance of this metric for your objectives.  The sum of all weights must = 100'  value='0'/><a href='plugins/barrier-prioritization/images/Metric_Glossary.pdf#page=18' title='Click the metric name for a description of this metric' onClick="return windowPopup(this, 'def', 'width=660,height=590,scrollbars=yes')">​Presence of 1 or more anadromous species downstream of the barrier</a></p></div>
-							<div><p class='metricLabel'><input id='weightIn-QNUMDSANAD'  size='2' maxlength='3' class='weightInput' type='text' title='Enter a value between 0-100 to indicate the relative importance of this metric for your objectives.  The sum of all weights must = 100'  value='0'/><a href='plugins/barrier-prioritization/images/Metric_Glossary.pdf#page=19' title='Click the metric name for a description of this metric' onClick="return windowPopup(this, 'def', 'width=660,height=590,scrollbars=yes')">​# of anadromous species downstream of the barrier</a></p></div>
+							<div><p class='metricLabel'><input id='weightIn-QDSNUMANAD'  size='2' maxlength='3' class='weightInput' type='text' title='Enter a value between 0-100 to indicate the relative importance of this metric for your objectives.  The sum of all weights must = 100'  value='0'/><a href='plugins/barrier-prioritization/images/Metric_Glossary.pdf#page=19' title='Click the metric name for a description of this metric' onClick="return windowPopup(this, 'def', 'width=660,height=590,scrollbars=yes')">​# of anadromous species downstream of the barrier</a></p></div>
 										</div>
 						<div id='weightIn-Tab4Div' class='tab'>
 							<div><p class='metricLabel'><input id='weightIn-fishRich'  size='2' maxlength='3' class='weightInput' type='text' title='Enter a value between 0-100 to indicate the relative importance of this metric for your objectives.  The sum of all weights must = 100'  value='0'/><a href='plugins/barrier-prioritization/images/Metric_Glossary.pdf#page=20' title='Click the metric name for a description of this metric' onClick="return windowPopup(this, 'def', 'width=660,height=590,scrollbars=yes')">​# of Resident fish species in HUC8</a></p></div>
@@ -282,7 +313,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 			</div>
 			<div id='gpResultMapServiceDivContainer' class='gpResultMapServiceDivContainer' style='display:none'>
 			    <div id='gpResultMapServiceDiv' class='gpResultMapServiceDiv'>
-					<div class='resultMapServContentDiv'>
+					<div class='filterMapServContentDiv'>
 						<div style='display: inline'>
 							<h5 style='margin-top:3px; margin-bottom:3px;'>Filter Results by Tier</h5>
 			           		<div id='sliderDiv' class='sliderDiv'>
@@ -290,7 +321,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 							</div>
 						</div>
 					</div>
-					<div class='resultMapServContentDiv' id='gpResultFilterSliderSeverityDiv'>
+					<div class='filterMapServContentDiv' id='gpResultFilterSliderSeverityDiv'>
 						<div style='display: inline'>
 							<h5 style='margin-top:3px; margin-bottom:3px;'>Filter Consensus Results by Severity</h5>
 			           		<div class='sliderDiv'>
@@ -298,9 +329,10 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 							</div>
 						</div>
 					</div>
-					<div class='resultMapServContentDiv'>
+					<h4>-OR-</h4>
+					<div class='filterMapServContentDiv'>
 						<div style="display: inline">
-							<h5 style="margin-top:3px; margin-bottom:3px;">Build a custom filter for the results</h5>
+							<h5 style="margin-top:3px; margin-bottom:3px;">Build a Custom Filter</h5>
 					        <select id='filterResultsField' class='chosen-select5' style='display: none; width:150px;' data-placeholder='Filter By...' title='Filter the results...'>
 					            <option value=''></option>
 					        </select>
