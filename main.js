@@ -982,7 +982,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 
                 //GP complete            
                 function completeCallback(jobInfo){
-                        $("#" + this.appDiv.id +"gpStatusReport").html("Transferring data from server...");
+                        $("#" + this.appDiv.id +"gpStatusReport").html("Transferring data from server. The 'Results' screen will appear automatically when complete...");
                         // Get result as map service -- needed for larger datasets and easy way to get legend
                         this.resMapServURLRoot = this.config.gpURL.replace("GPServer/Prioritize", "MapServer/jobs/");
                         this.resMapServ =  (this.resMapServURLRoot + jobInfo.jobId);
