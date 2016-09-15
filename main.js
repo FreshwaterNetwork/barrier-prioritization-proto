@@ -664,7 +664,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                              //if (this.removingBarriers == false){
                               	this.removingBarriers = true;
                                 this.activateIdentify = false;
-                                lang.hitch(this, this.refreshIdentify(this.config.url));
+                                lang.hitch(this, this.refreshIdentify(this.config.url));  //TODO
                                 lang.hitch(this, this.selectRemovalBarriers());
                               //}
                             }
@@ -1511,6 +1511,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
               
               else{
               	dojo.disconnect(this.identifyClick);
+              	console.log("identify disconnected");
               }
            },
             
@@ -1851,8 +1852,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 
                 if ($('#'+ this.appDiv.id +"toggleLayer").is(":checked")){$('#'+ this.appDiv.id +"toggleLayer").trigger('click');}
                 console.log("removing barriers");
-                this.activateIdentify = false;
-                lang.hitch(this, this.refreshIdentify(this.config.url));
+                // this.activateIdentify = false;
+                // lang.hitch(this, this.refreshIdentify(this.config.url));
                 var removeBarrierSymbol = new SimpleMarkerSymbol().setSize(5).setColor(new Color([0,0,0]));
                 var selectedRemoveBarrierSymbol = new SimpleMarkerSymbol().setSize(10).setColor(new Color([255,0,0]));                                      
                 var renderer = new SimpleRenderer(removeBarrierSymbol);
@@ -1860,9 +1861,12 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 this.removeFeatureLayer = new FeatureLayer(this.config.removeSelectionURL);
                 this.removeFeatureLayer.setRenderer(renderer);
                 this.removeFeatureLayer.MODE_SNAPSHOT;
+
+				// Set layer definition so barriers to remove layer only shows passability level of barriers being analyzed (e.g. Dams only)
+                // this.removeFeatureLayer.setDefinitionExpression("Passability_Desc in ()"); //TODO
                 this.removeFeatureLayer.dataAttributes = [this.uniqueID];
                 this.selectedBarriers = new GraphicsLayer();
-               
+                
                 //TODO if there's already values in the text box, include the corresponding graphics
 				// if ($("#" + this.appDiv.id + 'barriers2Remove').val() != ''){
 					// console.log("there's already barriers to remove listed");
@@ -1890,9 +1894,11 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
  
                 
                 this.removeFeatureLayer.on("click", lang.hitch(this, function(e){
+                	
                     this.currID = e.graphic.attributes[this.uniqueID];
+                    console.log(this.currID);
                     for (i = 0; i< this.removeFeatureLayer.graphics.length; i++){  
-                        if (this.alreadySelBarr2Remove.indexOf(this.currID)>=0){
+                        if (this.alreadySelBarr2Remove != undefined && this.alreadySelBarr2Remove.indexOf(this.currID)>=0){
                         	console.log(this.currID + "is already selected");
                         }           	
                     	//the following statement check if each graphic is either the one clicked on or in the list of previously selected 
