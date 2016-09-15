@@ -58,6 +58,25 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     $('#' + this.appDiv.id + 'bottomDiv').hide();
                     $('#' + this.appDiv.id + 'clickTitle').show();
                 
+					//clear all filters
+					$('#'+ this.appDiv.id +"resultsFilter").val(''); 
+					require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+					    $('#'+ this.appDiv.id +"filterResultsField").val('option: first').trigger("chosen:updated");
+		                $('#'+ this.appDiv.id +"filterResultsOperator").val('option: first').trigger("chosen:updated");
+		                $('#'+ this.appDiv.id +"filterResultsValue").val('option: first').trigger("chosen:updated");
+					    $('#'+ this.appDiv.id +"filterConsensusResultsField").val('option: first').trigger("chosen:updated");
+	                	$('#'+ this.appDiv.id +"filterConsensusResultsOperator").val('option: first').trigger("chosen:updated");
+	                	$('#'+ this.appDiv.id +"filterConsensusResultsValue").val('option: first').trigger("chosen:updated");
+					}));
+			        $( "#" + this.appDiv.id + "gpResultFilterSliderTier" ).slider( "values", 0, 1 );
+	            	$( "#" + this.appDiv.id + "gpResultFilterSliderTier" ).slider( "values", 1, 20 );
+	            	$( "#" + this.appDiv.id + "gpResultFilterSliderSeverity" ).slider( "values", 0, 1 );
+	            	$( "#" + this.appDiv.id + "gpResultFilterSliderSeverity" ).slider( "values", 1, 20 );
+					$('#'+ this.appDiv.id +"resultsConsensusFilter").val(''); 
+					$( "#" + this.appDiv.id + "consensusResultFilterSliderTier" ).slider( "values", 0, 1 );
+		        	$( "#" + this.appDiv.id + "consensusResultFilterSliderTier" ).slider( "values", 1, 20 );
+		        	$( "#" + this.appDiv.id + "consensusResultFilterSliderSeverity" ).slider( "values", 0, 1 );
+		        	$( "#" + this.appDiv.id + "consensusResultFilterSliderSeverity" ).slider( "values", 1, 20 );
                     if (this.dynamicLayer != undefined)  {
                         this.dynamicLayer.setVisibility(false);
                         this.map.graphics.clear();
@@ -87,6 +106,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     this.activateIdentify = false;                           
                     lang.hitch(this, this.refreshIdentify(this.config.url));
 
+
+				
                 }
             },
             
@@ -260,11 +281,15 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 	range: true,
                 	change:lang.hitch(this, function(event, ui) {
 				        if (event.originalEvent) {
+				        	console.log(event);
 				            //manual change - only apply filter if it's a manual change, else it's a programmatic reset
 				            lang.hitch(this, this.clearConsensusFilterMapService());
 				            lang.hitch(this, this.filterConsensusMapServiceSlider());
 				            
 				        }
+			        	else{
+			        		console.log("programmatic change");
+			        	}			        
     				})
 				}).each(lang.hitch(this, function(){
 				  // Get the options for this slider
@@ -293,6 +318,9 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				            lang.hitch(this, this.clearConsensusFilterMapService());
 				            lang.hitch(this, this.filterConsensusMapServiceSlider());
 				        }
+			        	else{
+			        		console.log("programmatic change");
+			        	}				        
 					})
 					}).each(lang.hitch(this, function(){
 					  this.consensusResultFilterSliderSeverityOpt = $('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').data().uiSlider.options;  
@@ -321,6 +349,9 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 					            // lang.hitch(this, this.clearFilterMapService());
 					            lang.hitch(this, this.filterResultMapServiceSlider());
 					        }
+				        	else{
+				        		console.log("programmatic change");
+				        	}
 	    				})                	
 					}).each(lang.hitch(this, function(){
 					  this.gpResultFilterSliderSeverityOpt = $('#' + this.appDiv.id + 'gpResultFilterSliderSeverity').data().uiSlider.options;  
@@ -351,6 +382,9 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				            // lang.hitch(this, this.clearFilterMapService());
 				            lang.hitch(this, this.filterResultMapServiceSlider());
 				            
+				        }
+				        else{
+				        	console.log("programmatic change");
 				        }
     				})         
 				}).each(lang.hitch(this, function(){
@@ -842,7 +876,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                         if (this.removeFeatureLayer != undefined){this.map.removeLayer(this.removeFeatureLayer);}
                         this.tableHTML = "";
                         if (this.gpResLayer != undefined){
-                            this.gpResLayer.setVisibility(false);
+                            this.map.removeLayer(this.gpResLayer);
                         }
                         // $("#" + this.appDiv.id + "gpResultTable > tbody").html(''); 
                         // $("#" + this.appDiv.id + "gpResultTable > thead").html('<tr></tr>');
@@ -1628,8 +1662,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 }
                 $('#' + this.appDiv.id + 'toggleResultsDiv').show();
                 $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').hide();    
-                $('#' + this.appDiv.id + 'dlCSV').show();
-                $('#' + this.appDiv.id + 'dlInputs').show();                		
+                // $('#' + this.appDiv.id + 'dlCSV').show();
+                // $('#' + this.appDiv.id + 'dlInputs').show();                		
     	        $("#" + this.appDiv.id + "resultsFilter").show();
                 $("#" + this.appDiv.id + "filterResultsField_chosen").show();                      
                 $("#" + this.appDiv.id + "filterResultsOperator_chosen").show();                 
@@ -1707,8 +1741,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				this.consensusTierMinVal = 21-$('#' + this.appDiv.id + 'consensusResultFilterSliderTier').slider("values", 1);
 				this.consensusSeverityMinVal = $('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').slider("values", 0);
 				this.consensusSeverityMaxVal = $('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').slider("values", 1);
-				console.log("tierMax=" +this.consensusTierMaxVal);
-				console.log("tierMin=" +this.consensusTierMinVal);
 				this.consensusSeverityRange = [];
 				var i=1;
 				while (i<=this.consensusSeverityMaxVal){
