@@ -171,6 +171,17 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				
 				this.obj.startingRemovingBarriers = this.removingBarriers;
 				this.obj.startingPassability = $("#" + this.appDiv.id + "passability").val();
+				
+				this.obj.startingConsensusTierFilterMin =$('#' + this.appDiv.id + 'consensusResultFilterSliderTier').slider("values", 0);
+				this.obj.startingConsensusTierFilterMax =$('#' + this.appDiv.id + 'consensusResultFilterSliderTier').slider("values", 1);
+				this.obj.startingConsensusSeverityFilterMin =$('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').slider("values", 0);
+				this.obj.startingConsensusSeverityFilterMax =$('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').slider("values", 1);
+				if ($('#' + this.appDiv.id + 'resultsConsensusFilter').val() != ""){
+					this.obj.startingUseConsensusCustomFilter = true;
+					this.obj.startingConsensusCustomFilter = $('#' + this.appDiv.id + 'resultsConsensusFilter').val();
+				}
+				
+				
 				var state = new Object();
 				state = this.obj;
 				console.log(state);
@@ -182,6 +193,10 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 			setState: function (state) {
 				this.obj = state;
 				this.stateSet = this.obj.stateSet;
+		
+				    
+		
+
 				console.log(this.obj);
 			},
             // Resizes the plugin after a manual or programmatic plugin resize so the button pane on the bottom stays on the bottom.
@@ -277,7 +292,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id + 'consensusResultFilterSliderTier').slider({
                 	min: 1,	
                 	max: 20, 
-                	values: [1, 20],
+                	values: [this.obj.startingConsensusTierFilterMin, this.obj.startingConsensusTierFilterMax],
                 	range: true,
                 	change:lang.hitch(this, function(event, ui) {
 				        if (event.originalEvent) {
@@ -310,7 +325,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 	                $('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').slider({
 	                	min: 1,	
 	                	max: 5, 
-	                	values: [1, 5],
+	                	values: [this.obj.startingConsensusSeverityFilterMin, this.obj.startingConsensusSeverityFilterMax],
 	                	range: true,
 	                	change:lang.hitch(this, function(event, ui) {
 				        if (event.originalEvent) {
@@ -332,16 +347,14 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 					    $('<span class="ui-slider-tick-mark"></span>').css('left', (i/this.consensusResultFilterSliderSeverityVals*100)+'%').appendTo($('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity')); 			    
 					  }
 					})); 
-					$('#' + this.appDiv.id + 'consensusResultFilterSliderSeverity').on("slidechange", lang.hitch(this,function( e, ui ) {
-						lang.hitch(this, this.filterConsensusMapServiceSlider());
-					}));	  
+  
             
             
 	                //apply Severity slider filter to GP results                
 	                $('#' + this.appDiv.id + 'gpResultFilterSliderSeverity').slider({
 	                	min: 1,	
 	                	max: 5, 
-	                	values: [1, 5],
+	                	values: [this.obj.startingConsensusSeverityFilterMin, this.obj.startingConsensusSeverityFilterMax],
 	                	range: true,
 	                	change:lang.hitch(this, function(event, ui) {
 					        if (event.originalEvent) {
@@ -363,9 +376,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 					    $('<span class="ui-slider-tick-mark"></span>').css('left', (i/this.gpResultFilterSliderSeverityVals*100)+'%').appendTo($('#' + this.appDiv.id + 'gpResultFilterSliderSeverity')); 			    
 					  }
 					})); 
-					// $('#' + this.appDiv.id + 'gpResultFilterSliderSeverity').on("slidechange", lang.hitch(this,function( e, ui ) {
-						// lang.hitch(this, this.filterResultMapServiceSlider());
-					// }));	
+
 
             
             	}
@@ -374,7 +385,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id + 'gpResultFilterSliderTier').slider({
                 	min: 1,	
                 	max: 20, 
-                	values: [1, 20],
+                	values: [this.obj.startingGPTierFilterMin, this.obj.startingGPTierFilterMax],
                 	range: true,
                 	change:lang.hitch(this, function(event, ui) {
 				        if (event.originalEvent) {
@@ -396,12 +407,11 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				    $('<span class="ui-slider-tick-mark"></span>').css('left', (i/this.gpResultFilterSliderTierVals*100)+'%').appendTo($('#' + this.appDiv.id + 'gpResultFilterSliderTier')); 			    
 				  }
 				})); 
-				// $('#' + this.appDiv.id + 'gpResultFilterSliderTier').on("slidechange", lang.hitch(this,function( e, ui ) {
-					// lang.hitch(this, this.filterResultMapServiceSlider());
-				// }));
 
 
-//************
+
+//************		
+
                 	//Consensus Results custom filter builder
                 	this.consensusResultFilterField = "";
 	                this.consensusResultFilterOperator ="";
@@ -479,7 +489,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     
                     //clear filter from consensus results
                     $('#' + this.appDiv.id +'clearResultConsensusFilterButton').on('click',lang.hitch(this,function(e){
-                    	lang.hitch(this,this.clearConsensusFilterMapService());                  
+                    	lang.hitch(this,this.clearConsensusFilterMapService());               
                     }));
 
 
@@ -619,8 +629,20 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 	                     $('#'+ this.appDiv.id +"tabB").trigger('click');
                      }
                      if (this.config.includeSeverityFilter == false){
-                     	$("#" + this.appDiv.id + "gpResultFilterSliderSeverityDiv".hide());
-                     	
+                     	$("#" + this.appDiv.id + "gpResultFilterSliderSeverityDiv".hide());           	
+                     }
+                     if (this.stateSet== "yes"){
+
+                     	if (this.obj.startingUseConsensusCustomFilter == true){
+                     		$('#' + this.appDiv.id + 'resultsConsensusFilter').val(this.obj.startingConsensusCustomFilter);
+                     		$('#' + this.appDiv.id + 'applyResultConsensusFilterButton').trigger('click');
+                     		console.log("applying custom filter");
+                     	}
+                     	else{
+                     		lang.hitch(this, this.filterConsensusMapServiceSlider());
+                     		console.log("applying filter sliders");
+                     	}
+
                      }
                 }));
 
@@ -1895,8 +1917,21 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 this.removeFeatureLayer.MODE_SNAPSHOT;
 
 				// Set layer definition so barriers to remove layer only shows passability level of barriers being analyzed (e.g. Dams only)
-                // this.removeFeatureLayer.setDefinitionExpression("Passability_Desc in ()"); //TODO
-                this.removeFeatureLayer.dataAttributes = [this.uniqueID];
+                this.severityQueryDict = {
+	            	'Dams':'Use_Dams',
+					'Dams (Excluding Dams with Passage)':'Use_Dams_ExclPassage',
+					'Severe':'Use_Severe',
+					'Severe (Excluding Dams with Passage)':'Use_Severe_ExclPassage',
+					'Significant':'Use_Significant',
+					'Moderate':'Use_Moderate',
+					'Minor':'Use_Minor',
+					'Insignificant':'Use_Insignificant'
+                };
+                this.severityField = this.severityQueryDict[$('#'+ this.appDiv.id + 'passability').val()];
+                this.severityQuery = this.severityField +' = 1';
+                console.log(this.severityQuery);
+                this.removeFeatureLayer.setDefinitionExpression(this.severityQuery); //TODO
+                this.removeFeatureLayer.dataAttributes = [this.uniqueID, this.severityField];
                 this.selectedBarriers = new GraphicsLayer();
                 
                 //TODO if there's already values in the text box, include the corresponding graphics
