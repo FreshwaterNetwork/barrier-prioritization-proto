@@ -6,7 +6,7 @@ require({
 define([
     "dojo/_base/declare", "framework/PluginBase", "esri/layers/FeatureLayer", "esri/layers/GraphicsLayer", "esri/layers/ImageParameters", "esri/symbols/SimpleLineSymbol", 
     "esri/symbols/SimpleFillSymbol", "esri/symbols/SimpleMarkerSymbol",  "esri/SpatialReference", 
-    "esri/tasks/Geoprocessor", "esri/tasks/IdentifyTask", "esri/tasks/IdentifyParameters", "esri/graphic", "esri/InfoTemplate", "esri/renderers/SimpleRenderer", "dojo/_base/Color",    
+    "esri/tasks/Geoprocessor", "esri/tasks/IdentifyTask", "esri/tasks/IdentifyParameters",  "esri/tasks/query", "esri/tasks/QueryTask", "esri/graphic", "esri/InfoTemplate", "esri/renderers/SimpleRenderer", "dojo/_base/Color",    
     "dijit/layout/ContentPane", "dijit/form/HorizontalSlider","dijit/registry", "dojo/_base/array", "dojo/dom", "dojo/dom-class", "dojo/dom-style", 
     "dojo/dom-construct", "dojo/dom-geometry", "dojo/_base/lang", "dojo/on", "dojo/parser", 
     "plugins/barrier-prioritization/js/ConstrainedMoveable", "dojo/text!./config.json", "dojo/text!./filters.json", "dojo/text!./obj.json", "jquery",
@@ -15,7 +15,7 @@ define([
 
 ],
 function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, 
-            SpatialReference, Geoprocessor,  IdentifyTask, IdentifyParameters, Graphic, InfoTemplate, SimpleRenderer, Color, ContentPane, HorizontalSlider, 
+            SpatialReference, Geoprocessor,  IdentifyTask, IdentifyParameters, Query, QueryTask, Graphic, InfoTemplate, SimpleRenderer, Color, ContentPane, HorizontalSlider, 
             registry, arrayUtils, dom, domClass, domStyle, domConstruct, domGeom, lang, on, parser,
             ConstrainedMoveable, config, filters, obj, $, legendContent, content, TooltipDialog, popup,   DataGrid,  
             ItemFileReadStore, ui) {
@@ -193,10 +193,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 			setState: function (state) {
 				this.obj = state;
 				this.stateSet = this.obj.stateSet;
-		
-				    
-		
-
+				
 				console.log(this.obj);
 			},
             // Resizes the plugin after a manual or programmatic plugin resize so the button pane on the bottom stays on the bottom.
@@ -642,6 +639,10 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                      		lang.hitch(this, this.filterConsensusMapServiceSlider());
                      		console.log("applying filter sliders");
                      	}
+                     	
+                     	if ($('#' + this.appDiv.id + 'removeBarriers').is(':checked')){
+                     		lang.hitch(this, this.addSavedBarriersToRemove());
+                     	}
 
                      }
                 }));
@@ -720,7 +721,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                              //if (this.removingBarriers == false){
                               	this.removingBarriers = true;
                                 this.activateIdentify = false;
-                                lang.hitch(this, this.refreshIdentify(this.config.url));  //TODO
+                                lang.hitch(this, this.refreshIdentify(this.config.url)); 
                                 lang.hitch(this, this.selectRemovalBarriers());
                               //}
                             }
@@ -1909,7 +1910,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 // this.activateIdentify = false;
                 // lang.hitch(this, this.refreshIdentify(this.config.url));
                 var removeBarrierSymbol = new SimpleMarkerSymbol().setSize(5).setColor(new Color([0,0,0]));
-                var selectedRemoveBarrierSymbol = new SimpleMarkerSymbol().setSize(10).setColor(new Color([255,0,0]));                                      
+                this.selectedRemoveBarrierSymbol = new SimpleMarkerSymbol().setSize(10).setColor(new Color([255,0,0]));                                      
                 var renderer = new SimpleRenderer(removeBarrierSymbol);
                 
                 this.removeFeatureLayer = new FeatureLayer(this.config.removeSelectionURL);
@@ -1935,33 +1936,11 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 this.selectedBarriers = new GraphicsLayer();
                 
                 //TODO if there's already values in the text box, include the corresponding graphics
-				// if ($("#" + this.appDiv.id + 'barriers2Remove').val() != ''){
-					// console.log("there's already barriers to remove listed");
-					// this.alreadySelBarr2Remove = $("#" + this.appDiv.id + 'barriers2Remove').val().split(",");
-					// console.log(this.alreadySelBarr2Remove);
-// 					
-					// console.log("length=" + this.removeFeatureLayer.graphics.length);
-					// for (i = 0; i< this.removeFeatureLayer.graphics.length; i++){  
-	                    // console.log(i);
-	             		// var key = this.uniqueID;
-	                    // var attr2 = {};
-	                    // attr2[key] = this.removeFeatureLayer.graphics[i].attributes[this.uniqueID];
-	                    // console.log(attr);
-	                    // if (this.alreadySelBarr2Remove.indexOf(attr) >=0){
-		                    // attr[key] = this.removeFeatureLayer.graphics[i].attributes[this.uniqueID];
-		                    // this.selectedBarrier = new Graphic(this.removeFeatureLayer.graphics[i].geometry, selectedRemoveBarrierSymbol, attr2 );
-		                    // this.selectedBarriers.add(this.selectedBarrier);
-	                   	// }
-                	// } 
-				// }
-				// else{
-					// this.alreadySelBarr2Remove = "";
-				// }
-                
- 
-                
+				if ($("#" + this.appDiv.id + 'barriers2Remove').val() != ''){
+					lang.hitch(this, this.addSavedBarriersToRemove());
+					
+               }
                 this.removeFeatureLayer.on("click", lang.hitch(this, function(e){
-                	
                     this.currID = e.graphic.attributes[this.uniqueID];
                     console.log(this.currID);
                     for (i = 0; i< this.removeFeatureLayer.graphics.length; i++){  
@@ -1970,7 +1949,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                         }           	
                     	//the following statement check if each graphic is either the one clicked on or in the list of previously selected 
                         if (this.removeFeatureLayer.graphics[i].attributes[this.uniqueID] == this.currID ){
-                        	
                             this.barriers2RemoveCount ++;                       
                             if (this.barriers2RemoveCount <= 10) {
                                 //Make a graphic copy of the selected point.  Changing the symbology of the existing point worked, but then
@@ -1978,7 +1956,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
  								var key = this.uniqueID;
                                 var attr = {};
                                 attr[key] = this.removeFeatureLayer.graphics[i].attributes[this.uniqueID];
-                                this.selectedBarrier = new Graphic(this.removeFeatureLayer.graphics[i].geometry, selectedRemoveBarrierSymbol, attr );
+                                this.selectedBarrier = new Graphic(this.removeFeatureLayer.graphics[i].geometry, this.selectedRemoveBarrierSymbol, attr );
                                 this.selectedBarriers.add(this.selectedBarrier);
                                  
                                 //if an existing selected graphic is clicked remove it and its UNIQUE_ID from String
@@ -2003,15 +1981,57 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                             }
                             
                         }
+	                    else{
+							this.alreadySelBarr2Remove = ""; 
+			            }
                     
                     }   
                 }));
               
               this.map.addLayer(this.removeFeatureLayer);
+              console.log(this.removeFeatureLayer);
               this.map.addLayer(this.selectedBarriers);
             },
             
-            
+            addSavedBarriersToRemove: function(){
+        		console.log("there's already barriers to remove listed");
+				this.alreadySelBarr2RemoveList = $("#" + this.appDiv.id + 'barriers2Remove').val().split(",");
+				this.alreadySelBarr2RemoveQuery = new Query();
+				this.alreadySelBarr2RemoveQueryTask = new QueryTask(this.config.removeSelectionURL);//(this.removeFeatureLayer);
+				
+				this.alreadySelBarr2RemoveQuery.where = this.config.uniqueID + " IN (" + $("#" + this.appDiv.id + 'barriers2Remove').val() +")";
+				
+				this.alreadySelBarr2RemoveQuery.returnGeometry = true;
+				this.alreadySelBarr2RemoveQuery.outFields = [this.config.uniqueID];
+				console.log(this.alreadySelBarr2RemoveQuery);
+				console.log(this.alreadySelBarr2RemoveQueryTask);
+				this.alreadySelBarr2RemoveQueryTask.execute(this.alreadySelBarr2RemoveQuery,  lang.hitch(this, addQueryResults));
+				
+				function addQueryResults(results){
+					console.log(results);
+					for (i = 0; i< results.features.length; i++){  
+	             		var key = this.uniqueID;
+	                    var attr2 = {};
+	                    attr2[key] = results.features[i].attributes[this.config.uniqueID];
+	                    this.selectedBarrier = new Graphic(results.features[i].geometry, this.selectedRemoveBarrierSymbol, attr2 );
+	                    this.selectedBarriers.add(this.selectedBarrier);
+	                    this.barriers2RemoveCount ++; 
+	                   	
+            		} 
+            		//if an existing selected graphic is clicked remove it and its UNIQUE_ID from String
+                    this.selectedBarriers.on("click", lang.hitch(this, function(e){
+                        if (this.workingRemoveBarriers.indexOf(e.graphic.attributes[this.uniqueID]) >-1){
+                            this.workingRemoveBarriers.splice(this.workingRemoveBarriers.indexOf(e.graphic.attributes[this.uniqueID]), 1);
+                            this.barriers2RemoveCount --;
+                        }
+                        this.workingRemoveBarriersString = "'" + this.workingRemoveBarriers.join("', '") + "'";
+                        if (this.workingRemoveBarriersString == "''"){this.workingRemoveBarriersString = "";}
+                        $("#" + this.appDiv.id + 'barriers2Remove').val(this.workingRemoveBarriersString);
+                        this.selectedBarriers.remove(e.graphic);
+                    })); 
+				}
+			},
+
             
             JSONToCSVConvertor: function(JSONData, ReportTitle, ShowLabel) {
                 //taken from http://jsfiddle.net/hybrid13i/JXrwM/

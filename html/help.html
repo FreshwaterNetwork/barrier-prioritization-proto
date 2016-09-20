@@ -65,7 +65,7 @@
 		<div id="main-nav">
 			<div id="main-nav-inner">
 				<div id="site-name">
-					<h1>Penobscot Habitat Blueprint Aquatic Barrier Prioritization</h1>
+					<h1>Northeast Aquatic Connectivity</h1>
 				</div>
 			</div>
 		</div>
@@ -77,11 +77,11 @@
 		<div id="sidebar" class="sidebar" style="z-index: auto; position: fixed; top: auto;">
 			<div id="sidebar-inner">
 				<a href="#Introduction" id ="introLink" class="sidebar-current-active" onclick='activateClass("introLink")'><p>Introduction</p></a>
-				<a href="#Filter" id="filterLink" class="" onclick='activateClass("filterLink")'><p>Step 1: Optional: filters</p></a>
-				<a href="#Weights" id="weightLink" class="" onclick='activateClass("weightLink")'><p>Step 2: Apply relative weights</p></a>
-				<a href="#Remove" id="removeLink" class="" onclick='activateClass("removeLink")'><p>Step 3: Optional: barriers to remove</p></a>
-				<a href="#SumStats" id="statsLink" class="" onclick='activateClass("statsLink")'><p>Step 4: Optional: summary statistics</p></a>
-				<a href="#Results" id="resultsLink" class="" onclick='activateClass("resultsLink")'><p>Step 5: Using the Results</p></a>
+				<a href="#Filter" id="filterLink" class="" onclick='activateClass("filterLink")'><p>Custom Analysis Step 1: Optional: filters</p></a>
+				<a href="#Weights" id="weightLink" class="" onclick='activateClass("weightLink")'><p>Custom Analysis Step 2: Apply relative weights</p></a>
+				<a href="#Remove" id="removeLink" class="" onclick='activateClass("removeLink")'><p>Custom Analysis Step 3: Optional: barriers to remove</p></a>
+				<a href="#SumStats" id="statsLink" class="" onclick='activateClass("statsLink")'><p>Custom Analysis Step 4: Optional: summary statistics</p></a>
+				<a href="#Results" id="resultsLink" class="" onclick='activateClass("resultsLink")'><p>Custom Analysis Step 5: Using the Results</p></a>
 			</div>
 		</div>
 		<div id="main-content">
@@ -96,7 +96,7 @@
 				<div id="Introduction" class="content-section" style="padding-top: 120px">
 					<h3 class="section-heading">Introduction</h3>
 					<div class="section-content">
-						<p>The Penobscot Habitat Blueprint Aquatic Barrier Prioritization Tool is designed to allow users to assess the relative benefits of removing barriers to fish and other aquatic organisms.  The tool outputs a list of barriers prioritized based on the user's inputs.  The prioritized results are not a prescription for action and, importantly, do not incorporate any information on social factors, economics, feasibility or opportunity.  Further, they are agnostic of any particular action and could include dam removals, culvert upgrades, or other passage improvments.</p>
+						<p>The Northeast Aquatic Connectivity results and custom analysis tool are designed to allow users to assess the relative benefits of removing barriers to fish and other aquatic organisms.  The tool outputs a list of barriers prioritized based on the user's inputs.  The prioritized results are not a prescription for action and, importantly, do not incorporate any information on social factors, economics, feasibility or opportunity.  Further, they are agnostic of any particular action and could include dam removals, culvert upgrades, or other passage improvments.</p>
 						
 					</div>
 					<div id="Filter" class="content-section" style="padding-top: 120px">
@@ -110,14 +110,14 @@
                         <div class="section-content">
                             <p>Relative weights are applied to metric (metric weights must total 100) to indicate how important that metric is for the objectives of the prioritization.  For example, if opening the most upstream habitat is the sole objective of a prioritization, a weight of 100 can be applied to the "Upstream functional network length" metric which measures the connected river habitat upstream of each barrier.  In this scenario, the barrier with the most connected habitat upstream would be the top priority. The more weight that is applied to a metric, the more bearing it will have on the results.  A metric with zero weight has no bearing on thwe results. Each metric name in the tool is a link whcih leads to a description of the metric and the data that was used to generate it. </p>
                             <p>Metrics are grouped in tabs by theme.  These groupings are provided to organize the metrics in a logical framework; the groupings themselves do not impact the prioritization.</p>
-                            <p>Consensus weights have been developed by the Penobscot Habitat Blueprint project team for both a diadromous fish and resident fish prioritization scenario.  Clicking the "Diadromous" or "Resident" buttons will populate the tool with the appropriate weights.</p>
+                            <p>Consensus weights have been developed by the NAACC Northeast Aquatic Connectivity subcommittee  for both a anadromous fish prioritization scenario.  Clicking the "Anadromous" button will populate the tool with the appropriate weights.</p>
                         </div>
                     </div>
                     <div id="Remove" class="content-section" style="padding-top: 120px">
                         <h3 class="section-heading">Optional: barriers to remove</h3>
                         <div class="section-content">
                             <p>A set of up to ten barriers can be selected and the analysis run as if these barriers did not exist on the landscape.  This can be done to assess the impacts of a proposed removal on the surrounding priorities and to inform a better understanding of the potential gains of mitigating multiple barriers in series. </p>
-                            <p>To select barriers for removal, check the "Model Barrier Removal?" box.  This will expand a text box and load a temporary map layer with all barriers symbolized as black points. Clicking on one of these barriers will select it and populate the text box with its SiteID properly formatted with single quotes and comma separation. Up to 10 barriers may be selected for removal.  Alternately, a list of barrier SiteIDs formatted with single quotes and comma separators, can be typed into the text box directly.</p>
+                            <p>To select barriers for removal, check the "Model Barrier Removal?" box.  This will expand a text box and load a temporary map layer with all barriers symbolized as black points. Clicking on one of these barriers will select it and populate the text box with its ID properly formatted with single quotes and comma separation. Up to 10 barriers may be selected for removal.  Alternately, a list of barrier SiteIDs formatted with single quotes and comma separators, can be typed into the text box directly.</p>
                         </div>
                     </div>
                     <div id="SumStats" class="content-section" style="padding-top: 120px">
@@ -130,10 +130,8 @@
                         <h3 class="section-heading">Using the Results</h3>
                         <div class="section-content">
                             <p>When an analysis is complete, the results will be added to the map colored by their priority based on the metrics and weights selected by the user.  Warm colors are the higher Tiers while cool colors are lower Tiers.  A Tier 1 priority barrier (red) is a top priority for improving aquatic organism passage while a Tier 20 barrier (blue) is a low priority.</p>
-                            <p>In addition to the result map layer, when an analysis is complete, the tool interface switches to the "Results" screen populated with a table which lists the barriers and attributes including their Site ID, Name, result Tier, result sequential rank (which is binned into 20 bins to create the Tiers), as well as the matrics values for metrics which were weighted in the scenario.  If barriers were selected for removal, the values in the table will reflect the removal of the selected barriers.  For example, the "Count of Downstream Barriers" will be one less for all barriers upstream of a removed barrier.</p>
-                            <p>Clicking on a row in the results table will zoom the map to that barrier and highloight it with a magenta circle.  Likewise, clicking on a barrier in the map will highlight the corresponding row in the table. The tbale can be sorted on a column by clicking on the header cell of the column.  Clicking a second time will sort the column in the other direction.  The table can be filtered by entering values in the "Filter..." box in the header cell of each column.  To search a speciifc value, wrap it in quotes (e.g. to view only Tier 1 barriers enter "1").  Values can also be filtered using > and < operators.</p>
-                            <p>The results can be downloaded as a .csv file (comma delineated text file) by clicking the "Download Results" button at the bottom of the results page. Likewise, the input parameters can be downloaded using the "Download Inputs" button.</p>
-                            <p>The results and un-prioritized barriers can be toggled on and off using the "Display Barriers?" and "Display Results?" checkboxes at the top of the tool. Also at the top of the tool, are radio buttons to switch between the inputs screen, the results screen, and the summary statistics results, if summary statistics are run.</p>
+                            <p>In addition to the result map layer, when an analysis is complete, the tool interface switches to the "Results" screen populated with sliders that allow users to filter the results based on result Tier or barrier severity.  Clicking on a result barrier raises a popup window with the attributes and results for that barrier.  If barriers were selected for removal, the values in the popup will reflect the removal of the selected barriers.  For example, the "Count of Downstream Barriers" will be one less for all barriers upstream of a removed barrier.</p>
+                            <p>The results and un-prioritized barriers can be toggled on and off using the "Display Consensus Anadromous Scenario?" and "Display Results?" checkboxes at the top of the tool. Also at the top of the tool, are radio buttons to switch between the inputs screen, the results screen, and the summary statistics results, if summary statistics are run.</p>
                         </div>
                     </div>
 				</div>
