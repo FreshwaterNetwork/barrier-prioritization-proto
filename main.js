@@ -382,7 +382,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id + 'gpResultFilterSliderTier').slider({
                 	min: 1,	
                 	max: 20, 
-                	values: [this.obj.startingGPTierFilterMin, this.obj.startingGPTierFilterMax],
+                	values: [1, 20],
                 	range: true,
                 	change:lang.hitch(this, function(event, ui) {
 				        if (event.originalEvent) {
