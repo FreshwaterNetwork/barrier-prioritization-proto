@@ -36,7 +36,7 @@
 		"dsImpARA" : "% Impervious Surface in ARA of downstream functional network",
 		"onConsLand" : "Barrier is located on conservation land",
 		"CumDistInd" : "NFHAP Cumulative Disturbance Index (by NHD Catchment)",
-		"QDSANAD" : "NFHAP Cumulative Disturbance Index (by NHD Catchment)",
+		"QDSANAD" : "Presence of 1 or More Anadromous Species downstream of barrier",
 		"QDSNUMANAD" : "# of anadromous species downstream of the barrier",
 		"fishRich" : "# of Resident fish species in HUC8",
 		"g123Fish" : "# of  rare (G1, G2, G3) fish species in HUC8",
