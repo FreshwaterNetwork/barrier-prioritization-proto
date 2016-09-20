@@ -8,7 +8,7 @@
 	"severityField" : "Passability_Desc",
 	"uniqueID" : "UNIQUE_ID",
 	"tableResults" : false,
-	"resultsParamName" : "Results",
+	"resultsParamName" : "Result",
 	"summStatsParamName" : "Summary_Stats",
 	"gpServIncludesLogTransform" : false,
 	"includeExploreConsensus":true,
