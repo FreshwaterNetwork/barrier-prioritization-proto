@@ -100,11 +100,16 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     $('#' + this.appDiv.id + 'dlInputs').css('display', 'none'); 
                     lang.hitch(this, this.hideSummStatsInputs());
                     lang.hitch(this, this.hideFilterInputs());
+                    lang.hitch(this, this.gotoInputsState());
 					lang.hitch(this, this.clearAllInputs());
+					
+					var ischecked = $('#' + this.appDiv.id + 'toggleLayer').is(':checked');
+					if (!ischecked){$('#' + this.appDiv.id + 'toggleLayer').trigger('click');}
+					
 					this.mapSide = this.appDiv.id.replace("dijit_layout_ContentPane_", ""); 
-                    this.small = "yes";
                     this.activateIdentify = false;                           
                     lang.hitch(this, this.refreshIdentify(this.config.url));
+                    
 
 
 				
@@ -139,6 +144,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                         }
                         $('#' + this.appDiv.id).css('height', '20');
                         $('#' + this.appDiv.id).show();
+
                     }   
                 }
                     
@@ -1614,7 +1620,12 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                         }));
 
                         $('#' + this.appDiv.id + "clickTitle").hide();
-						lang.hitch(this, this.gotoInputsState()); 
+						if (this.small == "no"){
+							lang.hitch(this, this.gotoInputsState()); 
+						}
+						if (this.small == "yes"){							
+							$('#'+ this.appDiv.id +'tabA')[0].click(); //TODO
+						}
                     }
             },
             
