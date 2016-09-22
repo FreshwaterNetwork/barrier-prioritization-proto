@@ -267,6 +267,14 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 if (this.config.includePassabilityOption == true){
                 	$('#' + this.appDiv.id + 'passabilityDiv').show();
                 }
+
+                
+                //hide download custom results and show download consensus results on consensus tab
+                $('#'+ this.appDiv.id +'tabA').on('click',lang.hitch(this,function(e) { 
+                	$('#' + this.appDiv.id + 'dlCSV').hide(); 
+                	$('#' + this.appDiv.id + 'dlConsensus').show();  
+                	$('#' + this.appDiv.id + 'dlInputs').hide(); 
+                }));
                 
                 //show input divs if "run a custom analysis tab is selected             
                 $('#' + this.appDiv.id + 'tabB' ).on('click',lang.hitch(this,function(){
@@ -624,6 +632,9 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     this.mapSide = evt.currentTarget.id;
                     $("#" + this.appDiv.id + "allTabContent").show();
                     lang.hitch(this, this.openInputs(this.mapSide));
+                                    
+
+                    
                      if (this.config.includeExploreConsensus == false){
 	                     $("#" + this.appDiv.id + "contentTabLinkExploreConsensus").addClass("");
 	                     $("#" + this.appDiv.id + "contentTabLinkExploreConsensus").hide();
@@ -634,6 +645,18 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                      if (this.config.includeSeverityFilter == false){
                      	$("#" + this.appDiv.id + "gpResultFilterSliderSeverityDiv".hide());           	
                      }
+                     
+                     //show the downlaod consensus results on load if config says to
+	                 if (this.config.includeZippedConsensusDownload == true){
+	                	 
+	                	 setTimeout(lang.hitch(this, function(){
+	                	 	 $('#' + this.appDiv.id + 'bottomDiv').show();
+						     $('#' + this.appDiv.id + 'dlConsensus').show();//TODO
+						     
+						 },500));
+	                	 
+                     }
+                     
                      if (this.stateSet== "yes"){
 
                      	if (this.obj.startingUseConsensusCustomFilter == true){
@@ -889,8 +912,10 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id +"submitButton").on('click',lang.hitch(this,function(e){
                     $('#' + this.appDiv.id + 'dlCSV').css('display', 'none');
                     this.gpVals = {};
+                    this.gpValsList = [];
                     this.weights = $("input[id^=" + this.appDiv.id + "weightIn]").each(lang.hitch(this, function(i, v){
-                        this.gpVals[v.id] = v.value;                
+                        this.gpVals[v.id] = v.value; 
+                        this.gpValsList.push(v.value);               
                     }));
                     this.sumWeights = this.metricWeightCalculator(this.gpVals);
                     //console.log(this.gpVals);
@@ -1068,10 +1093,15 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                         if (this.config.tableResults === false){
                         	this.gp.getResultData(jobInfo.jobId, this.config.resultsParamName, lang.hitch(this,displayResultMapServ));          	
                         }
+                        this.gp.getResultData(jobInfo.jobId, this.config.zippedResultParamName, lang.hitch(this, getZippedResultURL));  
                         
                         this.statusCallbackIterator = 0;
-
                 }
+        
+        		function getZippedResultURL(result, messages){
+        			console.log(result.value.url);
+        			this.zippedResultURL = result.value.url; //this is accessed when the download button is pressed
+        		}
         
         		//Display GP Result Map Service  
         		function displayResultMapServ(result, messages){
@@ -1482,11 +1512,26 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     return windowPopup('plugins/barrier-prioritization/html/help.html', 'help', 'width=1100,height=590,scrollbars=yes');
                 }));
                 $('#' + this.appDiv.id + 'dlCSV').on('click',lang.hitch(this,function(e) { 
-                    require(["jquery", "plugins/barrier-prioritization/js/jquery.tabletoCSV"],lang.hitch(this,function($) {
-                             $("#" + this.appDiv.id + "gpResultTable").tableToCSV();
-                    }));
+                    if (this.config.tableResults == true){
+	                    require(["jquery", "plugins/barrier-prioritization/js/jquery.tabletoCSV"],lang.hitch(this,function($) {
+	                             $("#" + this.appDiv.id + "gpResultTable").tableToCSV();
+	                    }));
+	                }
+                    if (this.config.tableResults == false){
+                    	//download zipped result
+                    	e.preventDefault();
+                    	window.location.href = this.zippedResultURL;
+                    }
+                    
                 }));
-                //download input parameters
+                
+                $('#' + this.appDiv.id + 'dlConsensus').on('click',lang.hitch(this,function(e) { 
+                    	//download zipped result
+                    	e.preventDefault();
+                    	window.location.href = this.config.zippedConsensusResultURL;                    
+                }));
+                
+                //download input parameters 
                 $('#' + this.appDiv.id + 'dlInputs').on('click',lang.hitch(this,function(e) { 
                      this.requestObjectPretty = {};
                      for (var key in this.requestObject){
@@ -1624,10 +1669,10 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 							lang.hitch(this, this.gotoInputsState()); 
 						}
 						if (this.small == "yes"){							
-							$('#'+ this.appDiv.id +'tabA')[0].click(); //TODO
+							$('#'+ this.appDiv.id +'tabA')[0].click(); 
 						}
                     }
-            },
+            },         
             
  			showFilterInputs: function(){
     	        $("#" + this.appDiv.id + "userFilter").show();
@@ -1666,6 +1711,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').hide(); 
                 $('#' + this.appDiv.id + 'gpResultMapServiceDivContainer').hide(); 
                 $('#' + this.appDiv.id + 'dlCSV').hide(); 
+                $('#' + this.appDiv.id + 'dlConsensus').hide();
                 $('#' + this.appDiv.id + 'dlInputs').hide();
                 $('#' + this.appDiv.id + 'bottomDiv').show();
                 $('#' + this.appDiv.id + 'topRadioDiv').show();
@@ -1682,6 +1728,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').hide();  
                 $('#' + this.appDiv.id + 'gpResultMapServiceDivContainer').hide();  
                 $('#' + this.appDiv.id + 'dlCSV').show();
+                $('#' + this.appDiv.id + 'dlConsensus').hide();
                 $('#' + this.appDiv.id + 'dlInputs').show();
                 $('#' + this.appDiv.id + 'bottomDiv').show();
                 $('#' + this.appDiv.id + 'topRadioDiv').show();
@@ -1696,8 +1743,9 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 }
                 $('#' + this.appDiv.id + 'toggleResultsDiv').show();
                 $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').hide();    
-                // $('#' + this.appDiv.id + 'dlCSV').show();
-                // $('#' + this.appDiv.id + 'dlInputs').show();                		
+                $('#' + this.appDiv.id + 'dlCSV').show();
+                $('#' + this.appDiv.id + 'dlConsensus').hide();
+                $('#' + this.appDiv.id + 'dlInputs').show();                		
     	        $("#" + this.appDiv.id + "resultsFilter").show();
                 $("#" + this.appDiv.id + "filterResultsField_chosen").show();                      
                 $("#" + this.appDiv.id + "filterResultsOperator_chosen").show();                 
@@ -1713,7 +1761,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id + 'gpResultTableDivContainer').hide();
                 $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').show(); 
                 $('#' + this.appDiv.id + 'gpResultMapServiceDivContainer').hide(); 
-                $('#' + this.appDiv.id + 'dlCSV').hide();   
+                $('#' + this.appDiv.id + 'dlCSV').hide(); 
+                $('#' + this.appDiv.id + 'dlConsensus').hide();  
                 $('#' + this.appDiv.id + 'dlInputs').hide(); 
                 $('#' + this.appDiv.id + 'bottomDiv').show();
                 $('#' + this.appDiv.id + 'topRadioDiv').show();
