@@ -5,7 +5,7 @@ require({
 // Bring in dojo and javascript api classes as well as config.json and content.html
 define([
     "dojo/_base/declare", "framework/PluginBase", "esri/layers/FeatureLayer", "esri/layers/GraphicsLayer", "esri/layers/ImageParameters", "esri/symbols/SimpleLineSymbol", 
-    "esri/symbols/SimpleFillSymbol", "esri/symbols/SimpleMarkerSymbol",  "esri/SpatialReference", 
+    "esri/symbols/SimpleFillSymbol", "esri/symbols/SimpleMarkerSymbol",  "esri/SpatialReference", "esri/dijit/Search",
     "esri/tasks/Geoprocessor", "esri/tasks/IdentifyTask", "esri/tasks/IdentifyParameters",  "esri/tasks/query", "esri/tasks/QueryTask", "esri/graphic", "esri/InfoTemplate", "esri/renderers/SimpleRenderer", "dojo/_base/Color",    
     "dijit/layout/ContentPane", "dijit/form/HorizontalSlider","dijit/registry", "dojo/_base/array", "dojo/dom", "dojo/dom-class", "dojo/dom-style", 
     "dojo/dom-construct", "dojo/dom-geometry", "dojo/_base/lang", "dojo/on", "dojo/parser", 
@@ -15,7 +15,7 @@ define([
 
 ],
 function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, 
-            SpatialReference, Geoprocessor,  IdentifyTask, IdentifyParameters, Query, QueryTask, Graphic, InfoTemplate, SimpleRenderer, Color, ContentPane, HorizontalSlider, 
+            SpatialReference, Search, Geoprocessor,  IdentifyTask, IdentifyParameters, Query, QueryTask, Graphic, InfoTemplate, SimpleRenderer, Color, ContentPane, HorizontalSlider, 
             registry, arrayUtils, dom, domClass, domStyle, domConstruct, domGeom, lang, on, parser,
             ConstrainedMoveable, config, filters, obj, $, legendContent, content, TooltipDialog, popup,   DataGrid,  
             ItemFileReadStore, ui) {
@@ -526,7 +526,39 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     
                 }));                
             
-
+            
+            	//Search the dam layer TODO
+/*            	this.search = new Search({
+		            enableButtonMode: true, //this enables the search widget to display as a single button
+		            enableLabel: false,
+		            enableInfoWindow: true,
+		            showInfoWindowOnSelect: false,
+		            map: this.map
+		        }, "search");
+            	this.sources = this.search.get("sources");
+            	this.sources.push({
+		            featureLayer: new FeatureLayer(this.config.url +"/0"),
+		            searchFields: [this.config.uniqueID, this.config.barrierNameField, this.config.resultTier],
+		            displayField: this.config.barrierNameField,
+		            exactMatch: false,
+		            outFields: [this.config.uniqueID, this.config.barrierNameField, this.config.resultTier],
+		            name: "Anadormous Consensus Results",
+		            placeholder: "Conowingo",
+		            maxResults: 10,
+		            maxSuggestions: 10,
+		
+		            //Create an InfoTemplate and include three fields
+		            infoTemplate: new InfoTemplate("Barrier Info", "Barrier Name: ${" +this.config.barrierNameField +"}</br>Anadromous Consensus Result: ${" + this.config.resultTier + "}"),
+		            enableSuggestions: true,
+		            minCharacters: 0
+		        });
+		        this.search.set("sources", this.sources);
+         		this.search.startup();
+         		console.log(this.search);
+            	
+*/            	
+            	
+            	
                 // Custom legend
                 // Get the parent element of the map for placement
                 var a = $('#' + $(this.map).attr('id')).parent();
@@ -651,7 +683,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 	                	 
 	                	 setTimeout(lang.hitch(this, function(){
 	                	 	 $('#' + this.appDiv.id + 'bottomDiv').show();
-						     $('#' + this.appDiv.id + 'dlConsensus').show();//TODO
+						     $('#' + this.appDiv.id + 'dlConsensus').show();
 						     
 						 },500));
 	                	 
@@ -1991,15 +2023,15 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 this.severityField = this.severityQueryDict[$('#'+ this.appDiv.id + 'passability').val()];
                 this.severityQuery = this.severityField +' = 1';
                 console.log(this.severityQuery);
-                this.removeFeatureLayer.setDefinitionExpression(this.severityQuery); //TODO
+                this.removeFeatureLayer.setDefinitionExpression(this.severityQuery); 
                 this.removeFeatureLayer.dataAttributes = [this.uniqueID, this.severityField];
                 this.selectedBarriers = new GraphicsLayer();
                 
-                //TODO if there's already values in the text box, include the corresponding graphics
+                //if there's already values in the text box, include the corresponding graphics
 				if ($("#" + this.appDiv.id + 'barriers2Remove').val() != ''){
 					lang.hitch(this, this.addSavedBarriersToRemove());
-					
-               }
+                }
+                
                 this.removeFeatureLayer.on("click", lang.hitch(this, function(e){
                     this.currID = e.graphic.attributes[this.uniqueID];
                     console.log(this.currID);
