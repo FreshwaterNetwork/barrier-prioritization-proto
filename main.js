@@ -1238,6 +1238,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 //Display GP Result Table  
                 function displayResultTable(result, messages){
                 	console.log("table results");
+                	 $("#" + this.appDiv.id +"gpResultTableDivContainer").show();
                     this.itJSON = {title: this.uniqueID + " : " + "${" + this.uniqueID + "}",content: "Tier: ${Tier}<br>Seqential Result: ${FinalRank}"};
 
                     this.resInfoTemplate = new esri.InfoTemplate(this.itJSON);
