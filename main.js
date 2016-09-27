@@ -58,25 +58,29 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     $('#' + this.appDiv.id + 'bottomDiv').hide();
                     $('#' + this.appDiv.id + 'clickTitle').show();
                 
-					//clear all filters
-					$('#'+ this.appDiv.id +"resultsFilter").val(''); 
-					require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
-					    $('#'+ this.appDiv.id +"filterResultsField").val('option: first').trigger("chosen:updated");
-		                $('#'+ this.appDiv.id +"filterResultsOperator").val('option: first').trigger("chosen:updated");
-		                $('#'+ this.appDiv.id +"filterResultsValue").val('option: first').trigger("chosen:updated");
-					    $('#'+ this.appDiv.id +"filterConsensusResultsField").val('option: first').trigger("chosen:updated");
-	                	$('#'+ this.appDiv.id +"filterConsensusResultsOperator").val('option: first').trigger("chosen:updated");
-	                	$('#'+ this.appDiv.id +"filterConsensusResultsValue").val('option: first').trigger("chosen:updated");
-					}));
-			        $( "#" + this.appDiv.id + "gpResultFilterSliderTier" ).slider( "values", 0, 1 );
-	            	$( "#" + this.appDiv.id + "gpResultFilterSliderTier" ).slider( "values", 1, 20 );
-	            	$( "#" + this.appDiv.id + "gpResultFilterSliderSeverity" ).slider( "values", 0, 1 );
-	            	$( "#" + this.appDiv.id + "gpResultFilterSliderSeverity" ).slider( "values", 1, 20 );
-					$('#'+ this.appDiv.id +"resultsConsensusFilter").val(''); 
-					$( "#" + this.appDiv.id + "consensusResultFilterSliderTier" ).slider( "values", 0, 1 );
-		        	$( "#" + this.appDiv.id + "consensusResultFilterSliderTier" ).slider( "values", 1, 20 );
-		        	$( "#" + this.appDiv.id + "consensusResultFilterSliderSeverity" ).slider( "values", 0, 1 );
-		        	$( "#" + this.appDiv.id + "consensusResultFilterSliderSeverity" ).slider( "values", 1, 20 );
+					if (this.config.tableResults == false){                
+						//clear all filters
+						$('#'+ this.appDiv.id +"resultsFilter").val(''); 
+						require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+						    $('#'+ this.appDiv.id +"filterResultsField").val('option: first').trigger("chosen:updated");
+			                $('#'+ this.appDiv.id +"filterResultsOperator").val('option: first').trigger("chosen:updated");
+			                $('#'+ this.appDiv.id +"filterResultsValue").val('option: first').trigger("chosen:updated");
+						    $('#'+ this.appDiv.id +"filterConsensusResultsField").val('option: first').trigger("chosen:updated");
+		                	$('#'+ this.appDiv.id +"filterConsensusResultsOperator").val('option: first').trigger("chosen:updated");
+		                	$('#'+ this.appDiv.id +"filterConsensusResultsValue").val('option: first').trigger("chosen:updated");
+						}));
+						
+						
+				        $( "#" + this.appDiv.id + "gpResultFilterSliderTier" ).slider( "values", 0, 1 );
+		            	$( "#" + this.appDiv.id + "gpResultFilterSliderTier" ).slider( "values", 1, 20 );
+		            	$( "#" + this.appDiv.id + "gpResultFilterSliderSeverity" ).slider( "values", 0, 1 );
+		            	$( "#" + this.appDiv.id + "gpResultFilterSliderSeverity" ).slider( "values", 1, 20 );
+						$('#'+ this.appDiv.id +"resultsConsensusFilter").val(''); 
+						$( "#" + this.appDiv.id + "consensusResultFilterSliderTier" ).slider( "values", 0, 1 );
+			        	$( "#" + this.appDiv.id + "consensusResultFilterSliderTier" ).slider( "values", 1, 20 );
+			        	$( "#" + this.appDiv.id + "consensusResultFilterSliderSeverity" ).slider( "values", 0, 1 );
+			        	$( "#" + this.appDiv.id + "consensusResultFilterSliderSeverity" ).slider( "values", 1, 20 );
+		        	}
                     if (this.dynamicLayer != undefined)  {
                         this.dynamicLayer.setVisibility(false);
                         this.map.graphics.clear();
@@ -109,10 +113,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 					this.mapSide = this.appDiv.id.replace("dijit_layout_ContentPane_", ""); 
                     this.activateIdentify = false;                           
                     lang.hitch(this, this.refreshIdentify(this.config.url));
-                    
 
-
-				
                 }
             },
             
@@ -675,7 +676,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 	                     $('#'+ this.appDiv.id +"tabB").trigger('click');
                      }
                      if (this.config.includeSeverityFilter == false){
-                     	$("#" + this.appDiv.id + "gpResultFilterSliderSeverityDiv".hide());           	
+                     	$("#" + this.appDiv.id + "gpResultFilterSliderSeverityDiv").hide();           	
                      }
                      
                      //show the downlaod consensus results on load if config says to
