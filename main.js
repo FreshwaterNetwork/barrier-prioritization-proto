@@ -422,87 +422,87 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 
 
 //************		
-
-                	//Consensus Results custom filter builder
-                	this.consensusResultFilterField = "";
-	                this.consensusResultFilterOperator ="";
-	                this.consensusResultFilterValue = "";       
-	                this.consensusResultFilterFieldList = "";
-	                for (var i=0; i< this.filters.resultFilters.resultFilterFields.length; i++){
-	                    this.consensusResultFilterFieldList += "<option value='" + this.filters.resultFilters.resultFilterFields[i].resultGISName + "'>" + this.filters.resultFilters.resultFilterFields[i].resultPrettyName + "</option>";
-						console.log(this.consensusResultFilterFieldList);
+					if (this.config.includeExploreConsensus == true){
+	                	//Consensus Results custom filter builder
+	                	this.consensusResultFilterField = "";
+		                this.consensusResultFilterOperator ="";
+		                this.consensusResultFilterValue = "";       
+		                this.consensusResultFilterFieldList = "";
+		                for (var i=0; i< this.filters.resultFilters.resultFilterFields.length; i++){
+		                    this.consensusResultFilterFieldList += "<option value='" + this.filters.resultFilters.resultFilterFields[i].resultGISName + "'>" + this.filters.resultFilters.resultFilterFields[i].resultPrettyName + "</option>";
+							console.log(this.consensusResultFilterFieldList);
+						}
+		                $("#" + this.appDiv.id + "filterConsensusResultsField").html(this.consensusResultFilterFieldList);
+		      
+		                this.updateConsensusResultValues = (lang.hitch(this,function (field){    
+		                    this.fieldValsList = "";
+		                    for (var i=0; i < this.filters.resultFilters.resultValuesTable[field].length; i++){
+		                        this.fieldValsList += "<option value='" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "'>" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "</option>";
+		                    }
+		                    $("#" + this.appDiv.id + "filterConsensusResultsValue").html(this.fieldValsList);
+		                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+		                        $(".chosen-select7").val('').trigger("chosen:updated");
+		                        this.consensusResultFilterValue = $("#" + this.appDiv.id + "filterConsensusResultsValue").val();
+		                        
+		                        //set operator to = as a default
+		                        if (this.consensusResultFilterOperator == ""){
+		                            $('#'+ this.appDiv.id +"filterConsensusResultsOperator").val($('#'+ this.appDiv.id +"filterConsensusResultsOperator option:eq(1)").val());
+		                            $(".chosen-select6").trigger("chosen:updated");
+		                            this.consensusResultFilterOperator = $("#" + this.appDiv.id + "filterConsensusResultsOperator").val();
+		                        }
+		                        $("#" + this.appDiv.id + "resultsConsensusFilter").val( this.consensusResultFilterField + ' ' + this.consensusResultFilterOperator + " (" + this.consensusResultFilterValue + ")");
+		                    })); 
+		                }));
+		                
+		                $("#" + this.appDiv.id + "filterConsensusResultsField").on('change',lang.hitch(this,function(e){
+		                    console.log("filter change");
+		                    this.consensusSelectedField = $("#" + this.appDiv.id + "filterConsensusResultsField option:selected").text();
+		                    this.updateConsensusResultValues(this.consensusSelectedField);
+							this.consensusResultFilterField = $("#" + this.appDiv.id + "filterConsensusResultsField").val();
+		                    $("#" + this.appDiv.id + "resultsConsensusFilter").val( this.consensusResultFilterField + ' ' + this.consensusResultFilterOperator + " (" + this.consensusResultFilterValue + ")");
+		                }));
+						require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+							$(".chosen-select5").val('').trigger("chosen:updated");
+						}));
+						
+		                $("#" + this.appDiv.id + "filterConsensusResultsOperator").on('change',lang.hitch(this,function(e){
+		                    console.log("filter change");
+		                    this.consensusuResultFilterOperator = $("#" + this.appDiv.id + "filterConsensusResultsOperator").val();
+		                    $("#" + this.appDiv.id + "resultsConsensusFilter").val(this.resultFilterField + ' ' + this.resultFilterOperator + " (" + this.consensusResultFilterValue + ")");
+		                }));
+		                $("#" + this.appDiv.id + "filterConsensusResultsValue").on('change',lang.hitch(this,function(e){
+		                    console.log("filter change");
+		                    this.consensusResultFilterValue = $("#" + this.appDiv.id + "filterConsensusResultsValue").val();
+		                    $("#" + this.appDiv.id + "resultsConsensusFilter").val(this.consensusResultFilterField + ' ' + this.consensusResultFilterOperator + " (" + this.consensusResultFilterValue + ")");
+		                }));                                      	
+	        		                    
+	                    //applyFilter to Consensus results
+	                    $('#' + this.appDiv.id +"applyResultConsensusFilterButton").on('click',lang.hitch(this,function(e){
+	                    	//lang.hitch(this, this.resetSlider($( "#" + this.appDiv.id + "consensusResultFilterSliderTier" )));
+	                    	$( "#" + this.appDiv.id + "consensusResultFilterSliderTier" ).slider( "values", 0, 1 );
+	                    	$( "#" + this.appDiv.id + "consensusResultFilterSliderTier" ).slider( "values", 1, 20 );
+	                    	$( "#" + this.appDiv.id + "consensusResultFilterSliderSeverity" ).slider( "values", 0, 1 );
+	                    	$( "#" + this.appDiv.id + "consensusResultFilterSliderSeverity" ).slider( "values", 1, 20 );
+	                    	this.consensusCustomFilter = $("#" + this.appDiv.id + "resultsConsensusFilter").val();
+	                    	console.log(this.consensusCustomFilter);
+	                    	this.map.removeLayer(this.dynamicLayer);
+	                    	this.dynamicLayer = this.filterMapService(this.consensusCustomFilter, this.dynamicLayer, this.config.url); 
+							console.log("back from function");
+							console.log(this.dynamicLayer);
+	    					this.dynamicLayer.setVisibleLayers(this.config.visibleLayers);
+						
+							setTimeout(lang.hitch(this, function(){
+							    this.map.addLayer(this.dynamicLayer);
+							},500));		
+							lang.hitch(this, this.refreshIdentify(this.config.url, this.consensusCustomFilter));	                 
+	                    }));
+	                    
+	                    
+	                    //clear filter from consensus results
+	                    $('#' + this.appDiv.id +'clearResultConsensusFilterButton').on('click',lang.hitch(this,function(e){
+	                    	lang.hitch(this,this.clearConsensusFilterMapService());               
+	                    }));
 					}
-	                $("#" + this.appDiv.id + "filterConsensusResultsField").html(this.consensusResultFilterFieldList);
-	      
-	                this.updateConsensusResultValues = (lang.hitch(this,function (field){    
-	                    this.fieldValsList = "";
-	                    for (var i=0; i < this.filters.resultFilters.resultValuesTable[field].length; i++){
-	                        this.fieldValsList += "<option value='" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "'>" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "</option>";
-	                    }
-	                    $("#" + this.appDiv.id + "filterConsensusResultsValue").html(this.fieldValsList);
-	                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
-	                        $(".chosen-select7").val('').trigger("chosen:updated");
-	                        this.consensusResultFilterValue = $("#" + this.appDiv.id + "filterConsensusResultsValue").val();
-	                        
-	                        //set operator to = as a default
-	                        if (this.consensusResultFilterOperator == ""){
-	                            $('#'+ this.appDiv.id +"filterConsensusResultsOperator").val($('#'+ this.appDiv.id +"filterConsensusResultsOperator option:eq(1)").val());
-	                            $(".chosen-select6").trigger("chosen:updated");
-	                            this.consensusResultFilterOperator = $("#" + this.appDiv.id + "filterConsensusResultsOperator").val();
-	                        }
-	                        $("#" + this.appDiv.id + "resultsConsensusFilter").val( this.consensusResultFilterField + ' ' + this.consensusResultFilterOperator + " (" + this.consensusResultFilterValue + ")");
-	                    })); 
-	                }));
-	                
-	                $("#" + this.appDiv.id + "filterConsensusResultsField").on('change',lang.hitch(this,function(e){
-	                    console.log("filter change");
-	                    this.consensusSelectedField = $("#" + this.appDiv.id + "filterConsensusResultsField option:selected").text();
-	                    this.updateConsensusResultValues(this.consensusSelectedField);
-						this.consensusResultFilterField = $("#" + this.appDiv.id + "filterConsensusResultsField").val();
-	                    $("#" + this.appDiv.id + "resultsConsensusFilter").val( this.consensusResultFilterField + ' ' + this.consensusResultFilterOperator + " (" + this.consensusResultFilterValue + ")");
-	                }));
-					require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
-						$(".chosen-select5").val('').trigger("chosen:updated");
-					}));
-					
-	                $("#" + this.appDiv.id + "filterConsensusResultsOperator").on('change',lang.hitch(this,function(e){
-	                    console.log("filter change");
-	                    this.consensusuResultFilterOperator = $("#" + this.appDiv.id + "filterConsensusResultsOperator").val();
-	                    $("#" + this.appDiv.id + "resultsConsensusFilter").val(this.resultFilterField + ' ' + this.resultFilterOperator + " (" + this.consensusResultFilterValue + ")");
-	                }));
-	                $("#" + this.appDiv.id + "filterConsensusResultsValue").on('change',lang.hitch(this,function(e){
-	                    console.log("filter change");
-	                    this.consensusResultFilterValue = $("#" + this.appDiv.id + "filterConsensusResultsValue").val();
-	                    $("#" + this.appDiv.id + "resultsConsensusFilter").val(this.consensusResultFilterField + ' ' + this.consensusResultFilterOperator + " (" + this.consensusResultFilterValue + ")");
-	                }));                                      	
-        		                    
-                    //applyFilter to Consensus results
-                    $('#' + this.appDiv.id +"applyResultConsensusFilterButton").on('click',lang.hitch(this,function(e){
-                    	//lang.hitch(this, this.resetSlider($( "#" + this.appDiv.id + "consensusResultFilterSliderTier" )));
-                    	$( "#" + this.appDiv.id + "consensusResultFilterSliderTier" ).slider( "values", 0, 1 );
-                    	$( "#" + this.appDiv.id + "consensusResultFilterSliderTier" ).slider( "values", 1, 20 );
-                    	$( "#" + this.appDiv.id + "consensusResultFilterSliderSeverity" ).slider( "values", 0, 1 );
-                    	$( "#" + this.appDiv.id + "consensusResultFilterSliderSeverity" ).slider( "values", 1, 20 );
-                    	this.consensusCustomFilter = $("#" + this.appDiv.id + "resultsConsensusFilter").val();
-                    	console.log(this.consensusCustomFilter);
-                    	this.map.removeLayer(this.dynamicLayer);
-                    	this.dynamicLayer = this.filterMapService(this.consensusCustomFilter, this.dynamicLayer, this.config.url); 
-						console.log("back from function");
-						console.log(this.dynamicLayer);
-    					this.dynamicLayer.setVisibleLayers(this.config.visibleLayers);
-					
-						setTimeout(lang.hitch(this, function(){
-						    this.map.addLayer(this.dynamicLayer);
-						},500));		
-						lang.hitch(this, this.refreshIdentify(this.config.url, this.consensusCustomFilter));	                 
-                    }));
-                    
-                    
-                    //clear filter from consensus results
-                    $('#' + this.appDiv.id +'clearResultConsensusFilterButton').on('click',lang.hitch(this,function(e){
-                    	lang.hitch(this,this.clearConsensusFilterMapService());               
-                    }));
-
 
 //**************
 
@@ -1541,7 +1541,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     alert("Print Report is coming soon. Brace yourself, it's going to be awesome!");
                 }));
                 $('#' + this.appDiv.id + 'help').on('click',lang.hitch(this,function(e) { 
-                    return windowPopup('plugins/barrier-prioritization/html/help.html', 'help', 'width=1100,height=590,scrollbars=yes');
+                    return windowPopup('plugins/barrier-prioritization/html/help.html', 'help', 'width=1000,height=825,scrollbars=yes');
                 }));
                 $('#' + this.appDiv.id + 'dlCSV').on('click',lang.hitch(this,function(e) { 
                     if (this.config.tableResults == true){

@@ -461,6 +461,10 @@ label.showRangeMaps input[type=checkbox]{
 	float:right; margin-right:20px;
 }
 
+.dlConsensus{
+	float:right; margin-right:120px;
+}
+
 .help{
 	float:left; margin-left:20px;
 	width: 70px !important;
