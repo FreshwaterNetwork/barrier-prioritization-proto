@@ -5,6 +5,7 @@
 		"plugins/barrier-prioritization/css/prism.css",
 		"plugins/barrier-prioritization/css/chosen.css",
 		"plugins/barrier-prioritization/css/main.css",
+		"plugins/barrier-prioritization/js/jquery-ui-1.11.0/jquery-ui.css",
 		"plugins/barrier-prioritization/css/theme.tablesorter.css"
     ],
     "use": {

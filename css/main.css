@@ -138,11 +138,25 @@ table.tablesorter .filtered {
 
 }
 
-.startButtonHolder{
+.centerButtonHolder{
 		text-align:center;
 }
 
+.centerAllButtonHolder{
+	bottom: 75px; 
+	right:25px;
+	display: inline;
+	float: right;
+	position: relative;
+}
 
+.centerAllButtonHolder2{
+	bottom: 25px; 
+	left:55px;
+	display: inline;
+	float: right;
+	position: relative;
+}
 
 /* Nothing selected popup */
 .selectNone{
@@ -164,7 +178,7 @@ table.tablesorter .filtered {
     height: 20px !important;
     line-height: 20px !important;
     padding: 0px 4px !important;
-	border:1px solid #4c4c4c;
+	/*border:1px solid #4c4c4c;*/
 	
 }
     /*----- Tab Links -----*/
@@ -214,15 +228,28 @@ table.tablesorter .filtered {
 	}
     /*----- Content of Tabs -----*/
     .tab-content {
+    	
+    	overflow: auto;
         padding:5px;
         border-radius:3px;
         box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
         background:#fff;
-		height: 100%;
+		height: 340px;
+		border:1px solid #000000;
+		/*display: table;*/
+    }
+     .tab-contentAll {
+     	position:absolute;
+     	overflow: hidden;
+        padding:5px;
+        border-radius:3px;
+        box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+        background:#fff;
+		height: 83%;
+		width: 97%;
 		border:1px solid #000000;
 		display: table;
     }
- 
         .tab {
             display:none;
         }
@@ -244,10 +271,12 @@ table.tablesorter .filtered {
 .submitButtonRunning{
 	color: #999999;
 	margin-top: 5px;
+	margin: 0 auto;
 }
 
 .submitButton{
 	margin-top: 5px;
+	margin: 0 auto;
 }
 
 .currWeight{
@@ -265,6 +294,18 @@ table.tablesorter .filtered {
 	margin-top: 17px;
 }
 
+.gpResultMapServiceDivContainer{
+	margin-top: 17px;
+	border: 1px !important;
+	border-style: solid;
+	border-color:#215973;
+	height: 86%;
+	width: 98%;
+	top: 40px;
+	position: absolute;
+}
+
+
 .gpSumStatsTableDivContainer{
 	margin-top: 17px;
 }
@@ -273,8 +314,7 @@ table.tablesorter .filtered {
 
 .plugin-container-outer{
 	min-height: 515px;
-	min-width: 365px;
-	
+	min-width: 480px;	
 }
 .rightSide{
 	margin-left:20px;
@@ -299,7 +339,7 @@ table.tablesorter .filtered {
 
 .stateRadioForm{
 	position: absolute;
-	padding-left: 110px;
+	padding-left: 260px;
 	z-index: 1;
 }
 .toggleResultsDiv{
@@ -314,15 +354,33 @@ table.tablesorter .filtered {
 }
 
 .topRadioDiv{
-	position:absolute;
 	background-color: white;
-	top: 30px;
-	width:96% ;
+	border-bottom: 1px solid;
+	border-bottom-color:#BBBBBB;
+	top: 65px;
+	width:92% ;
 	height: 20px;
-	display: none;
 	z-index: 100;
 }
 
+.passabilityDiv{
+	display: none;
+	margin-bottom: 10px !important;
+	margin-top: 10px !important;
+}
+
+.filterMapServContentDiv{
+	border: 1px solid;
+	border-radius: 2px;
+	border-color: #cccccc;
+	padding: 5px;
+	margin: 5px;
+}
+
+.resultsFilter{
+	margin: 5px 0 0 0  !important;
+	width: 72% !important;
+}
 
 /* Headers */
 .clickTitle{
@@ -369,6 +427,11 @@ abbr.search-choice-close {
   cursor: pointer;
 }
 
+/*added because the close boxes mysteriuosly started showing up with the lower half that's meant to stay hidden*/
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close{
+	height: 12px !important;
+}
+
 /* Species range map checkbox */
 .rMapCb{
 	cursor:pointer;
@@ -385,13 +448,21 @@ label.showRangeMaps input[type=checkbox]{
 	background-color:#F3F3F3 !important; padding-top:3px !important; display:none;
 }
 .sliderDiv{
-	width:412px; text-align:center; display:none;
+	width:100%; 
+	text-align:center;
+	display:inline-block; 
+	height:60px;
+	padding: 5px
 }
 .printReport{
 	margin-left:5px; display:inline-block;
 }
 .dlCSV{
 	float:right; margin-right:20px;
+}
+
+.dlConsensus{
+	float:right; margin-right:120px;
 }
 
 .help{
@@ -413,8 +484,9 @@ label.showRangeMaps input[type=checkbox]{
 }	
 
 .slider{
-	width:100px; display:inline-block;
+	width:90%; display:inline-block;
 }
+
 .ui-slider-horizontal { 
 	height: 5px; 
 }
@@ -424,6 +496,28 @@ label.showRangeMaps input[type=checkbox]{
 .rightSliderLabel{
 	display:inline-block; margin-left:5px; font-size:10pt;
 }
+
+.ui-widget-header{
+	background:#CECFCE !important;
+}
+
+.slider label{
+	position: absolute;
+    width: 20px;
+    margin-left: -10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.ui-slider-tick-mark{
+    display:inline-block;
+    width:2px;
+    background:black;
+    height:8px;
+    position:absolute;
+    top:10px;
+}
+
 /* Popup Legend Elements */
 .myLegendHeader{
 	background-color:#424542; color:#fff; height:28px; font-size:1em; font-weight:bold; padding:8px 0px 0px 10px; cursor:move;

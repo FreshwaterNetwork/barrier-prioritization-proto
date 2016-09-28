@@ -1,0 +1,1619 @@
+﻿<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <title>Northeast Aquatic Connectivity - barriers</title>
+        <geoform>vector digital data</geoform>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>This dataset represents dam and road stream crossings in the northeastern United States (ME, NH, VT, MA, CT, RI, NY, PA, NJ, DE, MD, VA, WV, DC). This data was complied as part of the North Atlantic Aquatic Connectivity Collaborative (NAACC) for the 2016 version of the Northeast Aquatic Connectivity anlaysis (http://maps.freshwaternetwork.org/northeast). The road-stream crossing data in this dataset compiled by the NAACC (https://streamcontinuity.org/) and its contributors. Dam data was compiled for the original Northeast Aquatic Connectivity study (http://rcngrants.org/content/northeast-aquatic-connectivity) and revised based on input from the Northeast Aquatic Connectivity project workgroup, updates from state dam databases, and removals from American River's dam removal database (https://www.americanrivers.org/threats-solutions/restoring-damaged-rivers/dam-removal-map). Both road-stream crossings and dams were spatially linked to flowlines in the USGS National Hydrography Plus (NHD-Plus) v2 1:100,000 stream dataset. These barriers form the primary input dataset for the 2016 version of the Northeast Aquatic Connectvitiy analysis. (http://maps.freshwaternetwork.org/northeast). To this barrier dataset, 38 ecologically-relevant metrics were calculated and used in the barrier prioritization.</abstract>
+      <purpose>This dataset is the result from a custom analysis of the Northeast Aquatic Connectivity project.  The project's consensus anadromous fish barrier removal prioritization and tool to run custom analyses can be found at http://maps.freshwaternetwork.org/northeast. 
+</purpose>
+    </descript>
+    <spdom>
+      <bounding>
+        <westbc>-84.568197</westbc>
+        <eastbc>-66.267073</eastbc>
+        <northbc>49.313064</northbc>
+        <southbc>34.023720</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>None</themekt>
+        <themekey>Dams</themekey>
+        <themekey>road stream crossings</themekey>
+        <themekey>culverts</themekey>
+        <themekey>Barriers</themekey>
+        <themekey>Connectivity</themekey>
+        <themekey>Fragmentation</themekey>
+        <themekey>Northeastern</themekey>
+        <themekey>United States</themekey>
+        <themekey>fish passage</themekey>
+      </theme>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>The Nature Conservancy shall not be held liable for improper or incorrect use of the data described and/or contained herein. The use of these data to produce other GIS products and services with the intent to sell for a profit is prohibited without the written consent of the Nature Conservancy is prohibited. All parties receiving these data must be informed of these restrictions. The Nature Conservancy shall be acknowledged as data contributors to any reports or other products derived from these data.The data products on this site are derived data products. These derived data products may become outdated as new data are added to the Data Provider’s databases. The Data Product is not a substitute for raw data. The Nature Conservancy derived data analysis cannot be relied on as a definitive statement of the presence or absence of individual species or significant ecological communities at given locations and cannot be substituted for ecological surveys that may be required for environmental assessment or conservation planning.The Nature Conservancy reserves all rights in data provided. All data are provided as is. This is not a survey quality dataset. The Nature Conservancy makes no warranty as to the currency, completeness, accuracy or utility of any specific data. This disclaimer applies both to individual use of the data and aggregate use with other data. It is strongly recommended that careful attention be paid to the contents of the metadata file associated with these data.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>The Nature Conservancy</cntorg>
+          <cntper>Erik Martin</cntper>
+        </cntorgp>
+        <cntemail>emartin@tnc.org</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <ptcontac>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>The Nature Conservancy</cntorg>
+          <cntper>Erik Martin</cntper>
+        </cntorgp>
+        <cntemail>emartin@tnc.org</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <datacred>Road - stream crossing data from the North Atlantic Aquatic Connectivity Collaborative database: http://streamcontinuity.org.  Aquatic passability scores for road-stream crossings are from the UMass Critical Linkages project. (http://www.umasscaps.org/applications/critical-linkages.html. 
+
+Natural barrier data obtained from the USGS GNIS database, the World Waterfall Database (http://www.worldwaterfalldatabase.com/) and Daniel Wieferich, USGS.  
+
+Dam data for the Northeastern United States compiled from multiple state and federal sources by The Nature Conservancy and edited for use in the Northeast Aquatic Connectivity project (http://maps.freshwaternetwork.org/northeast).
+
+ Original data for each state: 
+
+CT: Connecticut DEP, Inland Water Resources Div
+
+DE: Delaware Dams: DNREC; 
+
+MA: Massachusetts Department of Fish and Game, Division of Ecological Restoration (DER) based on modified and updated datasets from the Massachusetts Department of Conservation and Recreation http://www.mass.gov/mgis/dams.htm, Office of Dam Safety. 
+
+MD: MD DNR 
+
+ME:  Army Corp of Engineers (USACE), Maine Emergency Management Agency (MEMA), Maine Department of Environmental Protection (MEDEP)(comp., ed.), Maine Office of Geographic Information Systems (comp., ed.) http://www.maine.gov/megis/catalog/shps/state/impoundss.zip
+ 
+NH: NH DES Dam Bureau
+
+NJ: NJDEP - Bureau of Dam Safety and Flood Control
+
+NY: NYS Department of Environmental Conservation http://gis.ny.gov/gisdata/inventories/details.cfm?DSID=1130; USGS Great Lakes Science Center 
+
+PA: Division of Dam Safety, Department of Environmental Protection; PA Fish and Boat Commission, Ben Lorson
+
+RI: RIGIS, 2014. Dams; dams12. Rhode Island Geographic Information System (RIGIS) Data Distribution System, URL: http://www.edc.uri.edu/rigis, Environmental Data Center, University of Rhode Island, Kingston, Rhode Island (last date accessed: 10 September 2014).
+
+VA: VA Dept. of Game &amp; Inland Fisheries
+
+VT: Vermont Agency of Natural Resources, Department of Environmental Conservation
+
+WV: WV DNR: Wildlife Diversity and Technical Support Units; WV Non-coal dams, DMR Dams, NID dams: WV State GIS Data Clearinghouse: http://wvgis.wvu.edu/data/data.php
+ 
+US Army Corps' National Inventory of Dams  (nid.usace.army.mil)
+
+USGS Geographic Names Information System (GNIS)</datacred>
+    <native>Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; Esri ArcGIS 10.3.1.4959</native>
+  </idinfo>
+  <spdoinfo>
+    <direct>Vector</direct>
+    <ptvctinf>
+      <sdtsterm>
+        <sdtstype>Entity point</sdtstype>
+        <ptvctcnt>0</ptvctcnt>
+      </sdtsterm>
+    </ptvctinf>
+  </spdoinfo>
+  <spref>
+    <horizsys>
+      <planar>
+        <mapproj>
+          <mapprojn>NAD 1983 Albers</mapprojn>
+          <albers>
+            <stdparll>29.5</stdparll>
+            <stdparll>45.5</stdparll>
+            <longcm>-96.0</longcm>
+            <latprjo>23.0</latprjo>
+            <feast>0.0</feast>
+            <fnorth>0.0</fnorth>
+          </albers>
+        </mapproj>
+        <planci>
+          <plance>coordinate pair</plance>
+          <coordrep>
+            <absres>0.0001</absres>
+            <ordres>0.0001</ordres>
+          </coordrep>
+          <plandu>meter</plandu>
+        </planci>
+      </planar>
+      <geodetic>
+        <horizdn>D North American 1983</horizdn>
+        <ellips>GRS 1980</ellips>
+        <semiaxis>6378137.0</semiaxis>
+        <denflat>298.257222101</denflat>
+      </geodetic>
+    </horizsys>
+  </spref>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>MetadataTemplate</enttypl>
+      </enttyp>
+      <attr>
+        <attrlabl>OBJECTID</attrlabl>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>STATE_ID</attrlabl>
+        <attrdef>Unique identifier for the barrier in the source data (if any)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>STATE</attrlabl>
+        <attrdef>State in which the barrier is located.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>WATERBODY</attrlabl>
+        <attrdef>Name of the river on which the dam is found.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>OWNER</attrlabl>
+        <attrdef>Owner name.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Barrier_Name</attrlabl>
+        <attrdef>The name of the barrier.  If the barrier is a road-stream corssing, the ID of the crossing will be its name</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Barrier_Name2</attrlabl>
+        <attrdef>Alternative name for the barrier (if any)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>OWNER_CODE</attrlabl>
+        <attrdef>Owner code.</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>B</edomv>
+            <edomvd>Business</edomvd>
+          </edom>
+          <edom>
+            <edomv>CNTY</edomv>
+            <edomvd>County</edomvd>
+          </edom>
+          <edom>
+            <edomv>FED</edomv>
+            <edomvd>Federal</edomvd>
+          </edom>
+          <edom>
+            <edomv>FERC</edomv>
+            <edomvd>FERC Regulated</edomvd>
+          </edom>
+          <edom>
+            <edomv>LOCAL</edomv>
+            <edomvd>Local</edomvd>
+          </edom>
+          <edom>
+            <edomv>MUNI</edomv>
+            <edomvd>Municipal</edomvd>
+          </edom>
+          <edom>
+            <edomv>PRIV</edomv>
+            <edomvd>Private</edomvd>
+          </edom>
+          <edom>
+            <edomv>PUB</edomv>
+            <edomvd>Public</edomvd>
+          </edom>
+          <edom>
+            <edomv>STATE</edomv>
+            <edomvd>State</edomvd>
+          </edom>
+          <edom>
+            <edomv>U</edomv>
+            <edomvd>Unknown</edomvd>
+          </edom>
+          <edom>
+            <edomv>UTIL</edomv>
+            <edomvd>UTILITY</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>TYPE_ID</attrlabl>
+        <attrdef>Type of dam, codes are concatenated if a dam is multiple types at once (a la NID dam approach).</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>CB</edomv>
+            <edomvd>Buttress</edomvd>
+          </edom>
+          <edom>
+            <edomv>CN</edomv>
+            <edomvd>Concrete</edomvd>
+          </edom>
+          <edom>
+            <edomv>ER</edomv>
+            <edomvd>Rockfill</edomvd>
+          </edom>
+          <edom>
+            <edomv>MS</edomv>
+            <edomvd>Masonry</edomvd>
+          </edom>
+          <edom>
+            <edomv>MV</edomv>
+            <edomvd>Multi-arch</edomvd>
+          </edom>
+          <edom>
+            <edomv>OT</edomv>
+            <edomvd>Other</edomvd>
+          </edom>
+          <edom>
+            <edomv>PG</edomv>
+            <edomvd>Gravity</edomvd>
+          </edom>
+          <edom>
+            <edomv>RE</edomv>
+            <edomvd>Earth</edomvd>
+          </edom>
+          <edom>
+            <edomv>ST</edomv>
+            <edomvd>Stone</edomvd>
+          </edom>
+          <edom>
+            <edomv>TC</edomv>
+            <edomvd>Timber Crib</edomvd>
+          </edom>
+          <edom>
+            <edomv>VA</edomv>
+            <edomvd>Arch</edomvd>
+          </edom>
+          <edom>
+            <edomv>ROR</edomv>
+            <edomvd>Run of River</edomvd>
+          </edom>
+          <edom>
+            <edomv>SP</edomv>
+            <edomvd>Sheetpile</edomvd>
+          </edom>
+          <edom>
+            <edomv>BOXC</edomv>
+            <edomvd>Box Culvert</edomvd>
+          </edom>
+          <edom>
+            <edomv>BRIDGE</edomv>
+            <edomvd>Bridge</edomvd>
+          </edom>
+          <edom>
+            <edomv>BEAVER</edomv>
+            <edomvd>Beaver dam</edomvd>
+          </edom>
+          <edom>
+            <edomv>CULVERT</edomv>
+            <edomvd>Culvert</edomvd>
+          </edom>
+          <edom>
+            <edomv>DAM</edomv>
+            <edomvd>Dam (In MD, specifically)</edomvd>
+          </edom>
+          <edom>
+            <edomv>GAB</edomv>
+            <edomvd>Gabion, gabion basket, or gabion weir</edomvd>
+          </edom>
+          <edom>
+            <edomv>WEIR</edomv>
+            <edomvd>Gaging weird (In MD, specifically)</edomvd>
+          </edom>
+          <edom>
+            <edomv>PIPE</edomv>
+            <edomvd>Pipeline crossing</edomvd>
+          </edom>
+          <edom>
+            <edomv>SEWER</edomv>
+            <edomvd>Sewer line</edomvd>
+          </edom>
+          <edom>
+            <edomv>U</edomv>
+            <edomvd>Unknown</edomvd>
+          </edom>
+          <edom>
+            <edomv>ART</edomv>
+            <edomvd>Artificial</edomvd>
+          </edom>
+          <edom>
+            <edomv>RR</edomv>
+            <edomvd>Rip Rap</edomvd>
+          </edom>
+          <edom>
+            <edomv>LU</edomv>
+            <edomvd>Laid-up stone</edomvd>
+          </edom>
+          <edom>
+            <edomv>NT</edomv>
+            <edomvd>Natural</edomvd>
+          </edom>
+          <edom>
+            <edomv>PRIM</edomv>
+            <edomvd>Massachusetts</edomvd>
+          </edom>
+          <edom>
+            <edomv>SEC</edomv>
+            <edomvd>Massachusetts</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>P_CODE</attrlabl>
+        <attrdef>A code or codes indicating the purposes for which reservoir is used, in order of importance. The codes are concatenated if the dam has multiple purposes. For example, SCR would indicate the primary purposes of Water Supply and Flood Control and Storm Water Management, followed by Recreation. The data may contain words or abbreviations that were used instead of the appropriate codes; these have been retained (a la NID).</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>V</edomv>
+            <edomvd>Diversion</edomvd>
+          </edom>
+          <edom>
+            <edomv>Y</edomv>
+            <edomvd>Industry</edomvd>
+          </edom>
+          <edom>
+            <edomv>K</edomv>
+            <edomvd>Intake</edomvd>
+          </edom>
+          <edom>
+            <edomv>M</edomv>
+            <edomvd>Mill pond/Mill dam</edomvd>
+          </edom>
+          <edom>
+            <edomv>A</edomv>
+            <edomvd>Private</edomvd>
+          </edom>
+          <edom>
+            <edomv>B</edomv>
+            <edomvd>Public</edomvd>
+          </edom>
+          <edom>
+            <edomv>W</edomv>
+            <edomvd>Snowmaking pond</edomvd>
+          </edom>
+          <edom>
+            <edomv>U</edomv>
+            <edomvd>Unknown</edomvd>
+          </edom>
+          <edom>
+            <edomv>C</edomv>
+            <edomvd>Flood control and storm water management</edomvd>
+          </edom>
+          <edom>
+            <edomv>D</edomv>
+            <edomvd>Debris control</edomvd>
+          </edom>
+          <edom>
+            <edomv>F</edomv>
+            <edomvd>Fish and wildlife pond</edomvd>
+          </edom>
+          <edom>
+            <edomv>H</edomv>
+            <edomvd>Hydroelectric</edomvd>
+          </edom>
+          <edom>
+            <edomv>I</edomv>
+            <edomvd>Irrigation</edomvd>
+          </edom>
+          <edom>
+            <edomv>N</edomv>
+            <edomvd>Navigation</edomvd>
+          </edom>
+          <edom>
+            <edomv>O</edomv>
+            <edomvd>Other</edomvd>
+          </edom>
+          <edom>
+            <edomv>P</edomv>
+            <edomvd>Fire protection, stock, or small farm pond</edomvd>
+          </edom>
+          <edom>
+            <edomv>R</edomv>
+            <edomvd>Recreation</edomvd>
+          </edom>
+          <edom>
+            <edomv>S</edomv>
+            <edomvd>Water supply</edomvd>
+          </edom>
+          <edom>
+            <edomv>T</edomv>
+            <edomvd>Tailings</edomvd>
+          </edom>
+          <edom>
+            <edomv>E</edomv>
+            <edomvd>Sediment</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>YEAR</attrlabl>
+        <attrdef>Year the dam was built.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>WIDTH</attrlabl>
+        <attrdef>Width of the dam, in feet.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HEIGHT</attrlabl>
+        <attrdef>The maximum of either the dam height (the vertical distance between the lowest point on the crest of the dam and the lowest point in the original streambed), the hydraulic height (the vertical distance between the maximum designed water level and the lowest point in the original streambed), or the structural height (the vertical distance between the lowest point of the excavated foundation and the top of the dam) of the dam. The height is given in feet, to the nearest foot.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>LENGTH</attrlabl>
+        <attrdef>Length of the dam, in feet.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>SURFAREA</attrlabl>
+        <attrdef>The surface area, in acres, of the impoundment at its normal retention level.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>MAXSTOR</attrlabl>
+        <attrdef>The maximum storage in acre-feet. Maximum storage is the total storage space in a reservoir below the maximum attainable water surface elevation, including any surcharge storage.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>NORMSTOR</attrlabl>
+        <attrdef>The normal storage in acre-feet. Normal storage is the total storage space in a reservoir below the normal retention level, including dead and inactive storage and excluding any flood control surcharge storage. A value of 0 may indicate that the normal storage is unknown or may indicate that the dam is normally dry.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HAZCLASS</attrlabl>
+        <attrdef>A term indicating the potential hazard to the downstream area resulting from failure or mis-operation of the dam or facilities.   L=The potential hazard is low. A dam where failure or misoperation results in no probable loss of human life and low economic and/or environmental loss. Losses are principally limited to the owner's property.   S=The potential hazard is significant. A dam where failure or misoperation results in no probable loss of human life but can cause economic loss, environmental damage, disruption of lifeline facilities, or impact other concerns. These dams are often located in predominantly rural or agricultural areas but could be located in areas with population and significant infrastructure.   H=The potential hazard is high. A dam where failure or misoperation will probably cause loss of human life.   U=The potential hazard is unknown. D=(NY dams): Class "D" or "Negligible or No Hazard" dam: A dam that has been breached or removed, or has failed or otherwise no longer materially impounds waters, or a dam that was planned but never constructed. Class"D" dams are considered to be defunct dams posing negligible or no hazard.</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>S</edomv>
+            <edomvd>The hazard potential is significant.  A dam where failure or misoperation results in no probable loss of human life but can cause economic loss, environmental damage, disruption of lifeline facilities, or impact other concerns.  These dams are often located in predominantly rural or agricultural areas but could be located in areas with population and significant infrastructure.</edomvd>
+          </edom>
+          <edom>
+            <edomv>L</edomv>
+            <edomvd>The potential hazard is low. A dam where failure or misoperation results in no probable loss of human life and low economic and/or environmental loss. Losses are principally limited to the owner's property.</edomvd>
+          </edom>
+          <edom>
+            <edomv>H</edomv>
+            <edomvd>The potential hazard is high. A dam where failure or misoperation will probably cause loss of human life.</edomvd>
+          </edom>
+          <edom>
+            <edomv>U</edomv>
+            <edomvd>The potential hazard is unknown.</edomvd>
+          </edom>
+          <edom>
+            <edomv>D</edomv>
+            <edomvd>Class "D" or "Negligible or No Hazard" dam: A dam that has been breached or removed, or has failed or otherwise no longer materially impounds waters, or a dam that was planned but never constructed. Class"D" dams are considered to be defunct dams posing negligible or no hazard.</edomvd>
+            <edomvds>NY dams metadata</edomvds>
+          </edom>
+          <edom>
+            <edomv>B</edomv>
+            <edomvd>Class "B" or "Intermediate Hazard" dam: A dam failure may result in damage to isolated homes, main highways, and minor railroads; may result in the interruption of important utilities, including water supply, sewage treatment, fuel, power, cable or telephone infrastructure; and/or is otherwise likely to pose the threat of personal injury and/or substantial economic loss or substantial environmental damage. Loss of human life is not expected.</edomvd>
+            <edomvds>NY dams metadata</edomvds>
+          </edom>
+          <edom>
+            <edomv>C</edomv>
+            <edomvd>Class "C" or "High Hazard" dam: A dam failure may result in widespread or serious damage to home(s); damage to main highways, industrial or commercial buildings, railroads, and/or important utilities, including water supply, sewage treatment, fuel, power, cable or telephone infrastructure; or substantial environmental damage; such that the loss of human life or widespread substantial economic loss is likely.</edomvd>
+            <edomvds>NY Dams metadata</edomvds>
+          </edom>
+          <edom>
+            <edomv>SL</edomv>
+            <edomvd>(Small-Dam Low-Hazard Potential) - Failure of the dam is not expected to result in loss of life or significant property damage. Dam must also meet specific size and construction requirements</edomvd>
+            <edomvds>NJ DEP</edomvds>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>WATERSHED</attrlabl>
+        <attrdef>The watershed in which the dam is found.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>COND</attrlabl>
+        <attrdef>Condition of the dam.</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>A</edomv>
+            <edomvd>Abandoned</edomvd>
+          </edom>
+          <edom>
+            <edomv>BREACH</edomv>
+            <edomvd>Breached</edomvd>
+          </edom>
+          <edom>
+            <edomv>PB</edomv>
+            <edomvd>Partial breach</edomvd>
+          </edom>
+          <edom>
+            <edomv>DEL</edomv>
+            <edomvd>Deleted</edomvd>
+          </edom>
+          <edom>
+            <edomv>DR</edomv>
+            <edomvd>Drained.</edomvd>
+          </edom>
+          <edom>
+            <edomv>SERV</edomv>
+            <edomvd>In service</edomvd>
+          </edom>
+          <edom>
+            <edomv>UNUSE</edomv>
+            <edomvd>Not in use.</edomvd>
+          </edom>
+          <edom>
+            <edomv>REM</edomv>
+            <edomvd>Removed.</edomvd>
+          </edom>
+          <edom>
+            <edomv>U</edomv>
+            <edomvd>Unknown.</edomvd>
+          </edom>
+          <edom>
+            <edomv>FAIR</edomv>
+            <edomvd>Fair condition.</edomvd>
+          </edom>
+          <edom>
+            <edomv>GOOD</edomv>
+            <edomvd>Good condition.</edomvd>
+          </edom>
+          <edom>
+            <edomv>NO DAM</edomv>
+            <edomvd>No dam at this location.</edomvd>
+          </edom>
+          <edom>
+            <edomv>NONJ</edomv>
+            <edomvd>Non jurisdiction</edomvd>
+          </edom>
+          <edom>
+            <edomv>POOR</edomv>
+            <edomvd>Poor.</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>CITY</attrlabl>
+        <attrdef>Nearest city to the dam.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Source</attrlabl>
+        <attrdef>Source of the barrier data.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DEG_BARR</attrlabl>
+        <attrdef>Degree to which a dam is considered a barrier.  This information is for context only.  It is not used to calculate Passability scores</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>Complete barrier to all fish (12+ feet)</edomvd>
+          </edom>
+          <edom>
+            <edomv>2</edomv>
+            <edomvd>Small dam barrier (1-12 feet)</edomvd>
+          </edom>
+          <edom>
+            <edomv>3</edomv>
+            <edomvd>Partial breach</edomvd>
+          </edom>
+          <edom>
+            <edomv>4</edomv>
+            <edomvd>Barrier with fish ladder</edomvd>
+          </edom>
+          <edom>
+            <edomv>5</edomv>
+            <edomvd>Unlikely barrier - fully breached, weir, under 1ft dam.  (also COND=NO DAM or COND=REM or COND=DEL)</edomvd>
+          </edom>
+          <edom>
+            <edomv>6</edomv>
+            <edomvd>Unknown, assumed full barriers.</edomvd>
+          </edom>
+          <edom>
+            <edomv>7</edomv>
+            <edomvd>Locks</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>UNIQUE_ID</attrlabl>
+        <attrdef>Unique ID based on State ID field, with state abbreviation appended.  Road-stream corssings use the xy code from the NAACC database</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Duplicate</attrlabl>
+        <attrdef>Dam is a duplicate of another dam in the dataset</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>Dam is a duplicate - not used in the analysis</edomvd>
+          </edom>
+          <edom>
+            <edomv>0</edomv>
+            <edomvd>Dam is not a duplicate, or is the retained point of a duplicate pair</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>NO_BARRIER</attrlabl>
+        <attrdef>Indicates if a dam is not a fish passage barrier</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>No barrier present based on query: "COND" in ( 'BREACH', 'FAIL', 'NO DAM', 'REM') OR "DAM_NAME" like '%historical%'</edomvd>
+          </edom>
+          <edom>
+            <edomv>0</edomv>
+            <edomvd>Dam present based on query: "COND" NOT in ( 'BREACH', 'FAIL', 'NO DAM', 'REM')</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>NotOnHydro</attrlabl>
+        <attrdef>Indicates if a dam does not fall on the analysis hydrography</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>Dam does not fall on analysis hydrography</edomvd>
+          </edom>
+          <edom>
+            <edomv>0</edomv>
+            <edomvd>Dam does fall on the analysis hydrography</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Lock</attrlabl>
+        <attrdef>Indicates if the point is a lock</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>Point is a lock, or specified as not a blockage</edomvd>
+          </edom>
+          <edom>
+            <edomv>0</edomv>
+            <edomvd>Point is not a lock</edomvd>
+          </edom>
+          <edom>
+            <edomv>2</edomv>
+            <edomvd>Point is a guard lock or lock &amp; dam</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>OthNonDam</attrlabl>
+        <attrdef>Indicates if the point is not a dam</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>Point is not a barrier: floodwall, dikes</edomvd>
+          </edom>
+          <edom>
+            <edomv>0</edomv>
+            <edomvd>Point is a dam</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>WrngCoord</attrlabl>
+        <attrdef>Indicates if the dam point is lacking coordinates, or has coordinates that are significantly wrong (e.g. out of state)</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>Dam has no coordinates or significantly wrong coordinates (wrong state)</edomvd>
+          </edom>
+          <edom>
+            <edomv>0</edomv>
+            <edomvd>Dam has approximately correct coordinates</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Historical</attrlabl>
+        <attrdef>Indicates if a dam is historical</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>Dam is historical</edomvd>
+          </edom>
+          <edom>
+            <edomv>0</edomv>
+            <edomvd>Dam is not historical</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Use</attrlabl>
+        <attrdef>Is dam used in NE Aquatic Cnnectivity Analysis</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>0</edomv>
+            <edomvd>Not used in NE Aquatic Connectivity analysis</edomvd>
+          </edom>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>Dam used in the NE Aquatic Connectivity Analysis</edomvd>
+          </edom>
+          <edom>
+            <edomv>2</edomv>
+            <edomvd>Dam on river that is not part of the NE Aquatic Connecitvity Analysis.  Used for calculating dam density metric for target dam watersheds.</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>NIDID</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>NIDIDsourc</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>PrimPurp</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>PO_NAME</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>Latit</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>Longit</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>Comment</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>AtFalls</attrlabl>
+        <attrdef>Dam is located at a natural waterfall</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HistFishOc</attrlabl>
+        <attrdef>Dam is located within a HUC8 watershed with the historical presence of 1 or more anadromous fishone or more </attrdef>
+        <attrdefs>Nature Serve</attrdefs>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>yes</edomvd>
+          </edom>
+        </attrdomv>
+        <attrdomv>
+          <edom>
+            <edomv>0</edomv>
+            <edomvd>No</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>RemovalPlanned</attrlabl>
+        <attrdef>Yes/No if dam is currently slated for removal</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>NAACC_SOURCE</attrlabl>
+        <attrdef>SOurce of the data for the revised NE Aquatic Connectivity analysis</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>FERC</attrlabl>
+        <attrdef>Federal Energy Regulatory COmmission ID, if applicable &amp; available</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>NAACC_Editor</attrlabl>
+        <attrdef>Name of person who edited the data for the NAACC NE Aquatic OCNnectviity version 2</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>NAACC_Editor_Comment</attrlabl>
+        <attrdef>Comment of person who edited the data for the NAACC NE Aquatic OCNnectviity version 2</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Type</attrlabl>
+        <attrdef>Type of barrier</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>OSMID</attrlabl>
+        <attrdef>The Open Street Map segment ID.  Applicable to road-stream crossings only</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>ROADCLASS</attrlabl>
+        <attrdef>Open Street Map road class -Applicable to road-stream crossings only</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>1</edomv>
+            <edomvd>Motorway</edomvd>
+            <edomvds>Open Street Map</edomvds>
+          </edom>
+          <edom>
+            <edomv>2</edomv>
+            <edomvd>Primary, trunk, motorway link</edomvd>
+            <edomvds>Open Street Map</edomvds>
+          </edom>
+          <edom>
+            <edomv>3</edomv>
+            <edomvd>secondary</edomvd>
+            <edomvds>Open Street Map</edomvds>
+          </edom>
+          <edom>
+            <edomv>4</edomv>
+            <edomvd>tertiary</edomvd>
+            <edomvds>Open Street Map</edomvds>
+          </edom>
+          <edom>
+            <edomv>5</edomv>
+            <edomvd>residential, service</edomvd>
+            <edomvds>Open Street Map</edomvds>
+          </edom>
+          <edom>
+            <edomv>6</edomv>
+            <edomvd>track, abandoned</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Passability</attrlabl>
+        <attrdef>Value indicating degree of passability.  0= completely impassable, 1=completely passable.  Calculated based on serval landscape factors as part of the UMass Critical Linkages project.  The most important predictor is flow accumulation.  Stream gradient and incisement, and local topographic complexity also go into the model.See pages 21-22 of http://jamba.provost.ads.umass.edu/web/lcc/DSL_documentation_connectivity.pdf for more information.  </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>bridge</attrlabl>
+        <attrdef>Boolean: is the barrier a bridge (0=no, 1=yes).  Based on landscape factors calculated as part of the UMass Critical Linkages analysis</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>bridgeprob</attrlabl>
+        <attrdef>Modeled probability that the barrier is a bridge</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Passability_Desc</attrlabl>
+        <attrdef>Passablity category.  Based on the "PAssability" field and the follwoing classes:
+No barrier  1.0 
+Insignificant barrier 0.80 – 0.99 
+Minor barrier  0.60 – 0.79 
+Moderate barrier  0.40 – 0.59 
+Significant barrier  0.20 – 0.39 
+Severe barrier  0.00 – 0.19 </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Use_Dams</attrlabl>
+        <attrdef>Yes/No flag:  Barrier is a dam.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Use_Dams_ExclPassage</attrlabl>
+        <attrdef>Yes/No flag:  Barrier is a dam with no documented passage</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Use_Severe</attrlabl>
+        <attrdef>Yes/No flag:  Barrier is a severe barrier based on Passability score</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Use_Severe_ExclPassage</attrlabl>
+        <attrdef>Yes/No flag:  Barrier is a severe barrier based on Passability score, excluding dams with passage</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Use_Significant</attrlabl>
+        <attrdef>Yes/No flag:  Barrier is a significant or severe barrier based on Passability score</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Use_Moderate</attrlabl>
+        <attrdef>Yes/No flag:  Barrier is a moderate, significant or severe barrier based on Passability score</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Use_Minor</attrlabl>
+        <attrdef>Yes/No flag:  Barrier is a minor, moderate, significant or severe barrier based on Passability score</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Use_Insignificant</attrlabl>
+        <attrdef>Yes/No flag:  Barrier is an insignificant, minor, moderate, significant or severe barrier based on Passability score</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>emID</attrlabl>
+        <attrdef>temporary ID for internal uses</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HUC4</attrlabl>
+        <attrdef>4-digit USGS Hydrologic Unit Code for the watershed the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HUC4_Name</attrlabl>
+        <attrdef>4-digit USGS Hydrologic Unit Code name for the watershed the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HUC6</attrlabl>
+        <attrdef>6-digit USGS Hydrologic Unit Code for the watershed the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HUC6_Name</attrlabl>
+        <attrdef>6-digit USGS Hydrologic Unit Code name for the watershed the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HUC8</attrlabl>
+        <attrdef>8-digit USGS Hydrologic Unit Code for the watershed the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HUC8_Name</attrlabl>
+        <attrdef>8-digit USGS Hydrologic Unit Code name for the watershed the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HUC10</attrlabl>
+        <attrdef>10-digit USGS Hydrologic Unit Code for the watershed the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HUC10_Name</attrlabl>
+        <attrdef>10-digit USGS Hydrologic Unit Code name for the watershed the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HUC12</attrlabl>
+        <attrdef>12-digit USGS Hydrologic Unit Code for the watershed the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HUC12_Name</attrlabl>
+        <attrdef>12-digit USGS Hydrologic Unit Code name for the watershed the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>COMID</attrlabl>
+        <attrdef>NHDPlus ID for the line segment that the barrier is on</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>GNIS_NAME</attrlabl>
+        <attrdef>Stream name that the barrier is on from the NHDPlus</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>REACHCODE</attrlabl>
+        <attrdef>Stream reach ID for the segment the barrier is on from the NHDPlus</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>TotDASqKM</attrlabl>
+        <attrdef>Total drainage area (in square Kilometers) for the line segment that the barrier is on. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>slope</attrlabl>
+        <attrdef>Slope of the stream segment that the barrier is on.  From the NHDPlus</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Hard</attrlabl>
+        <attrdef>All barriers in the analysis are Hard barrier, based on the meaning as it pertains to the Barrier Analysis tool.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batBType</attrlabl>
+        <attrdef>Type of barrier.  Used in the internal processing of the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batFuncUS</attrlabl>
+        <attrdef>Length in meters of the connected river segments upstream of a barrier.  Defined by upstream barriers and/or headtwaters. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batCountUS</attrlabl>
+        <attrdef>The count of all barriers upstream of a barrier. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batLenUS</attrlabl>
+        <attrdef>The length of all river segemtns upstream of a barrier, ignoring all other barriers.  Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batFuncDS</attrlabl>
+        <attrdef>The length of the connected river segments downstream of a barrier.  Defined by the barrier downstream of a barrier as well as barriers on tributaries that feed into the river below a barrier. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batCountDS</attrlabl>
+        <attrdef>Count of other barriers on the downstream flowpath of a barrier. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batDis2Mth</attrlabl>
+        <attrdef>Distance in meters to the mouth of the river for each barrier. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batUSBID</attrlabl>
+        <attrdef>batNetID for the nearest upstream barrier. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batUSBDist</attrlabl>
+        <attrdef>Distance in meters to the nearest upstream barrier. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batDSBID</attrlabl>
+        <attrdef>batNetID of the nearest downstream barrier. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batDSBDist</attrlabl>
+        <attrdef>Distance in meters to the nearest downstream barrier. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batTotUSDS</attrlabl>
+        <attrdef>The combined upstream and downstream functional river networks.   This is the recombined river network that a resident fish would have access to if a barrier was removed.  Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batAbs</attrlabl>
+        <attrdef>This metric is the minimum of the two functional networks of a barrier. For example if the upstream functional network was 10 kilometres and downstream functional network was 5 kilometres then the Absolute gain will be 5 kilometres. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batRel</attrlabl>
+        <attrdef>This metric is Absolute gain (batAbs) divided by the total connected length (batTotUSDS).  Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batDSDnsty</attrlabl>
+        <attrdef>This metric is simply the value held in batCountDS (the total number of barriers downstream) divided by the value held in batDis2Mth and stored in the new field batDSDnsty. If there are no downstream barriers (batCountDS = 0) then this metric is set to 0. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batUSDnsty</attrlabl>
+        <attrdef>This metric is simply the value held in batCountUS divided by the value held in batLenUS and stored in the new field batUSDnsty. If there are no upstream barriers (batCountUS = 0) then this metric is set to 0. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batUSNetID</attrlabl>
+        <attrdef>The ID of the functional network upstream of the barrier. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>batDSNetID</attrlabl>
+        <attrdef>The ID of the functional network downstream of the barrier. Calculated by the Barrier Analysis Tool (BAT)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSFalls</attrlabl>
+        <attrdef>The number of natural barriers downstream of a barrier.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSHydro</attrlabl>
+        <attrdef>The number of hydropower facilaities downstream of a barrier.  Hydropower facilities identified using using the definition query "P_CODE LIKE '%H%'"</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DA_Area</attrlabl>
+        <attrdef>Total upstream drainage area in square meters for the line segment that the barrier is on.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DA_Forest</attrlabl>
+        <attrdef>sq meters of  forested landcover in entire upstream watershed.  Calculated 2011 National Land Cover Database.
+
+Forested landcover aggregated from the following classes: deciduous forest, evergreen forest, mixed forest
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DA_Ag</attrlabl>
+        <attrdef>sq meters of agricultural landcover in entire upstream watershed.  Calculated 2011 National Land Cover Database.
+
+Forested landcover aggregated from the following classes: cultivate crops, pasture/hay
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DA_Natural</attrlabl>
+        <attrdef>sq meters of natural landcover in entire upstream watershed.  Calculated 2011 National Land Cover Database.
+
+Natural landcover aggregated from the following classes: open water, barren land, deciduous forest, evergreen forest, mixed forest, scrub/shrub, grassland/herbaceous, woody wetlands, emergent wetlands
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DA_ImprvCount</attrlabl>
+        <attrdef>The count of cells upstream of the ToNode for the line segment the barrier is on in the 2011 National Landocver dataset impervious surface data</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DA_ImprvSum</attrlabl>
+        <attrdef>The summed impervious surface value for cells upstream of the ToNode for the line segment the barrier is on in the 2011 National Landocver dataset impervious surface data</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>NESZCL</attrlabl>
+        <attrdef>Size class of the river that the barrier is on.  From TNC's Northeast Aquatic Habitat Classification System.  Based on the drainage area of the river where:
+
+Size Class | Upstream DA SQ KM
+1a | Headwaters | 0 - 10
+1b | Creeks |   10 - 100
+2   | Small Rivers  |  100 - 518
+3a | Medium Tributary Rivers | 518 - 2590
+3b | Medium Mainstem Rivers | 2590 – 10,000
+4   | Large Rivers |10,000 – 25,000
+5   | Great Rivers | &gt;=25,000
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>NESZCL_Int</attrlabl>
+        <attrdef>An integer representing the NESZCL attribute where:
+
+
+1a  = 1
+1b  = 2
+2    = 3
+3a  = 4
+3b  = 5
+4    = 6
+5    = 7
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>nahcs_comid</attrlabl>
+        <attrdef>The id of the line segment that the barrier is on from the NHDPLus v1 that the NE Aquatic Habitat Classification System uses</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>onConsLand</attrlabl>
+        <attrdef>Whether the barrier is location on conservation land. Based on TNC’s 2014 Eastern Division secured areas database
+.  0=no; 1=yes</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usMiles1a</attrlabl>
+        <attrdef>Miles of size 1a (based on NESZCL) river in the barrier's upstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usMiles1b</attrlabl>
+        <attrdef>Miles of size 1b (based on NESZCL) river in the barrier's upstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usMiles2</attrlabl>
+        <attrdef>Miles of size 2 (based on NESZCL) river in the barrier's upstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usMiles3a</attrlabl>
+        <attrdef>Miles of size 3a (based on NESZCL) river in the barrier's upstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usMiles3b</attrlabl>
+        <attrdef>Miles of size 3b (based on NESZCL) river in the barrier's upstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usMiles4</attrlabl>
+        <attrdef>Miles of size 4 (based on NESZCL) river in the barrier's upstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usMiles5</attrlabl>
+        <attrdef>Miles of size 5 (based on NESZCL) river in the barrier's upstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsMiles1a</attrlabl>
+        <attrdef>Miles of size 1a (based on NESZCL) river in the barrier's downstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsMiles1b</attrlabl>
+        <attrdef>Miles of size 1b (based on NESZCL) river in the barrier's downstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsMiles2</attrlabl>
+        <attrdef>Miles of size 2 (based on NESZCL) river in the barrier's downstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsMiles3a</attrlabl>
+        <attrdef>Miles of size 3a (based on NESZCL) river in the barrier's downstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsMiles3b</attrlabl>
+        <attrdef>Miles of size 3b (based on NESZCL) river in the barrier's downstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsMiles4</attrlabl>
+        <attrdef>Miles of size 4 (based on NESZCL) river in the barrier's downstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsMiles5</attrlabl>
+        <attrdef>Miles of size 5 (based on NESZCL) river in the barrier's downstream functional river network. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>totMiles1a</attrlabl>
+        <attrdef>Miles of size 1a (based on NESZCL) river in the barrier's total functional network (upstream + downstream).</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>totMiles1b</attrlabl>
+        <attrdef>Miles of size 1b (based on NESZCL) river in the barrier's total functional network (upstream + downstream).</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>totMiles2</attrlabl>
+        <attrdef>Miles of size 2 (based on NESZCL) river in the barrier's total functional network (upstream + downstream).</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>totMiles3a</attrlabl>
+        <attrdef>Miles of size 3a (based on NESZCL) river in the barrier's total functional network (upstream + downstream).</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>totMiles3b</attrlabl>
+        <attrdef>Miles of size 3b (based on NESZCL) river in the barrier's total functional network (upstream + downstream).</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>totMiles4</attrlabl>
+        <attrdef>Miles of size 4 (based on NESZCL) river in the barrier's total functional network (upstream + downstream).</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>totMiles5</attrlabl>
+        <attrdef>Miles of size 5 (based on NESZCL) river in the barrier's total functional network (upstream + downstream).</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>MiNewSzCl</attrlabl>
+        <attrdef>Miles river  in the barrier's upstream functional network  in size classes (NESZCL) that are not in the downstream functional network.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>RelGainMi</attrlabl>
+        <attrdef>MiNewSzCl / Total functional river network</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>TotNumSzCl</attrlabl>
+        <attrdef>Total number of river size classes (NESZCL) &gt;0.5 miles in the barrier's total functional network</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usNumSzCl</attrlabl>
+        <attrdef>Number of river size classes (NESZCL) &gt;0.5 miles in the barrier's upstream functional network </attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usSzClGn</attrlabl>
+        <attrdef>Number of river size classes (NESZCL) &gt;0.5 miles in the barrier's upstream functional network in size classes that are not present in the downstream functional network</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usNatARA</attrlabl>
+        <attrdef>% natural landcover within Active River Area of the upstream functional river network.
+
+National Landcover Database 2011 data.  Includes the following classes: open water, barren land, deciduous forest, evergreen forest, mixed forest, scrub/shrub, grassland/herbaceous, woody wetlands, emergent wetlands
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsNatARA</attrlabl>
+        <attrdef>% natural landcover within Active River Area of the downstream functional river network.
+
+National Landcover Database 2011 data.  Includes the following classes: open water, barren land, deciduous forest, evergreen forest, mixed forest, scrub/shrub, grassland/herbaceous, woody wetlands, emergent wetlands
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usForARA</attrlabl>
+        <attrdef>% forested landcover within Active River Area of the upstream functional river network.
+
+National Landcover Database 2011 data.  Includes the following classes: deciduous, evergreen &amp; mixed forest
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsForARA</attrlabl>
+        <attrdef>% forested landcover within Active River Area of the downstream functional river network.
+
+National Landcover Database 2011 data.  Includes the following classes: deciduous, evergreen &amp; mixed forest
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usAgARA</attrlabl>
+        <attrdef>% agricultural landcover within Active River Area of the upstream functional river network.
+
+National Landcover Database 2011 data.  Includes the following classes: cultivated crops, pasture/hay
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsAgARA</attrlabl>
+        <attrdef>% agricultural landcover within Active River Area of the downstream functional river network.
+
+National Landcover Database 2011 data.  Includes the following classes: cultivated crops, pasture/hay
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usImpARA</attrlabl>
+        <attrdef>% impervious landcover within Active River Area of the upstream functional river network.
+
+National Landcover Database 2011 data
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsImpARA</attrlabl>
+        <attrdef>% impervious landcover within Active River Area of the downstream functional river network.
+
+National Landcover Database 2011 data
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>USARA_M2</attrlabl>
+        <attrdef>Area in square meters of the Active River area of the barrier's upstream functional network</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>USARA_IMPRV_CLCNT</attrlabl>
+        <attrdef>Count of cells in the 2011 National Landcover Dataset impervious surface raster in the Active River Area of the barrier's upstream functional network</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>USARA_IMPRV_SUM</attrlabl>
+        <attrdef>Sum of impervious surface values in the 2011 National Landcover Dataset impervious surface raster in the Active River Area of the barrier's upstream functional network</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>USARA_NAT_M2</attrlabl>
+        <attrdef>Area in square meters of natural landcover types in the Active River Area of the barrier's upstream functional network.  National Landcover Database 2011 data.  Includes the following classes: open water, barren land, deciduous forest, evergreen forest, mixed forest, scrub/shrub, grassland/herbaceous, woody wetlands, emergent wetlands
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>USARA_FOR_M2</attrlabl>
+        <attrdef>Area in square meters of forested landcover types in the Active River Area of the barrier's upstream functional network.  National Landcover Database 2011 data.  Includes the following classes: deciduous, evergreen &amp; mixed forest
+
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>USARA_AG_M2</attrlabl>
+        <attrdef>Area in square meters of forested landcover types in the Active River Area of the barrier's upstream functional network.  National Landcover Database 2011 data.  Includes the following classes: cultivated crops, pasture/hay
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSARA_M2</attrlabl>
+        <attrdef>Area in square meters of the Active River area of the barrier's downstream functional network</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSARA_IMPRV_CLCNT</attrlabl>
+        <attrdef>Count of cells in the 2011 National Landcover Dataset impervious surface raster in the Active River Area of the barrier's downstream functional network</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSARA_IMPRV_SUM</attrlabl>
+        <attrdef>Sum of impervious surface values in the 2011 National Landcover Dataset impervious surface raster in the Active River Area of the barrier's upstream functional network</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSARA_NAT_M2</attrlabl>
+        <attrdef>Area in square meters of natural landcover types in the Active River Area of the barrier's downstream functional network.  National Landcover Database 2011 data.  Includes the following classes: open water, barren land, deciduous forest, evergreen forest, mixed forest, scrub/shrub, grassland/herbaceous, woody wetlands, emergent wetlands</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSARA_FOR_M2</attrlabl>
+        <attrdef>Area in square meters of forested landcover types in the Active River Area of the barrier's downstream functional network.  National Landcover Database 2011 data.  Includes the following classes: deciduous, evergreen &amp; mixed forest
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSARA_AG_M2</attrlabl>
+        <attrdef>Area in square meters of forested landcover types in the Active River Area of the barrier's downstream functional network.  National Landcover Database 2011 data.  Includes the following classes: cultivated crops, pasture/hay
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSALEWIFE</attrlabl>
+        <attrdef>Presence of alewife downstream of barrier.  Based on:
+Documented habitat in some portion of the dam’s downstream functional network   AND barrier is on a stream size that is likely to support that species: size 1a+
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSBLUEBACK</attrlabl>
+        <attrdef>Presence of blueback herring downstream of barrier.  Based on:
+Documented habitat in some portion of the dam’s downstream functional network   AND barrier is on a stream size that is likely to support that species: size 1a+
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSAMSHAD</attrlabl>
+        <attrdef>Presence of American shad downstream of barrier.  Based on:
+Documented habitat in some portion of the dam’s downstream functional network   AND barrier is on a stream size that is likely to support that species: size 2+
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSHICKSHAD</attrlabl>
+        <attrdef>Presence of hickory shad downstream of barrier.  Based on:
+Documented habitat in some portion of the dam’s downstream functional network   AND barrier is on a stream size that is likely to support that species: size 2+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSSTRBASS</attrlabl>
+        <attrdef>Presence of striped bass downstream of barrier.  Based on:
+Documented habitat in some portion of the dam’s downstream functional network   AND barrier is on a stream size that is likely to support that species: size 3b+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSATLSTUR</attrlabl>
+        <attrdef>Presence of Atlantic sturgeon downstream of barrier.  Based on:
+Documented habitat in some portion of the dam’s downstream functional network   AND barrier is on a stream size that is likely to support that species: size 4+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DSATLSALM</attrlabl>
+        <attrdef>Presence of Atlantic salmon downstream of barrier.  Based on:
+Documented habitat in some portion of the dam’s downstream functional network   AND barrier is on a stream size that is likely to support that species: size 1a+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HAB_ALEWIFE</attrlabl>
+        <attrdef>Binary: barrier is on a stream that is of a size class suitable for alewife : size 1a+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HAB_BLUEBACK</attrlabl>
+        <attrdef>Binary: barrier is on a stream that is of a size class suitable for blueback herring : size 1a+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HAB_AMSHAD</attrlabl>
+        <attrdef>Binary: barrier is on a stream that is of a size class suitable for American shad : size 2+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HAB_HICKSHAD</attrlabl>
+        <attrdef>Binary: barrier is on a stream that is of a size class suitable for hickory shad : size 2+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HAB_STRBASS</attrlabl>
+        <attrdef>Binary: barrier is on a stream that is of a size class suitable for striped bass : size 3b+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HAB_ATLSTUR</attrlabl>
+        <attrdef>Binary: barrier is on a stream that is of a size class suitable for Atlantic sturgeon : size 4+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>HAB_ATLSALM</attrlabl>
+        <attrdef>Binary: barrier is on a stream that is of a size class suitable for Atlantic salmon : size 1a+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usUnsnapDens</attrlabl>
+        <attrdef>Density of barriers that are not on the 1:100k NHDPlus in the catchment of the barrier's upstream functional network. (#/catchment area in sq meters)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsUnsnapDens</attrlabl>
+        <attrdef>Density of barriers that are not on the 1:100k NHDPlus in the catchment of the barrier's downstream functional network. (#/catchment area in sq meters)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>in_EBTJV_2012</attrlabl>
+        <attrdef>Barrier within an NHD catchment occupied by trout based on Eastern Brook Trout Joint Venture (EBTJV) data. (Mark Hudy 2012)
+Catchments with trout identified by the query “Trout =1</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>in_deWeberTrout</attrlabl>
+        <attrdef>Barrier within a catchment with modeled brook trout occupancy. (DeWeber &amp; Wagner 2015)
+Catchments occupied by brook trout identified using the “occur46” scenario from DeWeber &amp; Wagner 2015:
+a binary classification (1 = present; 0 = absent) of Brook Trout occurrence based on a threshold that was equal to prevalence in the training data set, which produces near-optimal classification accuracy and could be used when false positives and false negatives have equal costs.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>US_EBTJV_2012</attrlabl>
+        <attrdef>The barrier's upstream functional network includes a en EBTJV catchment where Trout=1.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DS_EBTJV_2012</attrlabl>
+        <attrdef>The barrier's downstream functional network includes a en EBTJV catchment where Trout=1.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>block_EBTJV_2012</attrlabl>
+        <attrdef>NHD catchments occupied by trout are in one of a barriers functional networks – either upstream or downstream, but not both
+Based on 2012 EBTJV data
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>US_deWeberTrout</attrlabl>
+        <attrdef>The barrier's upstream functional network includes an modeled trout catchment (DeWeber &amp; Wagner 2015;  where occur46=1)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DS_deWeberTrout</attrlabl>
+        <attrdef>The barrier's downstream functional network includes an modeled trout catchment (DeWeber &amp; Wagner 2015;  where occur46=1)</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>block_BT_DeWeber</attrlabl>
+        <attrdef>NHD catchments occupied by trout are in one of a barriers functional networks – either upstream or downstream, but not both
+Based on DeWeber &amp; Wagner 2015 data
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsPassabilityProduct</attrlabl>
+        <attrdef>Each barrier is assigned a passability score from 0 (no passage) to 1 (full passage).  Dams are assigned a score of 0.  Crossings which have been surveyed are assigned a score based on the NAACC’s numeric scoring system.  Crossings which have not been surveyed are assigned an estimated score as part of the UMass Critical Linkages project.   
+
+This metric is the product of the passability scores of all downstream barriers.  It is a measure of the difficulty an aquatic species would have to reach the base of the barrier in question.
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usMiCold</attrlabl>
+        <attrdef>Miles of cold water habitat in the barrier's upstream functional network.  Cold water data from the Northeast Aquatic Habitat Classification System</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsMiCold</attrlabl>
+        <attrdef>Miles of cold water habitat in the barrier's downstream functional network.  Cold water data from the Northeast Aquatic Habitat Classification System</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>usMiCool</attrlabl>
+        <attrdef>Miles of cold or cool water habitat in the barrier's upstream functional network.  Cold water data from the Northeast Aquatic Habitat Classification System</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>dsMiCool</attrlabl>
+        <attrdef>Miles of cold or cool water habitat in the barrier's downstream functional network.  Cold water data from the Northeast Aquatic Habitat Classification System</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>totMiCold</attrlabl>
+        <attrdef>Miles of cold water habitat in the barrier's total (upstream + downstream)functional network.  Cold water data from the Northeast Aquatic Habitat Classification System</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>totMiCC</attrlabl>
+        <attrdef>Miles of cold or cool water habitat in the barrier's total (upstream + downstream)functional network.  Cold water data from the Northeast Aquatic Habitat Classification System</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>fishRich</attrlabl>
+        <attrdef>Current native fish species richness in the watershed within which the barrier is located
+
+Based on NatureServe watershed (8-digit HUC)  data
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>g123Fish</attrlabl>
+        <attrdef>Count of rare (G1-G3) fish species in the watershed within which the barrier is located
+
+Based on NatureServe watershed (HUC8)  data
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>g123Mussel</attrlabl>
+        <attrdef>Count of rare (G1-G3) mussel species in the watershed within which the barrier is located
+
+Based on NatureServe watershed (HUC8)  data
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>g123Cray</attrlabl>
+        <attrdef>Count of rare (G1-G3) crayfish species in the watershed within which the barrier is located
+
+Based on NatureServe watershed (HUC8)  data
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>CumDistInd</attrlabl>
+        <attrdef>Relative risk of habitat degradation based on the mapped level of disturbance to fish habitats
+Based on National Fish Habitat Partnership data 
+Scores are passed to each barrier from the NHD Plus catchment it is located within, where:
+1.0 – 1.5 = Very High Relative Risk of Habitat Degradation
+1.6 – 2.5 = High Relative Risk of Habitat Degradation
+2.6 – 3.4 =Moderate Relative Risk of Habitat Degradation
+3.5 – 4.2 = Low Relative Risk of Habitat Degradation
+4.3 – 5.0 = Very Low Relative Risk of Habitat Degradation
+
+Barriers located in catchments that were not scored (No Data) are given a Moderate value to minimize the impact of the lack of data on the relative barrier prioritization
+
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>CumDistTXT</attrlabl>
+        <attrdef>Relative risk of habitat degradation based on the mapped level of disturbance to fish habitats
+Based on National Fish Habitat Partnership data 
+Scores are passed to each barrier from the NHD Plus catchment it is located within, where:
+1.0 – 1.5 = Very High Relative Risk of Habitat Degradation
+1.6 – 2.5 = High Relative Risk of Habitat Degradation
+2.6 – 3.4 =Moderate Relative Risk of Habitat Degradation
+3.5 – 4.2 = Low Relative Risk of Habitat Degradation
+4.3 – 5.0 = Very Low Relative Risk of Habitat Degradation
+
+
+Barriers located in catchments that were not scored (No Data) are given a Moderate value to minimize the impact of the lack of data on the relative barrier prioritization
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DA_PercNat</attrlabl>
+        <attrdef>% natural landcover in entire upstream watershed.  Calculated 2011 National Land Cover Database.
+
+Natural landcover aggregated from the following classes: open water, barren land, deciduous forest, evergreen forest, mixed forest, scrub/shrub, grassland/herbaceous, woody wetlands, emergent wetlands
+
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DA_PercFor</attrlabl>
+        <attrdef>% forested landcover in entire upstream watershed.  Calculated 2011 National Land Cover Database.
+
+Forested landcover aggregated from the following classes: deciduous forest, evergreen forest, mixed forest
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DA_PercAg</attrlabl>
+        <attrdef>% agricultural landcover in entire upstream watershed.  Calculated 2011 National Land Cover Database.
+
+Forested landcover aggregated from the following classes: cultivate crops, pasture/hay
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>DA_PercImp</attrlabl>
+        <attrdef>% Impervious surface in entire upstream (contributing) watershed.  Calculated 2011 National Landcover Database percent developed imperviousness.   
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>QDSANAD</attrlabl>
+        <attrdef>Presence of habitat for 1 or more of the 7 anadromous species included in this analysis based on the data and methods described for each species: 
+alewife, blueback herring, American shad, hickory shad, striped bass, Atlantic sturgeon, Atlantic salmon
+
+Habitat for each species is coded as “Current”, “Historical”, or “None Documented”
+
+If current and historical habitat are documented in the downstream functional network for different species, the current habitat trumps the historical habitat.  So if alewife habitat is “Current”, American shad habitat is “Historical” this metric will be “Current”, indicating that habitat for 1 or more anadromous species is currently documented in the Barriers downstream network (based on the methods described for each species).
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>QDSNUMANAD</attrlabl>
+        <attrdef>The number of anadromous species with documented current habitat in the downstream functional network of each barrier based on the data and methods described for each species: 
+alewife, blueback herring, American shad, hickory shad, striped bass, shortnose sturgeon, Atlantic sturgeon, Atlantic salmon
+
+
+</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Region</attrlabl>
+        <attrdef>The NHD region (HUC02) the barrier is within</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>FinalRank</attrlabl>
+        <attrdef>The sequential rank that is the raw result of the prioritization.  Low values (FinalRank=1) are the highest priorities.  Given the extreme precision with which metrics can be calculated in a GIS, the FinalRank should be used with caution.  The "Tier" fields are the FinalRank binned into 5% tiers and are more appropriate for assessing barriers.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Tier</attrlabl>
+        <attrdef>The FinalRank field binned into 5% tiers (each Tier contains 5% of the results). Low values (Tier = 1) are high priorities.  This should be considered the primary result of a prioritization.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>AvgTier</attrlabl>
+        <attrdef>The average Tier across multiple runs of a prioritization.  If only one class of barrier passability is used this value will be identical to the "Tier" field.  If multiple iterations are run (as with the NAACC Consensus Anadromous Fish Scenario), this value will be the average of the iterations.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>ResultSymbology</attrlabl>
+        <attrdef>Text field to display the results.  A combination of the AvgTier field and the Passability_Desc field. </attrdef>
+      </attr>
+    </detailed>
+  </eainfo>
+  <metainfo>
+    <metd>20160927</metd>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>The Nature Conservancy</cntorg>
+          <cntper>Erik Martin</cntper>
+        </cntorgp>
+        <cntemail>emartin@tnc.org</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+    <mettc>local time</mettc>
+    <metac>The Nature Conservancy reserves all rights in data provided. All data are provided as is. This is not a survey quality dataset. The Nature Conservancy makes no warranty as to the currency, completeness, accuracy or utility of any specific data.  This disclaimer applies both to individual use of the data and aggregate use with other data. It is strongly recommended that careful attention be paid to the contents of the metadata file associated with these data.</metac>
+    <metuc>The Nature Conservancy (TNC) created this data set from the manipulation, analysis, and/or synthesis of publicly available data sources. Commercial use of this data set is prohibited.  This data set must be cited on all electronic and hard copy products using the language of the Data Set Credit.
+
+</metuc>
+  </metainfo>
+</metadata>
