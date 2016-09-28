@@ -431,7 +431,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 		                this.consensusResultFilterFieldList = "";
 		                for (var i=0; i< this.filters.resultFilters.resultFilterFields.length; i++){
 		                    this.consensusResultFilterFieldList += "<option value='" + this.filters.resultFilters.resultFilterFields[i].resultGISName + "'>" + this.filters.resultFilters.resultFilterFields[i].resultPrettyName + "</option>";
-							console.log(this.consensusResultFilterFieldList);
 						}
 		                $("#" + this.appDiv.id + "filterConsensusResultsField").html(this.consensusResultFilterFieldList);
 		      
