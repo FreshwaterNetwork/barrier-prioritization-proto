@@ -8,7 +8,14 @@
 				{"metricGISName" : "HUC6", "metricPrettyName" : "HUC6"},
 				{"metricGISName" : "HUC6_Name", "metricPrettyName" : "HUC6 Name"},
 				{"metricGISName" : "HUC8", "metricPrettyName" : "HUC8"},
-				{"metricGISName" : "HUC8_Name", "metricPrettyName" : "HUC8 Name"}
+				{"metricGISName" : "HUC8_Name", "metricPrettyName" : "HUC8 Name"},
+				{"metricGISName" : "DSALEWIFE", "metricPrettyName" : "Alewife Downstream"},
+				{"metricGISName" : "DSBLUEBACK", "metricPrettyName" : "Blueback Herring Downstream"},
+				{"metricGISName" : "DSAMSHAD", "metricPrettyName" : "American Shad Downstream"},
+				{"metricGISName" : "DSHICKSHAD", "metricPrettyName" : "Hickory Shad Downstream"},
+				{"metricGISName" : "DSSTRBASS", "metricPrettyName" : "Striped Bass Downstream"},
+				{"metricGISName" : "DSATLSTUR", "metricPrettyName" : "Atlantic Sturgeon Downstream"},
+				{"metricGISName" : "DSATLSALM", "metricPrettyName" : "Atlantic Salmon Downstream"}
 		],
 		
 		"metricValuesTable" : {
@@ -180,7 +187,7 @@
 					{"metricValue" : "&#39;Upper Ohio-Beaver&#39;"},
 					{"metricValue" : "&#39;Upper Ohio-Little Kanawha&#39;"},
 					{"metricValue" : "&#39;Upper Susquehanna&#39;"},
-					{"metricValue" : "&#39;Upper Tennessee&#39;"},
+					{"metricValue" : "&#39;Upper Tennessee&#39;"}
 
 				],
 				
@@ -663,15 +670,67 @@
 					{"metricValue" : "&#39;Winooski River&#39;"},  
 					{"metricValue" : "&#39;York&#39;"},  
 					{"metricValue" : "&#39;Youghiogheny&#39;"} 
-		        ]    	        	        	                             
+		        ],
+		        
+		        "Alewife Downstream" : 
+		        [
+		        	{"metricValue" : 1, "metricValuePrettyName" : "Current Presence"},
+		        	{"metricValue" : 2, "metricValuePrettyName" : "Historical Presence"},
+		        	{"metricValue" : 3, "metricValuePrettyName" : "No Documented Presence"}
+		        ],
+		        "Blueback Herring Downstream" : 
+		        [
+		        	{"metricValue" : 1, "metricValuePrettyName" : "Current Presence"},
+		        	{"metricValue" : 2, "metricValuePrettyName" : "Historical Presence"},
+		        	{"metricValue" : 3, "metricValuePrettyName" : "No Documented Presence"}
+		        ],
+		        "American Shad Downstream" : 
+		        [
+		        	{"metricValue" : 1, "metricValuePrettyName" : "Current Presence"},
+		        	{"metricValue" : 2, "metricValuePrettyName" : "Historical Presence"},
+		        	{"metricValue" : 3, "metricValuePrettyName" : "No Documented Presence"}
+		        ],
+		        "Hickory Shad Downstream" : 
+		        [
+		        	{"metricValue" : 1, "metricValuePrettyName" : "Current Presence"},
+		        	{"metricValue" : 2, "metricValuePrettyName" : "Historical Presence"},
+		        	{"metricValue" : 3, "metricValuePrettyName" : "No Documented Presence"}
+		        ],	
+		        "Striped Bass Downstream" : 
+		        [
+		        	{"metricValue" : 1, "metricValuePrettyName" : "Current Presence"},
+		        	{"metricValue" : 2, "metricValuePrettyName" : "Historical Presence"},
+		        	{"metricValue" : 3, "metricValuePrettyName" : "No Documented Presence"}
+		        ],	
+		        "Atlantic Sturgeon Downstream" : 
+		        [
+		        	{"metricValue" : 1, "metricValuePrettyName" : "Current Presence"},
+		        	{"metricValue" : 2, "metricValuePrettyName" : "Historical Presence"},
+		        	{"metricValue" : 3, "metricValuePrettyName" : "No Documented Presence"}
+		        ],	
+		        "Atlantic Salmon Downstream" : 
+		        [
+		        	{"metricValue" : 1, "metricValuePrettyName" : "Current Presence"},
+		        	{"metricValue" : 2, "metricValuePrettyName" : "Historical Presence"},
+		        	{"metricValue" : 3, "metricValuePrettyName" : "No Documented Presence"}
+		        ]		         	        	        	                             
 		}
 	},
+	
+	
 	"resultFilters" :{
 		"resultFilterFields":[
 				{"resultGISName" : "", "resultPrettyName" : "Select a filter..."},
 				{"resultGISName" : "AvgTier", "resultPrettyName" : "Result Tier"},
 				{"resultGISName" : "NESZCL", "resultPrettyName" : "Stream Size"},
-				{"resultGISName" : "STATE", "resultPrettyName" : "State"}
+				{"resultGISName" : "STATE", "resultPrettyName" : "State"},
+				{"resultGISName" : "DSALEWIFE", "resultPrettyName" : "Alewife"},
+				{"resultGISName" : "DSBLUEBACK", "resultPrettyName" : "Blueback"},
+				{"resultGISName" : "DSAMSHAD", "resultPrettyName" : "Am Shad"},
+				{"resultGISName" : "DSHICKSHAD", "resultPrettyName" : "Hickory Shad"},
+				{"resultGISName" : "DSSTRBASS", "resultPrettyName" : "Str Bass"},
+				{"resultGISName" : "DSATLSTUR", "resultPrettyName" : "Atl Sturgeon"},
+				{"resultGISName" : "DSATLSALM", "resultPrettyName" : "Atl Salmon"}
 				
 		],
 		"resultValuesTable" : {
@@ -733,7 +792,49 @@
 					{"resultValue" : "&#39;VT&#39;"},
 					{"resultValue" : "&#39;WV&#39;"}  
 
-		        ]    	        	        	                             
+		        ],
+		        "Alewife" : 
+		        [
+		        	{"resultValue" : 1, "resultValuePrettyName" : "Current Presence"},
+		        	{"resultValue" : 2, "resultValuePrettyName" : "Historical Presence"},
+		        	{"resultValue" : 3, "resultValuePrettyName" : "No Documented Presence"}
+		        ],
+		        "Blueback" : 
+		        [
+		        	{"resultValue" : 1, "resultValuePrettyName" : "Current Presence"},
+		        	{"resultValue" : 2, "resultValuePrettyName" : "Historical Presence"},
+		        	{"resultValue" : 3, "resultValuePrettyName" : "No Documented Presence"}
+		        ],
+		        "Am Shad" : 
+		        [
+		        	{"resultValue" : 1, "resultValuePrettyName" : "Current Presence"},
+		        	{"resultValue" : 2, "resultValuePrettyName" : "Historical Presence"},
+		        	{"resultValue" : 3, "resultValuePrettyName" : "No Documented Presence"}
+		        ],
+		        "Hickory Shad" : 
+		        [
+		        	{"resultValue" : 1, "resultValuePrettyName" : "Current Presence"},
+		        	{"resultValue" : 2, "resultValuePrettyName" : "Historical Presence"},
+		        	{"resultValue" : 3, "resultValuePrettyName" : "No Documented Presence"}
+		        ],	
+		        "Str Bass" : 
+		        [
+		        	{"resultValue" : 1, "resultValuePrettyName" : "Current Presence"},
+		        	{"resultValue" : 2, "resultValuePrettyName" : "Historical Presence"},
+		        	{"resultValue" : 3, "resultValuePrettyName" : "No Documented Presence"}
+		        ],	
+		        "Atl Sturgeon" : 
+		        [
+		        	{"resultValue" : 1, "resultValuePrettyName" : "Current Presence"},
+		        	{"resultValue" : 2, "resultValuePrettyName" : "Historical Presence"},
+		        	{"resultValue" : 3, "resultValuePrettyName" : "No Documented Presence"}
+		        ],	
+		        "Atl Salmon" : 
+		        [
+		        	{"resultValue" : 1, "resultValuePrettyName" : "Current Presence"},
+		        	{"resultValue" : 2, "resultValuePrettyName" : "Historical Presence"},
+		        	{"resultValue" : 3, "resultValuePrettyName" : "No Documented Presence"}
+		        ]	    	        	        	                             
 		}
 	}
 }

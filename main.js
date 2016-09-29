@@ -113,7 +113,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 					this.mapSide = this.appDiv.id.replace("dijit_layout_ContentPane_", ""); 
                     this.activateIdentify = false;                           
                     lang.hitch(this, this.refreshIdentify(this.config.url));
-
+					dojo.disconnect(this.identifyClick);
                 }
             },
             
@@ -437,7 +437,12 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 		                this.updateConsensusResultValues = (lang.hitch(this,function (field){    
 		                    this.fieldValsList = "";
 		                    for (var i=0; i < this.filters.resultFilters.resultValuesTable[field].length; i++){
-		                        this.fieldValsList += "<option value='" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "'>" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "</option>";
+			                    if (this.filters.resultFilters.resultValuesTable[field][i].resultValuePrettyName != undefined){
+		                    		this.fieldValsList += "<option value='" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "'>" + this.filters.resultFilters.resultValuesTable[field][i].resultValuePrettyName + "</option>";
+		                    	}
+		                    	else{
+		                        	this.fieldValsList += "<option value='" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "'>" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "</option>";
+		                    	}
 		                    }
 		                    $("#" + this.appDiv.id + "filterConsensusResultsValue").html(this.fieldValsList);
 		                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
@@ -467,8 +472,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 						
 		                $("#" + this.appDiv.id + "filterConsensusResultsOperator").on('change',lang.hitch(this,function(e){
 		                    console.log("filter change");
-		                    this.consensusuResultFilterOperator = $("#" + this.appDiv.id + "filterConsensusResultsOperator").val();
-		                    $("#" + this.appDiv.id + "resultsConsensusFilter").val(this.resultFilterField + ' ' + this.resultFilterOperator + " (" + this.consensusResultFilterValue + ")");
+		                    this.consensusResultFilterOperator = $("#" + this.appDiv.id + "filterConsensusResultsOperator").val();
+		                    $("#" + this.appDiv.id + "resultsConsensusFilter").val(this.consensusResultFilterField + ' ' + this.consensusResultFilterOperator + " (" + this.consensusResultFilterValue + ")");
 		                }));
 		                $("#" + this.appDiv.id + "filterConsensusResultsValue").on('change',lang.hitch(this,function(e){
 		                    console.log("filter change");
@@ -487,7 +492,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 	                    	console.log(this.consensusCustomFilter);
 	                    	this.map.removeLayer(this.dynamicLayer);
 	                    	this.dynamicLayer = this.filterMapService(this.consensusCustomFilter, this.dynamicLayer, this.config.url); 
-							console.log("back from function");
 							console.log(this.dynamicLayer);
 	    					this.dynamicLayer.setVisibleLayers(this.config.visibleLayers);
 						
@@ -851,7 +855,12 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 this.updateMetricValues = (lang.hitch(this,function (metric){    
                     this.metricValsList = "";
                     for (var i=0; i < this.filters.inputFilters.metricValuesTable[metric].length; i++){
-                        this.metricValsList += "<option value='" + this.filters.inputFilters.metricValuesTable[metric][i].metricValue + "'>" + this.filters.inputFilters.metricValuesTable[metric][i].metricValue + "</option>";
+                    	if (this.filters.inputFilters.metricValuesTable[metric][i].metricValuePrettyName !=undefined){
+                    		this.metricValsList += "<option value='" + this.filters.inputFilters.metricValuesTable[metric][i].metricValue + "'>" + this.filters.inputFilters.metricValuesTable[metric][i].metricValuePrettyName + "</option>";
+                    	}
+                    	else{
+                        	this.metricValsList += "<option value='" + this.filters.inputFilters.metricValuesTable[metric][i].metricValue + "'>" + this.filters.inputFilters.metricValuesTable[metric][i].metricValue + "</option>";
+                    	}
                     }
                     $("#" + this.appDiv.id + "filterBuildValue").html(this.metricValsList);
                     
@@ -1160,7 +1169,12 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 	                this.updateResultValues = (lang.hitch(this,function (field){    
 	                    this.fieldValsList = "";
 	                    for (var i=0; i < this.filters.resultFilters.resultValuesTable[field].length; i++){
-	                        this.fieldValsList += "<option value='" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "'>" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "</option>";
+	                    	if (this.filters.resultFilters.resultValuesTable[field][i].resultValuePrettyName != undefined){
+	                    		this.fieldValsList += "<option value='" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "'>" + this.filters.resultFilters.resultValuesTable[field][i].resultValuePrettyName + "</option>";
+	                    	}
+	                    	else{
+	                        	this.fieldValsList += "<option value='" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "'>" + this.filters.resultFilters.resultValuesTable[field][i].resultValue + "</option>";
+	                    	}
 	                    }
 	                    $("#" + this.appDiv.id + "filterResultsValue").html(this.fieldValsList);
 	                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
