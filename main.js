@@ -275,29 +275,42 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 	$('#' + this.appDiv.id + 'dlCSV').hide(); 
                 	$('#' + this.appDiv.id + 'dlConsensus').show();  
                 	$('#' + this.appDiv.id + 'dlInputs').hide(); 
+                	//analytics event tracking
+                	ga('send', 'event', {
+					   eventCategory:this.config.analyticsEventTrackingCategory,		
+					   eventAction: 'top tab click', 
+					   eventLabel: 'Consensus Result Screen'
+					});
+
                 }));
                 
                 //show input divs if "run a custom analysis tab is selected             
                 $('#' + this.appDiv.id + 'tabB' ).on('click',lang.hitch(this,function(){
-	                    console.log("tab clicked");
-	                    $("#" + this.appDiv.id + "allTabContent").show();
-						                 
-	                    	selectedVal= $('input[name=stateRadio]:checked', '#' + this.appDiv.id + 'stateRadioForm').val();
-	                    
-		                    if (selectedVal==="results"){
-		                        lang.hitch(this, this.gotoResultsState());
-		                    }
-		                    if (selectedVal==="mapServiceResults"){
-		                        lang.hitch(this, this.gotoMapServResultsState());
-		                    }
-		                    if (selectedVal==="inputs"){
-		                        lang.hitch(this, this.gotoInputsState());      
-		                    }
-		                    if (selectedVal==="stats"){
-		                        lang.hitch(this, this.gotoStatsState());                           
-		                    }
+                    console.log("tab clicked");
+                    $("#" + this.appDiv.id + "allTabContent").show();
+					                 
+                    	selectedVal= $('input[name=stateRadio]:checked', '#' + this.appDiv.id + 'stateRadioForm').val();
+                    
+	                    if (selectedVal==="results"){
+	                        lang.hitch(this, this.gotoResultsState());
+	                    }
+	                    if (selectedVal==="mapServiceResults"){
+	                        lang.hitch(this, this.gotoMapServResultsState());
+	                    }
+	                    if (selectedVal==="inputs"){
+	                        lang.hitch(this, this.gotoInputsState());      
+	                    }
+	                    if (selectedVal==="stats"){
+	                        lang.hitch(this, this.gotoStatsState());                           
+	                    }
+	                    ga('send', 'event', {
+						    eventCategory:this.config.analyticsEventTrackingCategory,		
+						    eventAction: 'top tab click, 
+						    eventLabel: "Run custom analysis"
+					 	});
 		                    
-	                	})); 
+		                    
+            	})); 
 
 	                    
                 //apply Tier slider filter to Consensus results                
@@ -1074,6 +1087,13 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 	                    //disable Submit button so a second analyiss can't be run until the first is finished
 	                    $('#' + this.appDiv.id +"submitButton").addClass('submitButtonRunning');
 	                    $('#' + this.appDiv.id +"submitButton").prop('disabled', true);
+                    
+                    	ga('send', 'event', {
+						    eventCategory:this.config.analyticsEventTrackingCategory,		
+						    eventAction: 'submit click', 
+						    eventLabel: "Custom analysis on " + this.passability
+					 	});
+		                    
                     }
                 }));
         

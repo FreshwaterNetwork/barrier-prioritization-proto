@@ -17,6 +17,7 @@
 	"gpServIncludesLogTransform" : false,
 	"includeExploreConsensus":true,
 	"includeSeverityFilter":true,
+	"analyticsEventTrackingCategory":"NE Aquatic Barrier Prioritization",
 	"metricNames":{
 		"batFuncUS" : "Upstream functional network length",
 		"batCountDS" : "Count of downstream barriers",
