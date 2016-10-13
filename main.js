@@ -305,7 +305,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 	                    }
 	                    ga('send', 'event', {
 						    eventCategory:this.config.analyticsEventTrackingCategory,		
-						    eventAction: 'top tab click, 
+						    eventAction: 'top tab click', 
 						    eventLabel: "Run custom analysis"
 					 	});
 		                    
