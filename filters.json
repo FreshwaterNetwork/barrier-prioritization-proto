@@ -3,6 +3,7 @@
 		"metricNamesTable":[
 				{"metricGISName" : "", "metricPrettyName" : "Select a filter..."},
 				{"metricGISName" : "STATE", "metricPrettyName" : "State"},
+				{"metricGISName" : "Type", "metricPrettyName" : "Barrier Type"},
 				{"metricGISName" : "HUC4", "metricPrettyName" : "HUC4"},
 				{"metricGISName" : "HUC4_Name", "metricPrettyName" : "HUC4 Name"},
 				{"metricGISName" : "HUC6", "metricPrettyName" : "HUC6"},
@@ -42,7 +43,13 @@
 					{"metricValue" : "&#39;VT&#39;"},
 					{"metricValue" : "&#39;WV&#39;"}
 		        ],
-	
+		        
+		    "Barrier Type" : 
+		        [
+					{"metricValue" : "&#39;Dam&#39;"},
+					{"metricValue" : "&#39;Crossing&#39;"}
+		        ],	
+		        
 			"HUC4" :
 				[
 					{"metricValue" : "&#39;0101&#39;"}, 
@@ -722,6 +729,7 @@
 		"resultFilterFields":[
 				{"resultGISName" : "", "resultPrettyName" : "Select a filter..."},
 				{"resultGISName" : "AvgTier", "resultPrettyName" : "Result Tier"},
+				{"resultGISName" : "Type", "resultPrettyName" : "Barrier Type"},
 				{"resultGISName" : "NESZCL", "resultPrettyName" : "Stream Size"},
 				{"resultGISName" : "STATE", "resultPrettyName" : "State"},
 				{"resultGISName" : "DSALEWIFE", "resultPrettyName" : "Alewife"},
@@ -764,7 +772,12 @@
 					{"resultValue" : 19},
 					{"resultValue" : 20}
 		        ],
-	
+		        
+		    "Barrier Type" : 
+		        [
+					{"resultValue" : "&#39;Dam&#39;"},
+					{"resultValue" : "&#39;Crossing&#39;"}
+		        ],	
 		    "Stream Size" : 
 		        [
 					{"resultValue" : "&#39;1a&#39;"}, 
