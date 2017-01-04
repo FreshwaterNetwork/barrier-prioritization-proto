@@ -9,9 +9,9 @@ define([
     "esri/tasks/Geoprocessor", "esri/tasks/IdentifyTask", "esri/tasks/IdentifyParameters",  "esri/tasks/query", "esri/tasks/QueryTask", "esri/graphic", "esri/InfoTemplate", "esri/renderers/SimpleRenderer", "dojo/_base/Color",    
     "dijit/layout/ContentPane", "dijit/form/HorizontalSlider","dijit/registry", "dojo/_base/array", "dojo/dom", "dojo/dom-class", "dojo/dom-style", 
     "dojo/dom-construct", "dojo/dom-geometry", "dojo/_base/lang", "dojo/on", "dojo/parser", 
-    "plugins/barrier-prioritization/js/ConstrainedMoveable", "dojo/text!./config.json", "dojo/text!./filters.json", "dojo/text!./obj.json", "jquery",
+    "plugins/barrier-prioritization-proto/js/ConstrainedMoveable", "dojo/text!./config.json", "dojo/text!./filters.json", "dojo/text!./obj.json", "jquery",
     "dojo/text!./html/legend.html", "dojo/text!./html/content.html", "dijit/TooltipDialog", 
-    "dijit/popup",     "dojox/grid/DataGrid", "dojo/data/ItemFileReadStore", "plugins/barrier-prioritization/js/jquery-ui-1.11.0/jquery-ui.js"
+    "dijit/popup",     "dojox/grid/DataGrid", "dojo/data/ItemFileReadStore", "plugins/barrier-prioritization-proto/js/jquery-ui-1.11.0/jquery-ui.js"
 
 ],
 function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, 
@@ -20,13 +20,14 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
             ConstrainedMoveable, config, filters, obj, $, legendContent, content, TooltipDialog, popup,   DataGrid,  
             ItemFileReadStore, ui) {
         return declare(PluginBase, {
-            toolbarName: "Aquatic Barrier Prioritization", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
+            toolbarName: "Aquatic Barrier Prioritization", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false, size:"large", //width:500,
             // First function called when the user clicks the pluging icon. Defines the default JSON and plugin size
             initialize: function (frameworkParameters) {
                 declare.safeMixin(this, frameworkParameters);
                 domClass.add(this.container, "claro");
-                this.con = dom.byId('plugins/barrier-prioritization-0');
-                this.con1 = dom.byId('plugins/barrier-prioritization-1');
+				//No longer using split screen
+/*                 this.con = dom.byId('plugins/barrier-prioritization-proto-0');
+                this.con1 = dom.byId('plugins/barrier-prioritization-proto-1');
                 if (this.con1 != undefined){
                     domStyle.set(this.con1, "width", "480px");
                     domStyle.set(this.con1, "height", "250px");
@@ -34,7 +35,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 }else{
                     domStyle.set(this.con, "width", "480px");
                     domStyle.set(this.con, "height", "250px");
-                }   
+                }    */
                 this.config = dojo.eval("[" + config + "]")[0]; 
                 this.filters = dojo.eval("[" + filters + "]")[0]; 
                 this.obj = dojo.eval("[" + obj + "]")[0]; 
@@ -61,7 +62,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 					if (this.config.tableResults == false){                
 						//clear all filters
 						$('#'+ this.appDiv.id +"resultsFilter").val(''); 
-						require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+						require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
 						    $('#'+ this.appDiv.id +"filterResultsField").val('option: first').trigger("chosen:updated");
 			                $('#'+ this.appDiv.id +"filterResultsOperator").val('option: first').trigger("chosen:updated");
 			                $('#'+ this.appDiv.id +"filterResultsValue").val('option: first').trigger("chosen:updated");
@@ -134,8 +135,8 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                         this.dynamicLayer.setVisibility(true);  
                     }
                     if (this.small == "yes"){
-                        this.con = dom.byId('plugins/barrier-prioritization-0');
-                        this.con1 = dom.byId('plugins/barrier-prioritization-1');
+/*                         this.con = dom.byId('plugins/barrier-prioritization-proto-0');
+                        this.con1 = dom.byId('plugins/barrier-prioritization-proto-1');
                         if (this.con1 != undefined){
                             domStyle.set(this.con1, "width", "480px");
                             domStyle.set(this.con1, "height", "260px");
@@ -143,7 +144,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                             domStyle.set(this.con, "width", "480px");
                             domStyle.set(this.con, "height", "260px");
                         }
-                        $('#' + this.appDiv.id).css('height', '20');
+                        $('#' + this.appDiv.id).css('height', '20'); */
                         $('#' + this.appDiv.id).show();
 
                     }   
@@ -458,7 +459,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 		                    	}
 		                    }
 		                    $("#" + this.appDiv.id + "filterConsensusResultsValue").html(this.fieldValsList);
-		                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+		                    require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
 		                        $(".chosen-select7").val('').trigger("chosen:updated");
 		                        this.consensusResultFilterValue = $("#" + this.appDiv.id + "filterConsensusResultsValue").val();
 		                        
@@ -479,7 +480,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 							this.consensusResultFilterField = $("#" + this.appDiv.id + "filterConsensusResultsField").val();
 		                    $("#" + this.appDiv.id + "resultsConsensusFilter").val( this.consensusResultFilterField + ' ' + this.consensusResultFilterOperator + " (" + this.consensusResultFilterValue + ")");
 		                }));
-						require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+						require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
 							$(".chosen-select5").val('').trigger("chosen:updated");
 						}));
 						
@@ -604,7 +605,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 }
 
                 // Enable jquery plugin 'chosen'
-                require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+                require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
                     var config = { '.chosen-select' : {
                         allow_single_deselect:true, 
                         width:"170px", 
@@ -878,7 +879,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     $("#" + this.appDiv.id + "filterBuildValue").html(this.metricValsList);
                     
 
-                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+                    require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
                         $(".chosen-select2").val('').trigger("chosen:updated");
                         this.filterValue = $("#" + this.appDiv.id + "filterBuildValue").val();
                         
@@ -902,7 +903,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 					this.filterField = $("#" + this.appDiv.id + "filterBuildField").val();
                     $("#" + this.appDiv.id + "userFilter").val('"' + this.filterField + '" ' + this.filterOperator + " (" + this.filterValue + ")");
                 }));
-				require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+				require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
 					$(".chosen-select1").val('').trigger("chosen:updated");
 				}));
 				
@@ -991,12 +992,12 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                         this.tableHTML = "<thead> <tr></tr></thead><tbody ></tbody>";
                         this.sumStatsTableHTML = "<thead> <tr></tr></thead><tbody ></tbody>";
                         if (this.gpIterator >1){                                            
-                            require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
+                            require(["jquery", "plugins/barrier-prioritization-proto/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
                              $("#" + this.appDiv.id + "gpResultTable").trigger("destroy");
                             }));
                         }
                         if ("#" + this.appDiv.id + "gpSumStatsTable"){
-                            require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
+                            require(["jquery", "plugins/barrier-prioritization-proto/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
                                 $("#" + this.appDiv.id + "gpSumStatsTable").trigger("destroy");
                             }));
                             
@@ -1197,7 +1198,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 	                    	}
 	                    }
 	                    $("#" + this.appDiv.id + "filterResultsValue").html(this.fieldValsList);
-	                    require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+	                    require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
 	                        $(".chosen-select7").val('').trigger("chosen:updated");
 	                        this.resultsFilterValue = $("#" + this.appDiv.id + "filterResultsValue").val();
 	                        
@@ -1218,7 +1219,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 						this.resultFilterField = $("#" + this.appDiv.id + "filterResultsField").val();
 	                    $("#" + this.appDiv.id + "resultsFilter").val( this.resultFilterField + ' ' + this.resultFilterOperator + " (" + this.resultFilterValue + ")");
 	                }));
-					require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+					require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
 						$(".chosen-select5").val('').trigger("chosen:updated");
 					}));
 					
@@ -1359,7 +1360,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     $("#" + this.appDiv.id + "gpResultTable > tbody:last-child").append(cStr2);
                     
                     //Set up tablesorter           
-                    require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
+                    require(["jquery", "plugins/barrier-prioritization-proto/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
                                 $("#" + this.appDiv.id + "gpResultTable").tablesorter({
                                 widthFixed : true,
                                 headerTemplate : '{content} {icon}', // Add icon for various themes
@@ -1547,7 +1548,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     $("#" + this.appDiv.id + "gpSumStatsTable > tbody:last-child").append(dStr2); 
                     
                     //Set up tablesorter           
-                    require(["jquery", "plugins/barrier-prioritization/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
+                    require(["jquery", "plugins/barrier-prioritization-proto/js/jquery.tablesorter.combined.js"],lang.hitch(this,function($) {
                                 $("#" + this.appDiv.id + "gpSumStatsTable").tablesorter({
                                 widthFixed : true,
                                 headerTemplate : '{content} {icon}', // Add icon for various themes
@@ -1576,11 +1577,11 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                     alert("Print Report is coming soon. Brace yourself, it's going to be awesome!");
                 }));
                 $('#' + this.appDiv.id + 'help').on('click',lang.hitch(this,function(e) { 
-                    return windowPopup('plugins/barrier-prioritization/html/help.html', 'help', 'width=1000,height=825,scrollbars=yes');
+                    return windowPopup('plugins/barrier-prioritization-proto/html/help.html', 'help', 'width=1000,height=825,scrollbars=yes');
                 }));
                 $('#' + this.appDiv.id + 'dlCSV').on('click',lang.hitch(this,function(e) { 
                     if (this.config.tableResults == true){
-	                    require(["jquery", "plugins/barrier-prioritization/js/jquery.tabletoCSV"],lang.hitch(this,function($) {
+	                    require(["jquery", "plugins/barrier-prioritization-proto/js/jquery.tabletoCSV"],lang.hitch(this,function($) {
 	                             $("#" + this.appDiv.id + "gpResultTable").tableToCSV();
 	                    }));
 	                }
@@ -1956,7 +1957,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				},500));
 				
 				$('#'+ this.appDiv.id +"resultsFilter").val(''); 
-				require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+				require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
 				    $('#'+ this.appDiv.id +"filterResultsField").val('option: first').trigger("chosen:updated");
 	                $('#'+ this.appDiv.id +"filterResultsOperator").val('option: first').trigger("chosen:updated");
 	                $('#'+ this.appDiv.id +"filterResultsValue").val('option: first').trigger("chosen:updated");
@@ -1976,7 +1977,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
 				},500));
 				
 				$('#'+ this.appDiv.id +"resultsConsensusFilter").val(''); 
-				require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+				require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
 				    $('#'+ this.appDiv.id +"filterConsensusResultsField").val('option: first').trigger("chosen:updated");
 	                $('#'+ this.appDiv.id +"filterConsensusResultsOperator").val('option: first').trigger("chosen:updated");
 	                $('#'+ this.appDiv.id +"filterConsensusResultsValue").val('option: first').trigger("chosen:updated");
@@ -2004,7 +2005,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 if ($('#'+ this.appDiv.id +"filterBarriers").is(":checked")){
                     $('#'+ this.appDiv.id +"filterBarriers").trigger('click');
                 }
-                require(["jquery", "plugins/barrier-prioritization/js/chosen.jquery"],lang.hitch(this,function($) {
+                require(["jquery", "plugins/barrier-prioritization-proto/js/chosen.jquery"],lang.hitch(this,function($) {
 	                $('#'+ this.appDiv.id +"filterBuildField").val('option: first').trigger("chosen:updated");
 	                $('#'+ this.appDiv.id +"filterBuildOperator").val('option: first').trigger("chosen:updated");
 	                $('#'+ this.appDiv.id +"filterBuildValue").val('option: first').trigger("chosen:updated"); 

@@ -239,7 +239,7 @@ table.tablesorter .filtered {
 		/*display: table;*/
     }
      .tab-contentAll {
-     	position:absolute;
+     	/*position:absolute;*/
      	overflow: hidden;
         padding:5px;
         border-radius:3px;
@@ -302,12 +302,13 @@ table.tablesorter .filtered {
 	height: 86%;
 	width: 98%;
 	top: 40px;
-	position: absolute;
+	/* position: absolute; */
 }
 
 
 .gpSumStatsTableDivContainer{
 	margin-top: 17px;
+	position: relative;
 }
 
 
@@ -321,7 +322,7 @@ table.tablesorter .filtered {
 	height:350px;
 	margin-bottom:10px;
 	display:block;
-	position:absolute
+	position:relative;
 }
 
 .highlightGPResultRow{
@@ -333,19 +334,19 @@ table.tablesorter .filtered {
 	display: inline-block;
 	/*float: left !important;*/
 	/*padding-right: 80px;*/
-	position: absolute;
+	/* position: absolute; */
 	z-index: 2;
 }
 
 .stateRadioForm{
-	position: absolute;
+	/* position: absolute; */
 	padding-left: 260px;
 	z-index: 1;
 }
 .toggleResultsDiv{
 	display: inline;
 	padding-left: 80%;
-	position: absolute;
+	/* position: absolute; */
 	
 }
 
@@ -384,7 +385,8 @@ table.tablesorter .filtered {
 
 /* Headers */
 .clickTitle{
-	position:absolute; padding-left:10px; padding-right: 10px; background-color:white; z-index:15;
+	/* position:absolute;  */
+	padding-left:10px; padding-right: 10px; background-color:white; z-index:15;
 }
 .sectionHeader{
 	font-weight:normal; font-family: 'Archivo Narrow', 'Arial Narrow', Arial, Helvetica, sans-serif !important; font-size:11pt !important; color:#21658c;
