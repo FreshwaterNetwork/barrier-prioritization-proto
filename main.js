@@ -20,7 +20,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
             ConstrainedMoveable, config, filters, obj, $, legendContent, content, TooltipDialog, popup,   DataGrid,  
             ItemFileReadStore, ui) {
         return declare(PluginBase, {
-            toolbarName: "Aquatic Barrier Prioritization", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false, size:"large", //width:500,
+            toolbarName: "Aquatic Barrier Prioritization", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false, size:"small", //width:500,
             // First function called when the user clicks the pluging icon. Defines the default JSON and plugin size
             initialize: function (frameworkParameters) {
                 declare.safeMixin(this, frameworkParameters);

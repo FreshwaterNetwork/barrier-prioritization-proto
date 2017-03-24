@@ -193,7 +193,7 @@ table.tablesorter .filtered {
     }
  
     .tab-links li {
-        margin:0px 5px;
+        /* margin:0px 5px; */
         float:left;
         list-style:none;
     }
@@ -204,7 +204,7 @@ table.tablesorter .filtered {
             display:inline-block;
             border-radius:3px 3px 0px 0px;
             background:#666666;
-            font-weight:600;
+            font-weight:500;
             color:#e6e6e6 !important;
             transition:all linear 0.15s;
 			
@@ -240,7 +240,7 @@ table.tablesorter .filtered {
     }
      .tab-contentAll {
      	/*position:absolute;*/
-     	overflow: hidden;
+     	overflow: visible;
         padding:5px;
         border-radius:3px;
         box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
