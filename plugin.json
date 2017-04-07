@@ -1,7 +1,6 @@
 {
     "css": [
 		"//cdn.sencha.io/ext-4.1.1-gpl/resources/css/ext-all.css",
-        "//code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.css",
 		"plugins/barrier-prioritization-proto/css/prism.css",
 		"plugins/barrier-prioritization-proto/css/chosen.css",
 		"plugins/barrier-prioritization-proto/css/main.css",
