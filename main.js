@@ -11,7 +11,7 @@ define([
     "dojo/dom-construct", "dojo/dom-geometry", "dojo/_base/lang", "dojo/on", "dojo/parser", 
     "plugins/barrier-prioritization-proto/js/ConstrainedMoveable", "dojo/text!./config.json", "dojo/text!./filters.json", "dojo/text!./obj.json", "jquery",
     "dojo/text!./html/legend.html", "dojo/text!./html/content.html", "dijit/TooltipDialog", 
-    "dijit/popup",     "dojox/grid/DataGrid", "dojo/data/ItemFileReadStore", "plugins/barrier-prioritization-proto/js/jquery-ui-1.11.0/jquery-ui.js"
+    "dijit/popup",     "dojox/grid/DataGrid", "dojo/data/ItemFileReadStore"
 
 ],
 function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, 
@@ -20,7 +20,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
             ConstrainedMoveable, config, filters, obj, $, legendContent, content, TooltipDialog, popup,   DataGrid,  
             ItemFileReadStore, ui) {
         return declare(PluginBase, {
-            toolbarName: "Aquatic Barrier Prioritization", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false, size:"small", //width:500,
+            toolbarName: "Aquatic Barrier Prioritization", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false, size:"custom", width:500,
             // First function called when the user clicks the pluging icon. Defines the default JSON and plugin size
             initialize: function (frameworkParameters) {
                 declare.safeMixin(this, frameworkParameters);
@@ -1271,6 +1271,7 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
         		
                 //Display GP Result Table  
                 function displayResultTable(result, messages){
+					this.gpIterator ++;
                 	console.log("table results");
                 	 $("#" + this.appDiv.id +"gpResultTableDivContainer").show();
                     this.itJSON = {title: this.uniqueID + " : " + "${" + this.uniqueID + "}",content: "Tier: ${Tier}<br>Seqential Result: ${FinalRank}"};
@@ -1503,8 +1504,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                         
                     }));
                     
-                    
-                    this.gpIterator ++;
                 }
                 
                 function scrollIntoView(element, container) {
@@ -1789,8 +1788,12 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
             gotoResultsState: function(){
                 $('#' + this.appDiv.id + 'leftSide').hide();
                 $('#' + this.appDiv.id + 'rightSide').hide();
+				if (this.gpIterator ==1 ){
+					$('#' + this.appDiv.id + 'bottomDiv').hide();
+				}
                 if (this.gpIterator >1 ){
                		$('#' + this.appDiv.id + 'gpResultTableDivContainer').show();
+					$('#' + this.appDiv.id + 'bottomDiv').show();
                 }
                 $('#' + this.appDiv.id + 'toggleResultsDiv').show();
                 $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').hide();  
@@ -1798,7 +1801,6 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $('#' + this.appDiv.id + 'dlCSV').show();
                 $('#' + this.appDiv.id + 'dlConsensus').hide();
                 $('#' + this.appDiv.id + 'dlInputs').show();
-                $('#' + this.appDiv.id + 'bottomDiv').show();
                 $('#' + this.appDiv.id + 'topRadioDiv').show();
 
             },  
@@ -1806,8 +1808,12 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
             gotoMapServResultsState: function(){
             	$('#' + this.appDiv.id + 'leftSide').hide();
                 $('#' + this.appDiv.id + 'rightSide').hide();
+				if (this.gpIterator ==1 ){
+					$('#' + this.appDiv.id + 'bottomDiv').hide();
+				}
                 if (this.gpIterator >1 ){
                 	$('#' + this.appDiv.id + 'gpResultMapServiceDivContainer').show();
+					$('#' + this.appDiv.id + 'bottomDiv').show();
                 }
                 $('#' + this.appDiv.id + 'toggleResultsDiv').show();
                 $('#' + this.appDiv.id + 'gpSumStatsTableDivContainer').hide();    
@@ -1818,12 +1824,15 @@ function ( declare, PluginBase, FeatureLayer, GraphicsLayer, ImageParameters, Si
                 $("#" + this.appDiv.id + "filterResultsField_chosen").show();                      
                 $("#" + this.appDiv.id + "filterResultsOperator_chosen").show();                 
                 $("#" + this.appDiv.id + "filterResultsValue_chosen").show();
-                $('#' + this.appDiv.id + 'bottomDiv').show();
+                
                 $('#' + this.appDiv.id + 'topRadioDiv').show();
 
             },
             
             gotoStatsState: function(){
+				if (this.gpIterator ==1 ){
+					$('#' + this.appDiv.id + 'bottomDiv').hide();
+				}
 				$('#' + this.appDiv.id + 'leftSide').hide();
                 $('#' + this.appDiv.id + 'rightSide').hide();
                 $('#' + this.appDiv.id + 'gpResultTableDivContainer').hide();

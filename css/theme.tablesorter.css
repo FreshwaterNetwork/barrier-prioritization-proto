@@ -4,25 +4,25 @@
 .gpResultTableDivContainer {
 	position: absolute;
 	padding: 0;
-
+	border-radius:3px;
 	overflow-y: auto;
 	overflow-x: auto;
 	border: 1px solid #215973;
-	height: 86%;
-	width: 98%; 
-	top:40px;
+	height: 80%;
+	width: 475px; 
+	/*top:100px; */
 }
 
 .gpSumStatsTableDivContainer {
 	position: absolute;
 	padding: 0;
-
+	border-radius:3px;
 	overflow-y: auto;
 	overflow-x: auto;
 	border: 1px solid #215973;
-	width: 98%;
-	height: 86%; 
-	top:40px;
+	width: 475px;
+	height: 70%; 
+	/*top:100px; */
 }
 /* overall */
 .tablesorter-blue {

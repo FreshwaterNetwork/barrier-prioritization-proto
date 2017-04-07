@@ -38,9 +38,7 @@ html, body, #page {
 
 #footer {
   height: 100px;
-  background: #405D68; 
-  position: fixed;
-  bottom: 0px}
+  background: #405D68; }
 
 #footer-bottom-inner, #footer-top-inner {
   width: 990px;
